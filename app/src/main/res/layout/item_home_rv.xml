@@ -33,7 +33,7 @@
 
 
                 <ImageView
-                    android:id="@+id/img_news_home_title"
+                    android:id="@+id/background_title"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:scaleType="centerCrop"
@@ -43,45 +43,90 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/img_news_home_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/img_news_detail"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
                     android:layout_marginTop="8dp"
                     android:src="@drawable/warriornewsreader_img_news"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_news_home_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/background_title" />
 
 
                 <TextView
-                    android:id="@+id/tv_news_home_title"
+                    android:id="@+id/tv_news_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:ellipsize="end"
                     android:gravity="center_horizontal"
                     android:maxLines="1"
-                    android:text="Summer Update Changes during Test"
                     android:textColor="@color/white"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/img_news_home_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/background_title"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="teste"/>
 
                 <TextView
-                    android:id="@+id/tv_news_home_text"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tv_news_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Date: 02-09-23"
+                    android:textColor="@color/color_background_lists"
+                    android:textSize="16sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintEnd_toStartOf="@+id/img_news_detail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/background_title" />
+
+                <TextView
+                    android:id="@+id/tv_news_text_detail"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginVertical="16dp"
                     android:textAlignment="center"
-                    android:textSize="16sp"
+                    android:textColor="@color/color_background_lists"
+                    android:textSize="14sp"
+                    android:maxLines="5"
+                    android:ellipsize="end"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_news_detail"
+                    app:layout_constraintEnd_toStartOf="@+id/img_news_detail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_news_date"
+                    tools:text="With today's server save, we have implemented a few changes and fixes:s and fixes:s and fixes:s and fixes:s and fixes:s and fixes:s and fixes:s and fixes:s and fixes:s and fixes:" />
+
+                <TextView
+                    android:id="@+id/tv_news_url"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/color_background_lists"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_news_home_text"
-                    tools:text="@tools:sample/lorem/random" />
+                    app:layout_constraintTop_toBottomOf="@id/img_news_detail"
+                    tools:text="https://www.tibia.com/news/?subtopic=latestnews" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_news_detail"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/mediumbutton"
+                    android:text="Read more"
+                    android:textStyle="bold"
+                    android:textColor="@color/btn_color"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_news_url"
+                    app:layout_constraintEnd_toStartOf="@+id/img_news_detail"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

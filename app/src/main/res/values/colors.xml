@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_primary">#E21221</color>
     <color name="color_secondary">#FFFFFFFF</color>
-    <color name="color_background_lists">#C8C8C8</color>
+    <color name="color_background_lists">#880101</color>
+    <color name="btn_color">#FFC600</color>
 </resources>
