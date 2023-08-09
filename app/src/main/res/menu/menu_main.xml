@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/menu_bosted_today"
-        android:title="@string/menu_bottom_bar_bosted_today"
+        android:title="@string/menu_bottom_bar_fansites"
         android:icon="@drawable/ic_menu_bosted"/>
 
     <item

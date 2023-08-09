@@ -8,6 +8,8 @@
     <string name="menu_bottom_bar_map">Map</string>
     <string name="menu_bottom_bar_library">Library</string>
     <string name="menu_bottom_bar_news">News</string>
-    <string name="menu_bottom_bar_bosted_today">Bosted Today</string>
-    
+    <string name="menu_bottom_bar_fansites">Fansites</string>
+    <string name="boss_bosted">BOSS BOSTED</string>
+    <string name="creature_bosted">CREATURE BOSTED</string>
+
 </resources>

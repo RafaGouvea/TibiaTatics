@@ -6,4 +6,6 @@
     <color name="color_secondary">#FFFFFFFF</color>
     <color name="color_background_lists">#880101</color>
     <color name="btn_color">#FFC600</color>
+    <color name="grey">#C3686868</color>
+
 </resources>
