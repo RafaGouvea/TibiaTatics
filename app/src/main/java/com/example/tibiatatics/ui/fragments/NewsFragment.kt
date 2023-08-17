@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tibiatatics.R
 import com.example.tibiatatics.remote.NewsModelWebClient
-import com.example.tibiatatics.ui.adapter.HomeFragmentAdapter
+import com.example.tibiatatics.ui.adapter.NewsFragmentAdapter
 import kotlinx.coroutines.launch
 
 
 class NewsFragment : Fragment() {
 
     private var newsModelWebClient = NewsModelWebClient()
-    private lateinit var adapter: HomeFragmentAdapter
+    private lateinit var adapter: NewsFragmentAdapter
     private lateinit var recyclerview: RecyclerView
 
     override fun onCreateView(
@@ -31,13 +31,13 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRecycleView(view)
-        lifecycleScope.launch{
-            newsModelWebClient.loadFrom()?.let { adapter.updateNewsList(it) }
+        lifecycleScope.launch {
+            newsModelWebClient.loadNewsFrom()?.let { adapter.updateNewsList(it) }
         }
     }
 
     private fun initRecycleView(view: View) {
-        this.adapter = HomeFragmentAdapter()
+        this.adapter = NewsFragmentAdapter()
         recyclerview = view.findViewById(R.id.activity_lista_noticias_recyclerview)
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
         recyclerview.adapter = this.adapter

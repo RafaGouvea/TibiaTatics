@@ -33,7 +33,7 @@
 
 
                 <ImageView
-                    android:id="@+id/background_title"
+                    android:id="@+id/img_title_news_detail"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:scaleType="centerCrop"
@@ -49,7 +49,7 @@
                     android:layout_marginTop="8dp"
                     android:src="@drawable/warriornewsreader_img_news"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/background_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/img_title_news_detail" />
 
 
                 <TextView
@@ -63,13 +63,13 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/background_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_title_news_detail"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="teste"/>
 
                 <TextView
-                    android:id="@+id/tv_news_date"
+                    android:id="@+id/tv_news_detail_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -79,10 +79,10 @@
                     android:textStyle="bold|italic"
                     app:layout_constraintEnd_toStartOf="@+id/img_news_detail"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/background_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/img_title_news_detail" />
 
                 <TextView
-                    android:id="@+id/tv_news_text_detail"
+                    android:id="@+id/tv_news_detail_text_detail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
@@ -95,11 +95,11 @@
                     app:layout_constraintBottom_toTopOf="@+id/btn_news_detail"
                     app:layout_constraintEnd_toStartOf="@+id/img_news_detail"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_news_date"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_news_detail_date"
                     tools:text="With today's server save, we have implemented a few changes and fixes:s and fixes:s and fixes:s and fixes:s and fixes:s and fixes:s and fixes:s and fixes:s and fixes:s and fixes:" />
 
                 <TextView
-                    android:id="@+id/tv_news_url"
+                    android:id="@+id/tv_news_detail_url"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="12dp"
@@ -124,7 +124,7 @@
                     android:text="Read more"
                     android:textStyle="bold"
                     android:textColor="@color/btn_color"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_news_url"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_news_detail_url"
                     app:layout_constraintEnd_toStartOf="@+id/img_news_detail"
                     app:layout_constraintStart_toStartOf="parent" />
 

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tibiatatics.R
 import com.example.tibiatatics.model.NewsModel
 
-class HomeFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var news: List<NewsModel> = ArrayList()
 
@@ -43,9 +43,9 @@ class HomeFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 class NewsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val txt_title = itemView.findViewById<TextView>(R.id.tv_news_title)
-    val txt_detail = itemView.findViewById<TextView>(R.id.tv_news_text_detail)
-    val txt_date = itemView.findViewById<TextView>(R.id.tv_news_date)
-    val url = itemView.findViewById<TextView>(R.id.tv_news_url)
+    val txt_detail = itemView.findViewById<TextView>(R.id.tv_news_detail_text_detail)
+    val txt_date = itemView.findViewById<TextView>(R.id.tv_news_detail_date)
+    val url = itemView.findViewById<TextView>(R.id.tv_news_detail_url)
     val imagemDetail = itemView.findViewById<ImageView>(R.id.img_news_detail)
 
     fun bind(news: NewsModel) {
