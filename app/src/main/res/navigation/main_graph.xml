@@ -9,7 +9,11 @@
         android:id="@+id/menu_news"
         android:name="com.example.tibiatatics.ui.fragments.NewsFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/fromNewsFragmentToNewsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menu_bosted_today"
         android:name="com.example.tibiatatics.ui.fragments.BoostedTodayFragment"
@@ -30,4 +34,9 @@
         android:name="com.example.tibiatatics.ui.fragments.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.example.tibiatatics.ui.fragments.NewsDetailFragment"
+        android:label="fragment_news_detail"
+        tools:layout="@layout/fragment_news_detail" />
 </navigation>

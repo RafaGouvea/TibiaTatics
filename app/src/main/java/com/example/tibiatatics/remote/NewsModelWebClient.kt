@@ -22,6 +22,19 @@ class NewsModelWebClient() {
         }
     }
 
-    
+    suspend fun loadNewsDetailFrom(): List<NewsDetailModel>? {
+        return try {
+            val id = loadNewsFrom()?.map {
+                it.id
+            }
+            val resposta = apiInterface.getNewsDetail(id)
+            resposta.map {
+                it.toModel()
+            }
 
+        } catch (e: Exception) {
+            Log.e("###", "loadNewsDetailFrom: ", e)
+            null
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.tibiatatics.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tibiatatics.R
 import com.example.tibiatatics.model.NewsModel
 
-class NewsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsFragmentAdapter(
 
+    private val onItemClicked: (NewsModel) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var news: List<NewsModel> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -24,7 +26,7 @@ class NewsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         when (holder) {
             is NewsViewHolder -> {
-                holder.bind(news[position])
+                holder.bind(news[position], onItemClicked)
             }
         }
 
@@ -48,7 +50,7 @@ class NewsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemV
     val url = itemView.findViewById<TextView>(R.id.tv_news_detail_url)
     val imagemDetail = itemView.findViewById<ImageView>(R.id.img_news_detail)
 
-    fun bind(news: NewsModel) {
+    fun bind(news: NewsModel, onItemClicked: (NewsModel) -> Unit) {
 
         txt_title.text = news.title
         txt_date.text = news.date
@@ -87,6 +89,10 @@ class NewsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemV
             else -> R.drawable.warriornewsreader_img_news
         }
         imagemDetail.setImageResource(drawableResourceId)
+
+        itemView.setOnClickListener{
+            onItemClicked(news)
+        }
     }
 }
 
