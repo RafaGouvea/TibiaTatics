@@ -17,9 +17,9 @@
         android:icon="@drawable/ic_menu_home"/>
 
     <item
-        android:id="@+id/menu_bosted_today"
+        android:id="@+id/menu_inbuement"
         android:title="@string/menu_bottom_bar_fansites"
-        android:icon="@drawable/ic_menu_bosted"/>
+        android:icon="@drawable/ic_menu_inbuements"/>
 
     <item
         android:id="@+id/menu_library"

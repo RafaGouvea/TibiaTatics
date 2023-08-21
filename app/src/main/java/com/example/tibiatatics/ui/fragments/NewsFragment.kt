@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -44,7 +45,7 @@ class NewsFragment : Fragment() {
 
     private fun initRecycleView(view: View) {
         this.adapter = NewsFragmentAdapter{
-            Log.i("###", "initRecycleView: ${it.date}")
+            Toast.makeText(requireContext(), "teste", Toast.LENGTH_LONG).show()
         }
         recyclerview = view.findViewById(R.id.activity_lista_noticias_recyclerview)
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
