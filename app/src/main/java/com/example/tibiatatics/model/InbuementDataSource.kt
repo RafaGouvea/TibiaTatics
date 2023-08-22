@@ -178,7 +178,161 @@ class InbuementDataSource {
                 )
             )
 
+            //proteção elemental
+            list.add(
+                InbuementModel(
+                    "Proteção Elemental",
+                    "Cloud Fabric (Proteção de Energia)",
+                    "https://www.tibiawiki.com.br/images/4/4f/Cloud_Fabric_%28Prote%C3%A7%C3%A3o_de_Energia%29.gif",
+                    "https://www.tibiawiki.com.br/images/a/a3/Wyvern_Talisman.gif",
+                    "20 - Wyvern Talisman",
+                    "https://www.tibiawiki.com.br/images/b/be/Crawler_Head_Plating.gif",
+                    "15 - Crawler Head Plating",
+                    "https://www.tibiawiki.com.br/images/d/de/Wyrm_Scale.gif",
+                    "10 - Wyrm Scale",
+                )
+            )
 
+            list.add(
+                InbuementModel(
+                    "Proteção Elemental",
+                    "Demon Presence (Proteção de Sagrado)",
+                    "https://www.tibiawiki.com.br/images/6/6c/Demon_Presence_%28Prote%C3%A7%C3%A3o_de_Sagrado%29.gif",
+                    "https://www.tibiawiki.com.br/images/3/38/Cultish_Robe.gif",
+                    "25 - Cultish Robe",
+                    "https://www.tibiawiki.com.br/images/4/4c/Cultish_Mask.gif",
+                    "25 - Cultish Mask",
+                    "https://www.tibiawiki.com.br/images/a/a3/Hellspawn_Tail.gif",
+                    "20 - Hellspawn Tail",
+                )
+            )
+
+            list.add(
+                InbuementModel(
+                    "Proteção Elemental",
+                    "Dragon Hide (Proteção de Fogo)",
+                    "https://www.tibiawiki.com.br/images/3/3b/Dragon_Hide_%28Prote%C3%A7%C3%A3o_de_Fogo%29.gif",
+                    "https://www.tibiawiki.com.br/images/d/d9/Green_Dragon_Leather.gif",
+                    "20 - Green Dragon Leather",
+                    "https://www.tibiawiki.com.br/images/0/01/Blazing_Bone.gif",
+                    "10 - Blazing Bone",
+                    "https://www.tibiawiki.com.br/images/5/51/Draken_Sulphur.gif",
+                    "5 - Draken Sulphur",
+                )
+            )
+
+            list.add(
+                InbuementModel(
+                    "Proteção Elemental",
+                    "Lich Shroud (Proteção de Morte)",
+                    "https://www.tibiawiki.com.br/images/4/4a/Lich_Shroud_%28Prote%C3%A7%C3%A3o_de_Morte%29.gif",
+                    "https://www.tibiawiki.com.br/images/c/c2/Flask_of_Embalming_Fluid.gif",
+                    "25 - Flask of Embalming Fluid",
+                    "https://www.tibiawiki.com.br/images/f/ff/Gloom_Wolf_Fur.gif",
+                    "20 - Gloom Wolf Fur",
+                    "https://www.tibiawiki.com.br/images/0/08/Mystical_Hourglass.gif",
+                    "5 - Mystical Hourglass",
+                )
+            )
+
+            list.add(
+                InbuementModel(
+                    "Proteção Elemental",
+                    "Snake Skin (Proteção de Terra)",
+                    "https://www.tibiawiki.com.br/images/2/27/Snake_Skin_%28Prote%C3%A7%C3%A3o_de_Terra%29.gif",
+                    "https://www.tibiawiki.com.br/images/f/f6/Piece_of_Swampling_Wood.gif",
+                    "25 - Piece of Swampling Wood",
+                    "https://www.tibiawiki.com.br/images/3/3e/Snake_Skin.gif",
+                    "20 - Snake Skin",
+                    "https://www.tibiawiki.com.br/images/7/7a/Brimstone_Fangs.gif",
+                    "10 - Brimstone Fangs",
+                )
+            )
+
+            list.add(
+                InbuementModel(
+                    "Proteção Elemental",
+                    "Quara Scale (Proteção de Gelo)",
+                    "https://www.tibiawiki.com.br/images/2/23/Quara_Scale_%28Prote%C3%A7%C3%A3o_de_Gelo%29.gif",
+                    "https://www.tibiawiki.com.br/images/f/fa/Winter_Wolf_Fur.gif",
+                    "25 - Winter Wolf Fur",
+                    "https://www.tibiawiki.com.br/images/f/fc/Thick_Fur.gif",
+                    "15 - Tick Fur",
+                    "https://www.tibiawiki.com.br/images/5/54/Deepling_Warts.gif",
+                    "10 - Deepling Warts",
+                )
+            )
+
+            //Dano elemental
+            list.add(
+                InbuementModel(
+                    "Dano Elemental",
+                    "Reap (Dano de Morte)",
+                    "https://www.tibiawiki.com.br/images/b/b5/Reap_%28Dano_de_Morte%29.gif",
+                    "https://www.tibiawiki.com.br/images/6/65/Pile_of_Grave_Earth.gif",
+                    "25 - Pile of Grave Earth",
+                    "https://www.tibiawiki.com.br/images/8/8f/Demonic_Skeletal_Hand.gif",
+                    "20 - Demonic Skeletal Hand",
+                    "https://www.tibiawiki.com.br/images/0/0f/Petrified_Scream.gif",
+                    "5 - Petrified Scream",
+                )
+            )
+
+            list.add(
+                InbuementModel(
+                    "Dano Elemental",
+                    "Electrify (Dano de Energia)",
+                    "https://www.tibiawiki.com.br/images/8/87/Electrify_%28Dano_de_Energia%29.gif",
+                    "https://www.tibiawiki.com.br/images/b/b8/Rorc_Feather.gif",
+                    "25 - Rorc Feather",
+                    "https://www.tibiawiki.com.br/images/f/fc/Peacock_Feather_Fan.gif",
+                    "5 - Peacock Feather Fan",
+                    "https://www.tibiawiki.com.br/images/d/dc/Energy_Vein.gif",
+                    "1 - Energy Vein",
+                )
+            )
+
+            list.add(
+                InbuementModel(
+                    "Dano Elemental",
+                    "Venom (Dano de Terra)",
+                    "https://www.tibiawiki.com.br/images/b/b5/Venom_%28Dano_de_Terra%29.gif",
+                    "https://www.tibiawiki.com.br/images/6/6f/Swamp_Grass.gif",
+                    "25 - Swamp Grass",
+                    "https://www.tibiawiki.com.br/images/b/b9/Poisonous_Slime.gif",
+                    "20 - Poisonous Slime",
+                    "https://www.tibiawiki.com.br/images/6/65/Slime_Heart.gif",
+                    "2 - Deepling Warts",
+                )
+            )
+
+            list.add(
+                InbuementModel(
+                    "Dano Elemental",
+                    "Frost (Dano de Gelo)",
+                    "https://www.tibiawiki.com.br/images/b/b7/Frost_%28Dano_de_Gelo%29.gif",
+                    "https://www.tibiawiki.com.br/images/8/83/Frosty_Heart.gif",
+                    "25 - Frosty Heart",
+                    "https://www.tibiawiki.com.br/images/6/6e/Seacrest_Hair.gif",
+                    "10 - Seacrest Hair",
+                    "https://www.tibiawiki.com.br/images/3/3e/Polar_Bear_Paw.gif",
+                    "5 - Polar Bear Paw",
+                )
+            )
+
+            list.add(
+                InbuementModel(
+                    "Dano Elemental",
+                    "Scorch (Dano de Fogo)",
+                    "https://www.tibiawiki.com.br/images/d/dc/Scorch_%28Dano_de_Fogo%29.gif",
+                    "https://www.tibiawiki.com.br/images/7/7d/Fiery_Heart.gif",
+                    "25 - Fiery Heart",
+                    "https://www.tibiawiki.com.br/images/a/ac/Green_Dragon_Scale.gif",
+                    "5 - Green Dragon Scale",
+                    "https://www.tibiawiki.com.br/images/b/b8/Demon_Horn.gif",
+                    "5 - Demon Horn",
+                )
+            )
 
             return list
 

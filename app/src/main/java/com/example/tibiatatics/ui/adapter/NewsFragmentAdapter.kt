@@ -1,12 +1,10 @@
 package com.example.tibiatatics.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tibiatatics.R
 import com.example.tibiatatics.model.NewsModel
@@ -16,7 +14,7 @@ class NewsFragmentAdapter(private val onItemClicked: (NewsModel) -> Unit) : Recy
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home_rv, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_news_rv, parent, false)
         return NewsViewHolder(view)
 
     }

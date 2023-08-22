@@ -1,145 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/all_background">
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/img_title_suport"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/news_background_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/type_inbuement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Suporte"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/img_title_suport"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/name_inbuement"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:text="Featherweight (Aumento de Capacidade)"
-        android:textColor="@color/color_background_lists"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/icon_inbuement"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/icon_inbuement"
-        app:layout_constraintTop_toTopOf="@+id/icon_inbuement" />
-
-    <ImageView
-        android:id="@+id/icon_inbuement"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="12dp"
-        android:src="@drawable/featherweight_aumento_de_capacidade"
-        app:layout_constraintEnd_toStartOf="@id/name_inbuement"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_title_suport" />
-
-    <ImageView
-        android:id="@+id/url_item_1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/fairy_wings"
-        app:layout_constraintEnd_toEndOf="@id/name_item_1"
-        app:layout_constraintStart_toStartOf="@id/name_item_1"
-        app:layout_constraintTop_toBottomOf="@+id/icon_inbuement" />
-
-
-    <TextView
-        android:id="@+id/name_item_1"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="20 - Fairy Wings"
-        android:textAlignment="center"
-        android:textColor="@color/color_background_lists"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toStartOf="@id/name_item_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/url_item_1" />
-
-    <ImageView
-        android:id="@+id/url_item_2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/little_bowl_of_myrrh"
-        app:layout_constraintBottom_toTopOf="@+id/name_item_2"
-        app:layout_constraintEnd_toEndOf="@+id/name_item_2"
-        app:layout_constraintStart_toStartOf="@+id/name_item_2"
-        app:layout_constraintTop_toBottomOf="@+id/name_inbuement" />
-
-    <TextView
-        android:id="@+id/name_item_2"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="10 - Little Bowl of Myrrh"
-        android:textAlignment="center"
-        android:textColor="@color/color_background_lists"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toStartOf="@id/name_item_3"
-        app:layout_constraintStart_toEndOf="@id/name_item_1"
-        app:layout_constraintTop_toBottomOf="@+id/url_item_1" />
-
-    <ImageView
-        android:id="@+id/url_item_3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/goosebump_leather"
-        app:layout_constraintBottom_toTopOf="@+id/name_item_3"
-        app:layout_constraintEnd_toEndOf="@+id/name_item_3"
-        app:layout_constraintStart_toStartOf="@+id/name_item_3"
-        app:layout_constraintTop_toBottomOf="@+id/name_inbuement" />
-
-    <TextView
-        android:id="@+id/name_item_3"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="5 - Goosebump Leather"
-        android:textAlignment="center"
-        android:textColor="@color/color_background_lists"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/name_item_2"
-        app:layout_constraintTop_toBottomOf="@+id/url_item_1" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout_divisor_featherweight_strike"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        android:background="@color/color_background_lists"
-        android:elevation="10dp"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_item_2"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/all_background">
+
+                <ImageView
+                    android:id="@+id/img_title_suport"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/news_background_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/type_inbuement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suporte"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_title_suport"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/name_inbuement"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text="Featherweight (Aumento de Capacidade)"
+                    android:textColor="@color/color_background_lists"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/icon_inbuement"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/icon_inbuement"
+                    app:layout_constraintTop_toTopOf="@+id/icon_inbuement" />
+
+                <ImageView
+                    android:id="@+id/icon_inbuement"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/featherweight_aumento_de_capacidade"
+                    app:layout_constraintEnd_toStartOf="@id/name_inbuement"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_title_suport" />
+
+                <ImageView
+                    android:id="@+id/url_item_1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/fairy_wings"
+                    app:layout_constraintEnd_toEndOf="@id/name_item_1"
+                    app:layout_constraintStart_toStartOf="@id/name_item_1"
+                    app:layout_constraintTop_toBottomOf="@+id/icon_inbuement" />
+
+
+                <TextView
+                    android:id="@+id/name_item_1"
+                    android:layout_width="100dp"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="12dp"
+                    android:text="25 - Piece of Swampling Wood"
+                    android:textAlignment="center"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/color_background_lists"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toStartOf="@id/name_item_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/url_item_1" />
+
+                <ImageView
+                    android:id="@+id/url_item_2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/little_bowl_of_myrrh"
+                    app:layout_constraintBottom_toTopOf="@+id/name_item_2"
+                    app:layout_constraintEnd_toEndOf="@+id/name_item_2"
+                    app:layout_constraintStart_toStartOf="@+id/name_item_2"
+                    app:layout_constraintTop_toBottomOf="@+id/name_inbuement" />
+
+                <TextView
+                    android:id="@+id/name_item_2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="10 - Little Bowl of Myrrh"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_background_lists"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toStartOf="@id/name_item_3"
+                    app:layout_constraintStart_toEndOf="@id/name_item_1"
+                    app:layout_constraintTop_toBottomOf="@+id/url_item_1" />
+
+                <ImageView
+                    android:id="@+id/url_item_3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/goosebump_leather"
+                    app:layout_constraintBottom_toTopOf="@+id/name_item_3"
+                    app:layout_constraintEnd_toEndOf="@+id/name_item_3"
+                    app:layout_constraintStart_toStartOf="@+id/name_item_3"
+                    app:layout_constraintTop_toBottomOf="@+id/name_inbuement" />
+
+                <TextView
+                    android:id="@+id/name_item_3"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="5 - Goosebump Leather"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_background_lists"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/name_item_2"
+                    app:layout_constraintTop_toBottomOf="@+id/url_item_1" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_bottom"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="@color/color_background_lists"
+                    android:elevation="5dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_item_1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,6 +28,12 @@ class InbuementsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
         return inbuement.size
     }
 
+    fun setDataSet(inbuements: List<InbuementModel>){
+
+        this.inbuement = inbuements
+
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         when (holder){
