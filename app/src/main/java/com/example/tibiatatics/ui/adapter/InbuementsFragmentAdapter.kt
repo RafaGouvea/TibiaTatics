@@ -13,13 +13,14 @@ import com.example.tibiatatics.model.InbuementModel
 
 class InbuementsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var inbuement : List<InbuementModel> = ArrayList()
+    private var inbuement: List<InbuementModel> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         return InbuementsViewHolder(
             LayoutInflater.from(
-                parent.context).inflate(R.layout.item_inbuements_rv, parent, false)
+                parent.context
+            ).inflate(R.layout.item_inbuements_rv, parent, false)
         )
 
     }
@@ -28,15 +29,43 @@ class InbuementsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
         return inbuement.size
     }
 
-    fun setDataSet(inbuements: List<InbuementModel>){
-
+    fun updateList(inbuements: List<InbuementModel>){
         this.inbuement = inbuements
+        notifyDataSetChanged()
+    }
+    fun filterDanoElemental(inbuements: List<InbuementModel>) {
+        this.inbuement = inbuements.filter {
+            it.inbuementType == "Dano Elemental"
+        }
+        notifyDataSetChanged()
+    }
+
+    fun filterProtecaoElemental(inbuements: List<InbuementModel>) {
+        this.inbuement = inbuements.filter {
+            it.inbuementType == "Proteção Elemental"
+        }
+        notifyDataSetChanged()
 
     }
 
+    fun filterAumentoSkill(inbuements: List<InbuementModel>) {
+        this.inbuement = inbuements.filter {
+            it.inbuementType == "Aumento de Skill"
+        }
+        notifyDataSetChanged()
+    }
+
+    fun filterSuporte(inbuements: List<InbuementModel>) {
+        this.inbuement = inbuements.filter {
+            it.inbuementType == "Suporte"
+        }
+        notifyDataSetChanged()
+    }
+
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        when (holder){
+        when (holder) {
             is InbuementsViewHolder -> {
                 holder.bind(inbuement[position])
             }
@@ -44,9 +73,9 @@ class InbuementsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
 
     }
 
-    class InbuementsViewHolder constructor(itemView: View): RecyclerView.ViewHolder(itemView){
+    class InbuementsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val inbuementType =  itemView.findViewById<TextView>(R.id.type_inbuement)
+        private val inbuementType = itemView.findViewById<TextView>(R.id.type_inbuement)
         private val name = itemView.findViewById<TextView>(R.id.name_inbuement)
         private val iconInbuement = itemView.findViewById<ImageView>(R.id.icon_inbuement)
         private val urlImgItem1 = itemView.findViewById<ImageView>(R.id.url_item_1)
@@ -56,7 +85,7 @@ class InbuementsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
         private val urlImgItem3 = itemView.findViewById<ImageView>(R.id.url_item_3)
         private val nameItem3 = itemView.findViewById<TextView>(R.id.name_item_3)
 
-        fun bind(inbuementModel: InbuementModel){
+        fun bind(inbuementModel: InbuementModel) {
 
             inbuementType.text = inbuementModel.inbuementType
             name.text = inbuementModel.name
@@ -88,10 +117,10 @@ class InbuementsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
                 .load(inbuementModel.urlImgItem3)
                 .into(urlImgItem3)
 
-
-
         }
 
     }
+
+
 
 }

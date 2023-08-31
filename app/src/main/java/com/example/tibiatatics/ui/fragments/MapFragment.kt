@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.tibiatatics.R
 import com.example.tibiatatics.ui.extension.imageResources
-import com.github.chrisbanes.photoview.PhotoView
 
 
 class MapFragment : Fragment() {
@@ -28,7 +28,7 @@ class MapFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val imageView = view.findViewById<PhotoView>(R.id.imgMap)
+        val imageView = view.findViewById<ImageView>(R.id.imgMap)
         val upMapButton = view.findViewById<ImageButton>(R.id.button_up)
         val downMapButton = view.findViewById<ImageButton>(R.id.button_down)
 

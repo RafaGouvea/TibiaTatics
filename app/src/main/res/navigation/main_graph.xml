@@ -9,11 +9,7 @@
         android:id="@+id/menu_news"
         android:name="com.example.tibiatatics.ui.fragments.NewsFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_news" >
-        <action
-            android:id="@+id/fromNewsFragmentToNewsDetailFragment"
-            app:destination="@id/newsDetailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/menu_inbuement"
         android:name="com.example.tibiatatics.ui.fragments.InbuementFragment"
@@ -28,7 +24,18 @@
         android:id="@+id/menu_library"
         android:name="com.example.tibiatatics.ui.fragments.LibraryFragment"
         android:label="fragment_library"
-        tools:layout="@layout/fragment_library" />
+        tools:layout="@layout/fragment_library" >
+        <action
+            android:id="@+id/action_menu_library_to_knightCalcFragment2"
+            app:destination="@id/knightCalcFragment2" />
+
+        <action
+            android:id="@+id/action_knightCalcFragment_to_anotherFragment"
+            app:destination="@+id/anotherFragment"
+            app:popUpTo="@+id/knightCalcFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
     <fragment
         android:id="@+id/menu_map"
         android:name="com.example.tibiatatics.ui.fragments.MapFragment"
@@ -39,4 +46,9 @@
         android:name="com.example.tibiatatics.ui.fragments.NewsDetailFragment"
         android:label="fragment_news_detail"
         tools:layout="@layout/fragment_news_detail" />
+    <fragment
+        android:id="@+id/knightCalcFragment2"
+        android:name="com.example.tibiatatics.ui.fragments.KnightCalcFragment"
+        android:label="fragment_knight_calc"
+        tools:layout="@layout/fragment_knight_calc" />
 </navigation>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/menu_search_suporte"
+        android:title="Suporte"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_search_aumento_de_skill"
+        android:title="Aumento de Skill"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_search_dano_elemental"
+        android:title="Dano Elemental"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_search_protecao_elemental"
+        android:title="Proteção Elemental"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_search_remover_filtro"
+        android:title="Remover Filtros"
+        app:showAsAction="never"/>
+
+</menu>
