@@ -12,7 +12,6 @@ import com.example.tibiatatics.R
 
 class LibraryFragment : Fragment() {
 
-    private lateinit var navController: NavController
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,5 +26,7 @@ class LibraryFragment : Fragment() {
 
         return view
     }
+
+
 
 }

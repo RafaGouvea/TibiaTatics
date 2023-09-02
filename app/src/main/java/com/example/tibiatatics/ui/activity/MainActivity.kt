@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.tibiatatics.R
 import com.example.tibiatatics.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +27,12 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomNavView, navController)
+
+        val bottonNavView = binding.bottomNavView
+        bottonNavView.setOnItemSelectedListener { item ->
+            NavigationUI.onNavDestinationSelected(item, navController)
+            navController.popBackStack(item.itemId, inclusive = false)
+            true
+        }
     }
-
-
 }

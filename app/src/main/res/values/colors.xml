@@ -7,5 +7,6 @@
     <color name="color_background_lists">#880101</color>
     <color name="btn_color">#FFC600</color>
     <color name="grey">#C3686868</color>
+    <color name="transparent">#FFFFFF</color>
 
 </resources>
