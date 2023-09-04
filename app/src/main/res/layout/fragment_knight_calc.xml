@@ -51,17 +51,17 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutLevel"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="Level"
-                    app:layout_constraintEnd_toEndOf="@+id/textInputLayoutMagicLevel"
-                    app:layout_constraintStart_toStartOf="@+id/textInputLayoutMagicLevel"
+                    app:layout_constraintEnd_toStartOf="@+id/textInputLayoutSkill"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView9">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/input_level"
-                        android:layout_width="match_parent"
+                        android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:inputType="number"
@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Skills"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textInputLayoutMagicLevel"
+                    app:layout_constraintStart_toEndOf="@+id/textInputLayoutLevel"
                     app:layout_constraintTop_toTopOf="@+id/textInputLayoutLevel">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -93,36 +93,15 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayoutMagicLevel"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:hint="Magic Level"
-                    app:layout_constraintEnd_toStartOf="@+id/textInputLayoutSkill"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLevel">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_magic_level"
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:maxLength="3"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
                     android:hint="Attack Mode"
-                    app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutMagicLevel"
                     app:layout_constraintEnd_toEndOf="@+id/textInputLayoutSkill"
-                    app:layout_constraintStart_toStartOf="@+id/textInputLayoutSkill"
-                    app:layout_constraintTop_toTopOf="@+id/textInputLayoutMagicLevel">
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayoutLevel"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSkill">
 
                     <AutoCompleteTextView
                         android:id="@+id/AttackAutoCompleter"
@@ -133,15 +112,15 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
+                    android:layout_marginTop="12dp"
                     android:id="@+id/imageView10"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="6dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutMagicLevel" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -362,17 +341,17 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayoutHolyResistence"
+                    android:id="@+id/textInputLayoutPhysicalResistence"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Holy Resistence"
+                    android:hint="Physical Resistance"
                     app:layout_constraintStart_toStartOf="@+id/textInputLayoutIceResistence"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFireResistence">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_creature_holy_resistence"
+                        android:id="@+id/input_creature_physical_resistence"
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -391,7 +370,7 @@
                     android:layout_marginTop="6dp"
                     android:hint="Earth Resistence"
                     app:layout_constraintStart_toStartOf="@+id/textInputLayoutIceResistence"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutHolyResistence">
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPhysicalResistence">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/input_creature_earth_resistence"
@@ -413,7 +392,7 @@
                     android:layout_marginTop="6dp"
                     android:hint="Energy Resistence"
                     app:layout_constraintStart_toStartOf="@+id/textInputLayoutDeathResistence"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutHolyResistence">
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPhysicalResistence">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/input_creature_energy_resistence"
@@ -427,43 +406,21 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayoutPhysicalResistence"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:hint="Physical Resistence"
-                    app:layout_constraintEnd_toEndOf="@+id/textInputLayoutEnergyResistence"
-                    app:layout_constraintStart_toStartOf="@+id/textInputLayoutEarthResistence"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEarthResistence">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_creature_physical_resistence"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:maxLength="3"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_calcular"
                     android:layout_width="300dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/button_blue"
                     android:text="Calcular"
+                    android:layout_marginTop="12dp"
                     android:textColor="@color/btn_color"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textInputLayoutPhysicalResistence" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEarthResistence" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
