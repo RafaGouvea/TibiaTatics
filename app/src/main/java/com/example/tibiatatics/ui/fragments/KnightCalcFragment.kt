@@ -30,8 +30,9 @@ class KnightCalcFragment : Fragment() {
 
         val btnCalcular = view.findViewById<AppCompatButton>(R.id.btn_calcular)
 
-        btnCalcular.setOnClickListener { Log.i("###", "onCreateView: ${calcHitBasic(view)}") }
-
+        btnCalcular.setOnClickListener {
+            Log.i("###", "onCreateView: ${calcHitBasic(view)}")
+        }
 
         return view
     }
@@ -39,91 +40,114 @@ class KnightCalcFragment : Fragment() {
     private fun calcHitBasic(view: View): String {
 
         val level = view.findViewById<TextInputEditText>(R.id.input_level)
-        val levelString = level.text.toString()
-        val levelInt = levelString.toIntOrNull() ?: 0
+        val levelInt = level.text.toString().toIntOrNull() ?: 0
 
         val skills = view.findViewById<TextInputEditText>(R.id.input_skills)
-        val skillsString = skills.text.toString()
-        val skillsInt = skillsString.toIntOrNull() ?: 0
+        val skillsInt = skills.text.toString().toIntOrNull() ?: 0
 
         val elementalAttack = view.findViewById<TextInputEditText>(R.id.input_elemental_attack)
-        val elementalAttackString = elementalAttack.text.toString()
-        val elementalAttackInt = elementalAttackString.toIntOrNull() ?: 0
+        val elementalAttackInt = elementalAttack.text.toString().toIntOrNull() ?: 0
 
         val physicalAttack = view.findViewById<TextInputEditText>(R.id.input_physical_attack)
-        val physicalAttackString = physicalAttack.text.toString()
-        val physicalAttackInt = physicalAttackString.toIntOrNull() ?: 0
+        val physicalAttackInt = physicalAttack.text.toString().toIntOrNull() ?: 0
 
         val physicalResistance =
             view.findViewById<TextInputEditText>(R.id.input_creature_physical_resistence)
-        val physicalResistanceString = physicalResistance.text.toString()
-        val physicalResistanceInt = physicalResistanceString.toIntOrNull() ?: 100
+        val physicalResistanceInt = physicalResistance.text.toString().toIntOrNull() ?: 100
 
         val iceResistance = view.findViewById<TextInputEditText>(R.id.input_creature_ice_resistence)
-        val iceResistanceString = iceResistance.text.toString()
-        val iceResistanceInt = iceResistanceString.toIntOrNull() ?: 100
+        val iceResistanceInt = iceResistance.text.toString().toIntOrNull() ?: 100
 
         val earthResistance =
             view.findViewById<TextInputEditText>(R.id.input_creature_earth_resistence)
-        val earthResistanceString = earthResistance.text.toString()
-        val earthResistanceInt = earthResistanceString.toIntOrNull() ?: 100
+        val earthResistanceInt = earthResistance.text.toString().toIntOrNull() ?: 100
 
-        val energyResistance = view.findViewById<TextInputEditText>(R.id.input_creature_energy_resistence)
-        val energyResistanceString = energyResistance.text.toString()
-        val energyResistanceInt = energyResistanceString.toIntOrNull() ?: 100
+        val energyResistance =
+            view.findViewById<TextInputEditText>(R.id.input_creature_energy_resistence)
+        val energyResistanceInt = energyResistance.text.toString().toIntOrNull() ?: 100
 
-        val fireResistance = view.findViewById<TextInputEditText>(R.id.input_creature_fire_resistence)
-        val fireResistanceString = fireResistance.text.toString()
-        val fireResistanceInt = fireResistanceString.toIntOrNull() ?: 100
+        val fireResistance =
+            view.findViewById<TextInputEditText>(R.id.input_creature_fire_resistence)
+        val fireResistanceInt = fireResistance.text.toString().toIntOrNull() ?: 100
 
-        val deathResistance = view.findViewById<TextInputEditText>(R.id.input_creature_death_resistence)
-        val deathResistanceString = deathResistance.text.toString()
-        val deathResistanceInt = deathResistanceString.toIntOrNull() ?: 100
+        val deathResistance =
+            view.findViewById<TextInputEditText>(R.id.input_creature_death_resistence)
+        val deathResistanceInt = deathResistance.text.toString().toIntOrNull() ?: 100
 
         val armor = view.findViewById<TextInputEditText>(R.id.input_creature_armor)
-        val armorString = armor.text.toString()
-        val armorInt = armorString.toIntOrNull() ?: 1
+        val armorInt = armor.text.toString().toIntOrNull() ?: 1
 
-
-        // CALCULO DE DANO CORPO A CORPO
-        val calcElementalAttack = when (dmgType) {
-            1 -> elementalAttackInt * earthResistanceInt / 100
-            2 -> elementalAttackInt * fireResistanceInt / 100
-            3 -> elementalAttackInt * deathResistanceInt / 100
-            4 -> elementalAttackInt * energyResistanceInt / 100
-            5 -> elementalAttackInt * iceResistanceInt / 100
+        val resistanceElemental = when (dmgType) {
+            1 -> earthResistanceInt
+            2 -> fireResistanceInt
+            3 -> deathResistanceInt
+            4 -> energyResistanceInt
+            5 -> iceResistanceInt
             else -> 0
         }
 
-        val calcDmgPhysical = physicalAttackInt * physicalResistanceInt / 100
-        val calcArmor = (armorInt * 0.71) - 1
+        val calcArmor = armorInt * 0.75
+        val totalAttack = physicalAttackInt + elementalAttackInt
+        val percentagePhysicalAttack = (physicalAttackInt / totalAttack.toDouble()) * 100.0
+        val percentageElementalAttack = (elementalAttackInt / totalAttack.toDouble()) * 100.0
 
-        val calcTotalDmgPhysical = (0.085 * attackMode * calcDmgPhysical * skillsInt) + (levelInt / 5)
-        val calcTotalDmgElemental = (0.085 * attackMode * calcElementalAttack * skillsInt) + (levelInt / 5)
+
+        // CALCULO DE DANO CORPO A CORPO
+        val calcTotalDmgPhysical =
+            (0.085 * attackMode * physicalAttackInt * skillsInt) + (levelInt / 5)
+        val calcTotalDmgElemental =
+            (0.085 * attackMode * elementalAttackInt * skillsInt) + (levelInt / 5) - ((levelInt / 100) * 20)
 
         val d = calcTotalDmgPhysical - calcArmor
-        val dmgWithArmorHit = if (d <= 0 || physicalAttackInt == 0) 0 else d.toInt()
+        val dmgWithArmor = if (d <= 0 || physicalAttackInt == 0) 0 else d.toInt()
 
-        val resultadoFinal = dmgWithArmorHit + calcTotalDmgElemental
-
-
-
-
-
-        // CALCULO DE DANO EXORI MAS
-        val weaponAttackMin = (0.5 * ((calcDmgPhysical + calcElementalAttack) + skillsInt)) + (levelInt / 5)
-        val weaponAttackMax = (1.1 * ((calcDmgPhysical + calcElementalAttack) + skillsInt)) + (levelInt / 5)
-        val weaponAttackMedia = weaponAttackMin + weaponAttackMax / 2
+        val dmgPhysicalWithResistence = dmgWithArmor * physicalResistanceInt / 100
+        val dmgElementalWithResistence = calcTotalDmgElemental * resistanceElemental / 100
+        val dmgTotal = dmgElementalWithResistence + dmgPhysicalWithResistence
 
 
+        // CALCULO DE DANO MINIMO EXORI MAS
+        val dmgMinExoriMas =
+            0.5 * (skillsInt + physicalAttackInt + elementalAttackInt) + (levelInt / 5)
+        //total de dano FISICO minimo exori mas
+        val minPhysicalDmgExoriMas = (dmgMinExoriMas / 100) * percentagePhysicalAttack
+        val dmgMinExoriMasWithArmor = minPhysicalDmgExoriMas - calcArmor
+        val dmgMinPhysicalExoriMasTotal =
+            if (dmgMinExoriMasWithArmor <= 0
+                || physicalAttackInt == 0
+            ) 0 else
+                dmgMinExoriMasWithArmor.toInt() * physicalResistanceInt / 100
+        //Total de dano ELEMENTAL minimo exori mas
+        val minElementalDmgExoriMas = (dmgMinExoriMas / 100) * percentageElementalAttack
+        val dmgElementalExoriMasMinTotal = minElementalDmgExoriMas * resistanceElemental / 100
+        val dmgMinElementalExoriMas =
+            if (elementalAttackInt == 0 && resistanceElemental == 0) 0 else dmgElementalExoriMasMinTotal.toInt()
+        //Total de dano minimo exori mas
+        val minExoriMasTotalDmg = dmgMinElementalExoriMas + dmgMinPhysicalExoriMasTotal
 
+        // CALCULO DE DANO MAXIMO EXORI MAS
+        val dmgMaxExoriMas =
+            1.1 * (skillsInt + physicalAttackInt + elementalAttackInt) + (levelInt / 5)
+        //total de dano FISICO maximo exori mas
+        val maxPhysicalDmgExoriMas = (dmgMaxExoriMas / 100) * percentagePhysicalAttack
+        val dmgMaxExoriMasWithArmor = maxPhysicalDmgExoriMas - calcArmor
+        val dmgMaxPhysicalExoriMasTotal =
+            if (dmgMaxExoriMasWithArmor <= 0
+                || physicalAttackInt == 0
+            ) 0 else
+                dmgMaxExoriMasWithArmor.toInt() * physicalResistanceInt / 100
+        //Total de Dano ELEMENTAL maximo exori mas
+        val maxElementalDmgExoriMas = (dmgMaxExoriMas / 100) * percentageElementalAttack
+        val dmgElementalExoriMasMaxTotal = maxElementalDmgExoriMas * resistanceElemental / 100
+        val dmgMaxElementalExoriMas =
+            if (elementalAttackInt == 0 && resistanceElemental == 0) 0 else dmgElementalExoriMasMaxTotal.toInt()
+        //Total de dano maximo Exori Mas
+        val maxExoriMasTotalDmg = dmgMaxElementalExoriMas + dmgMaxPhysicalExoriMasTotal
 
-
-
+        val averageMinDmgExoriMas = (minExoriMasTotalDmg + maxExoriMasTotalDmg) / 2
 
         val formato = DecimalFormat("#")
-
-        return formato.format(resultadoFinal)
+        return formato.format(averageMinDmgExoriMas)
     }
 
     private fun dropMenuAttackMode(view: View) {
