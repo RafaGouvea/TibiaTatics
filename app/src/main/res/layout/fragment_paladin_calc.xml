@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_artwork"
-    tools:context=".ui.fragments.KnightCalcFragment">
+    tools:context=".ui.fragments.PaladinCalcFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,13 +34,14 @@
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:importantForAccessibility="no" />
 
                 <TextView
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dados do Personagem"
+                    android:text="@string/dados_do_personagem"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -55,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Level"
+                    android:hint="@string/level"
                     app:layout_constraintEnd_toStartOf="@+id/textInputLayoutSkill"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView9">
@@ -77,7 +78,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Skills"
+                    android:hint="@string/skills"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textInputLayoutLevel"
                     app:layout_constraintTop_toTopOf="@+id/textInputLayoutLevel">
@@ -94,13 +95,36 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputMagicLevel"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/magic_level"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textInputLayoutLevel"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSkill">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_magic_level"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="6dp"
-                    android:hint="Attack Mode"
-                    app:layout_constraintEnd_toEndOf="@+id/textInputLayoutSkill"
+                    android:hint="@string/attack_mode"
+                    app:layout_constraintBottom_toBottomOf="@+id/textInputMagicLevel"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayoutLevel"
                     app:layout_constraintStart_toStartOf="@+id/textInputLayoutLevel"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSkill">
 
@@ -109,7 +133,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:inputType="none" />
+                        android:inputType="none"
+                        tools:ignore="LabelFor" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <RadioGroup
@@ -118,14 +143,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-                    app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayoutSkill"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayoutLevel"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sanguine Legs"
+                        android:text="@string/sanguine_legs"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -134,14 +159,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
-                        android:text="Yes" />
+                        android:text="@string/yes" />
 
                     <RadioButton
                         android:id="@+id/noRadioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:text="No" />
+                        android:text="@string/no" />
 
                 </RadioGroup>
 
@@ -154,13 +179,14 @@
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/radioGroupSanguineLegs" />
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroupSanguineLegs"
+                    android:importantForAccessibility="no" />
 
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dados da Arma"
+                    android:text="@string/dados_da_arma"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -176,7 +202,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Physical Atack"
+                    android:hint="@string/damage_bow"
                     app:layout_constraintEnd_toStartOf="@id/textInputLayoutArrowAtk"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView10">
@@ -199,7 +225,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Elemental Atack"
+                    android:hint="@string/damage_arrow"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textInputLayoutBowAtk"
                     app:layout_constraintTop_toTopOf="@+id/textInputLayoutBowAtk">
@@ -217,42 +243,24 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout2"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginTop="6dp"
-                    android:hint="Elemental weapon type"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutArrowAtk">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/elementalTypeAutoComplete"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:inputType="none" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout3"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
-                    android:hint="Weapon model"
+                    android:hint="@string/weapon_model"
+                    android:layout_marginTop="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayoutBowAtk">
 
                     <AutoCompleteTextView
                         android:id="@+id/weaponComplete"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:inputType="none" />
+                        android:inputType="none"
+                        tools:ignore="LabelFor" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
@@ -264,13 +272,14 @@
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+                    android:importantForAccessibility="no" />
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dados da Criatura"
+                    android:text="@string/dados_da_criatura"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -285,7 +294,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Armor"
+                    android:hint="@string/armor"
                     app:layout_constraintEnd_toStartOf="@id/textInputLayoutMitigation"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView11">
@@ -307,7 +316,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Mitigation"
+                    android:hint="@string/mitigation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textInputLayoutArmor"
                     app:layout_constraintTop_toTopOf="@+id/textInputLayoutArmor">
@@ -330,7 +339,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Ice Resistence"
+                    android:hint="@string/ice_resistence"
                     app:layout_constraintEnd_toStartOf="@id/textInputLayoutMitigation"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayoutArmor">
@@ -353,7 +362,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Fire Resistence"
+                    android:hint="@string/fire_resistence"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textInputLayoutArmor"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayoutMitigation">
@@ -376,7 +385,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Death Resistence"
+                    android:hint="@string/death_resistence"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textInputLayoutArmor"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFireResistence">
@@ -399,7 +408,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Physical Resistance"
+                    android:hint="@string/physical_resistance"
                     app:layout_constraintStart_toStartOf="@+id/textInputLayoutIceResistence"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFireResistence">
 
@@ -421,7 +430,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Earth Resistence"
+                    android:hint="@string/earth_resistence"
                     app:layout_constraintStart_toStartOf="@+id/textInputLayoutIceResistence"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPhysicalResistence">
 
@@ -443,7 +452,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Energy Resistence"
+                    android:hint="@string/energy_resistence"
                     app:layout_constraintStart_toStartOf="@+id/textInputLayoutDeathResistence"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPhysicalResistence">
 
@@ -467,7 +476,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/button_blue"
-                    android:text="Calcular"
+                    android:text="@string/calcular"
                     android:textColor="@color/btn_color"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -482,7 +491,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_result"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="wrap_content"
             app:cardCornerRadius="15dp"
             android:layout_marginHorizontal="12dp"
             android:layout_marginTop="20dp"
@@ -502,13 +511,14 @@
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:importantForAccessibility="no" />
 
                 <TextView
                     android:id="@+id/textView16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hit Corpo a Corpo"
+                    android:text="@string/hit_basico"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -522,7 +532,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Maximo: "
+                    android:text="@string/hit_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -544,7 +554,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="70dp"
-                    android:text="Crítico Máximo: "
+                    android:text="@string/critico_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView10"
@@ -565,7 +575,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Médio: "
+                    android:text="@string/hit_medio"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -585,7 +595,7 @@
                     android:id="@+id/textView17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Crítico Médio: "
+                    android:text="@string/critico_medio"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/textView11"
@@ -610,13 +620,14 @@
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView12"
+                    android:importantForAccessibility="no" />
 
                 <TextView
                     android:id="@+id/tv_exevo_mas_san"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Exori Mas"
+                    android:text="@string/exevo_mas_san"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -630,7 +641,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Maximo: "
+                    android:text="@string/hit_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -652,7 +663,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="70dp"
-                    android:text="Crítico Máximo: "
+                    android:text="@string/critico_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView22"
@@ -673,7 +684,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Médio: "
+                    android:text="@string/hit_medio"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -693,7 +704,7 @@
                     android:id="@+id/textView28"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Crítico Médio: "
+                    android:text="@string/critico_medio"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/textView24"
@@ -714,7 +725,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Mínimo: "
+                    android:text="@string/hit_minimo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -734,7 +745,7 @@
                     android:id="@+id/textView29"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Crítico Mínimo: "
+                    android:text="@string/critico_minimo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/textView24"
@@ -759,13 +770,14 @@
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView32" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView32"
+                    android:importantForAccessibility="no" />
 
                 <TextView
                     android:id="@+id/textView40"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Exori"
+                    android:text="@string/great_fireball_rune"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -779,7 +791,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Maximo: "
+                    android:text="@string/hit_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -801,7 +813,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="70dp"
-                    android:text="Crítico Máximo: "
+                    android:text="@string/critico_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView41"
@@ -822,7 +834,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Médio: "
+                    android:text="@string/hit_medio"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -842,11 +854,12 @@
                     android:id="@+id/textView47"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Crítico Médio: "
+                    android:text="@string/critico_medio"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/textView43"
-                    app:layout_constraintTop_toTopOf="@+id/textView45" />
+                    app:layout_constraintTop_toTopOf="@+id/textView45"
+                    tools:ignore="TooManyViews" />
 
                 <TextView
                     android:id="@+id/averageCritExori"
@@ -863,7 +876,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Mínimo: "
+                    android:text="@string/hit_minimo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -883,7 +896,7 @@
                     android:id="@+id/textView51"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Crítico Mínimo: "
+                    android:text="@string/critico_minimo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/textView43"
@@ -900,7 +913,7 @@
                     app:layout_constraintTop_toTopOf="@+id/textView49" />
 
                 <ImageView
-                    android:id="@+id/img_exori_gran"
+                    android:id="@+id/img_avalanche_rune"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="12dp"
@@ -908,145 +921,447 @@
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView49" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView49"
+                    android:importantForAccessibility="no" />
 
                 <TextView
-                    android:id="@+id/textView53"
+                    android:id="@+id/tv_avalanche_rune"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Exori Gran"
+                    android:text="@string/avalanche_rune"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/img_exori_gran"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_avalanche_rune"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/img_exori_gran" />
+                    app:layout_constraintTop_toTopOf="@+id/img_avalanche_rune" />
 
                 <TextView
-                    android:id="@+id/textView54"
+                    android:id="@+id/tv41"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Maximo: "
+                    android:text="@string/hit_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView53" />
+                    app:layout_constraintTop_toBottomOf="@+id/img_avalanche_rune" />
 
                 <TextView
-                    android:id="@+id/maxExoriGran"
+                    android:id="@+id/max_avalanche_rune"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_0"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/textView54"
-                    app:layout_constraintTop_toTopOf="@+id/textView54" />
+                    app:layout_constraintStart_toEndOf="@+id/tv41"
+                    app:layout_constraintTop_toTopOf="@+id/tv41" />
 
 
                 <TextView
-                    android:id="@+id/textView56"
+                    android:id="@+id/tv43"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="70dp"
-                    android:text="Crítico Máximo: "
+                    android:text="@string/critico_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/textView54"
-                    app:layout_constraintTop_toTopOf="@+id/textView54" />
+                    app:layout_constraintStart_toEndOf="@+id/textView41"
+                    app:layout_constraintTop_toTopOf="@+id/tv41" />
 
                 <TextView
-                    android:id="@+id/maxCritExoriGran"
+                    android:id="@+id/max_crit_avalanche_rune"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_0"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/textView56"
-                    app:layout_constraintTop_toTopOf="@+id/textView56" />
+                    app:layout_constraintStart_toEndOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/tv41" />
 
                 <TextView
-                    android:id="@+id/textView58"
+                    android:id="@+id/tv45"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Médio: "
+                    android:text="@string/hit_medio"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView54" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv41" />
 
                 <TextView
-                    android:id="@+id/averageExoriGran"
+                    android:id="@+id/average_avalanche_rune"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_0"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/textView58"
-                    app:layout_constraintTop_toTopOf="@+id/textView58" />
+                    app:layout_constraintStart_toEndOf="@+id/tv45"
+                    app:layout_constraintTop_toTopOf="@+id/tv45" />
 
                 <TextView
-                    android:id="@+id/textView60"
+                    android:id="@+id/tv47"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Crítico Médio: "
+                    android:text="@string/critico_medio"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/textView56"
-                    app:layout_constraintTop_toTopOf="@+id/textView58" />
+                    app:layout_constraintStart_toStartOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/tv45" />
 
                 <TextView
-                    android:id="@+id/averageCritExoriGran"
+                    android:id="@+id/average_crit_avalanche_rune"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_0"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/textView60"
-                    app:layout_constraintTop_toTopOf="@+id/textView60" />
+                    app:layout_constraintStart_toEndOf="@+id/textView47"
+                    app:layout_constraintTop_toTopOf="@+id/tv45" />
 
                 <TextView
-                    android:id="@+id/textView62"
+                    android:id="@+id/tv49"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:text="Hit Mínimo: "
+                    android:text="@string/hit_minimo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView58" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv45" />
 
                 <TextView
-                    android:id="@+id/minExoriGran"
+                    android:id="@+id/min_avalanche_rune"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_0"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/textView62"
-                    app:layout_constraintTop_toTopOf="@+id/textView62" />
+                    app:layout_constraintStart_toEndOf="@+id/tv49"
+                    app:layout_constraintTop_toTopOf="@+id/tv49" />
 
                 <TextView
-                    android:id="@+id/textView64"
+                    android:id="@+id/tv51"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Crítico Mínimo: "
+                    android:text="@string/critico_minimo"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/textView56"
-                    app:layout_constraintTop_toTopOf="@+id/textView62" />
+                    app:layout_constraintStart_toStartOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/tv49" />
 
                 <TextView
-                    android:id="@+id/minCritExoriGran"
+                    android:id="@+id/min_crit_avalanche_rune"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_0"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/textView64"
-                    app:layout_constraintTop_toTopOf="@+id/textView64" />
+                    app:layout_constraintStart_toEndOf="@+id/textView51"
+                    app:layout_constraintTop_toTopOf="@+id/tv49" />
+
+                <ImageView
+                    android:id="@+id/img_thunderstorm_rune"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="12dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/news_background_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv49"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:id="@+id/tv_thunderstorm_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/thunderstorm_rune"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_thunderstorm_rune"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/img_thunderstorm_rune" />
+
+                <TextView
+                    android:id="@+id/tv01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:text="@string/hit_maximo"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_thunderstorm_rune" />
+
+                <TextView
+                    android:id="@+id/max_thunderstorm_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/tv01"
+                    app:layout_constraintTop_toTopOf="@+id/tv01" />
+
+
+                <TextView
+                    android:id="@+id/tv02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:text="@string/critico_maximo"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textView41"
+                    app:layout_constraintTop_toTopOf="@+id/tv01" />
+
+                <TextView
+                    android:id="@+id/max_crit_thunderstorm_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/tv02" />
+
+                <TextView
+                    android:id="@+id/tv03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:text="@string/hit_medio"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv01" />
+
+                <TextView
+                    android:id="@+id/average_thunderstorm_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/tv03"
+                    app:layout_constraintTop_toTopOf="@+id/tv03" />
+
+                <TextView
+                    android:id="@+id/tv04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/critico_medio"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/tv03" />
+
+                <TextView
+                    android:id="@+id/average_crit_thunderstorm_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textView47"
+                    app:layout_constraintTop_toTopOf="@+id/tv04" />
+
+                <TextView
+                    android:id="@+id/tv05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:text="@string/hit_minimo"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv03" />
+
+                <TextView
+                    android:id="@+id/min_thunderstorm_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/tv05"
+                    app:layout_constraintTop_toTopOf="@+id/tv05" />
+
+                <TextView
+                    android:id="@+id/tv06"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/critico_minimo"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/tv05" />
+
+                <TextView
+                    android:id="@+id/min_crit_thunderstorm_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textView51"
+                    app:layout_constraintTop_toTopOf="@+id/tv06" />
+
+                <ImageView
+                    android:id="@+id/img_stoneshower_rune"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="12dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/news_background_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv05"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:id="@+id/tv_stoneshower_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stoneshower_rune"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_stoneshower_rune"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/img_stoneshower_rune" />
+
+                <TextView
+                    android:id="@+id/tv10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:text="@string/hit_maximo"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_stoneshower_rune" />
+
+                <TextView
+                    android:id="@+id/max_stoneshower_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/tv01"
+                    app:layout_constraintTop_toTopOf="@+id/tv10" />
+
+
+                <TextView
+                    android:id="@+id/tv11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:text="@string/critico_maximo"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textView41"
+                    app:layout_constraintTop_toTopOf="@+id/tv10" />
+
+                <TextView
+                    android:id="@+id/max_crit_stoneshower_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/tv11" />
+
+                <TextView
+                    android:id="@+id/tv12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:text="@string/hit_medio"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv10" />
+
+                <TextView
+                    android:id="@+id/average_stoneshower_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/tv03"
+                    app:layout_constraintTop_toTopOf="@+id/tv12" />
+
+                <TextView
+                    android:id="@+id/tv13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/critico_medio"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/tv12" />
+
+                <TextView
+                    android:id="@+id/average_crit_stoneshower_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textView47"
+                    app:layout_constraintTop_toTopOf="@+id/tv13" />
+
+                <TextView
+                    android:id="@+id/tv14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:text="@string/hit_minimo"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv12" />
+
+                <TextView
+                    android:id="@+id/min_stoneshower_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/tv05"
+                    app:layout_constraintTop_toTopOf="@+id/tv14" />
+
+                <TextView
+                    android:id="@+id/tv15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/critico_minimo"
+                    android:textSize="18sp"
+                    android:paddingBottom="12dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/tv14" />
+
+                <TextView
+                    android:id="@+id/min_crit_stoneshower_rune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textView51"
+                    app:layout_constraintTop_toTopOf="@+id/tv15" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

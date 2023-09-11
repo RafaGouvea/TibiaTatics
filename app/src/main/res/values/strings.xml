@@ -2,8 +2,8 @@
     <string name="app_name">Tibia Tatics</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
-    
+
+
     <string name="menu_bottom_bar_home">Home</string>
     <string name="menu_bottom_bar_map">Map</string>
     <string name="menu_bottom_bar_library">Library</string>
@@ -11,5 +11,41 @@
     <string name="menu_bottom_bar_fansites">Inbuements</string>
     <string name="boss_bosted">BOSS BOSTED</string>
     <string name="creature_bosted">CREATURE BOSTED</string>
+    <string name="hit_maximo">Hit Maximo:</string>
+    <string name="_0000">0</string>
+    <string name="_0">0</string>
+    <string name="dados_do_personagem">Dados do Personagem</string>
+    <string name="level">Level</string>
+    <string name="skills">Skills</string>
+    <string name="magic_level">Magic Level</string>
+    <string name="attack_mode">Attack Mode</string>
+    <string name="sanguine_legs">Sanguine Legs</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dados_da_arma">Dados da Arma</string>
+    <string name="damage_bow">Damage Bow</string>
+    <string name="damage_arrow">Damage Arrow</string>
+    <string name="weapon_model">Weapon model</string>
+    <string name="dados_da_criatura">Dados da Criatura</string>
+    <string name="armor">Armor</string>
+    <string name="mitigation">Mitigation</string>
+    <string name="ice_resistence">Ice Resistence</string>
+    <string name="fire_resistence">Fire Resistence</string>
+    <string name="death_resistence">Death Resistence</string>
+    <string name="physical_resistance">Physical Resistance</string>
+    <string name="earth_resistence">Earth Resistence</string>
+    <string name="energy_resistence">Energy Resistence</string>
+    <string name="calcular">Calcular</string>
+    <string name="hit_basico">Hit Basico</string>
+    <string name="critico_maximo">Crítico Máximo:</string>
+    <string name="hit_medio">Hit Médio:</string>
+    <string name="critico_medio">Crítico Médio:</string>
+    <string name="exevo_mas_san">Exevo Mas San</string>
+    <string name="hit_minimo">Hit Mínimo:</string>
+    <string name="critico_minimo">Crítico Mínimo:</string>
+    <string name="great_fireball_rune">Great Fireball Rune</string>
+    <string name="avalanche_rune">Avalanche Rune</string>
+    <string name="thunderstorm_rune">Thunderstorm Rune</string>
+    <string name="stoneshower_rune">Stoneshower Rune</string>
 
 </resources>
