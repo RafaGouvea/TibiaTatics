@@ -19,7 +19,7 @@
     <string name="skills">Skills</string>
     <string name="magic_level">Magic Level</string>
     <string name="attack_mode">Attack Mode</string>
-    <string name="sanguine_legs">Sanguine Legs</string>
+    <string name="sanguine_greaves">Sanguine Greaves</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="dados_da_arma">Dados da Arma</string>
@@ -29,12 +29,11 @@
     <string name="dados_da_criatura">Dados da Criatura</string>
     <string name="armor">Armor</string>
     <string name="mitigation">Mitigation</string>
-    <string name="ice_resistence">Ice Resistence</string>
-    <string name="fire_resistence">Fire Resistence</string>
-    <string name="death_resistence">Death Resistence</string>
+    <string name="ice_resistence">Ice Resistance</string>
+    <string name="fire_resistence">Fire Resistance</string>
     <string name="physical_resistance">Physical Resistance</string>
-    <string name="earth_resistence">Earth Resistence</string>
-    <string name="energy_resistence">Energy Resistence</string>
+    <string name="earth_resistence">Earth Resistance</string>
+    <string name="energy_resistence">Energy Resistance</string>
     <string name="calcular">Calcular</string>
     <string name="hit_basico">Hit Basico</string>
     <string name="critico_maximo">Crítico Máximo:</string>
@@ -47,5 +46,17 @@
     <string name="avalanche_rune">Avalanche Rune</string>
     <string name="thunderstorm_rune">Thunderstorm Rune</string>
     <string name="stoneshower_rune">Stoneshower Rune</string>
+    <string name="holy_resistence">Holy Resistance</string>
+    <string name="death_resistance">Death Resistance</string>
+    <string name="sanguine_galoshes">Sanguine Galoshes</string>
+    <string name="exevo_frigo_hur">Exevo Frigo Hur</string>
+    <string name="exevo_tera_hur">Exevo Tera Hur</string>
+    <string name="exevo_gran_mas_tera">Exevo Gran Mas Tera</string>
+    <string name="exevo_gran_mas_frigo">Exevo Gran Mas Frigo</string>
+    <string name="sudden_death_rune">Sudden Death Rune</string>
+    <string name="sanguine_boots">Sanguine Boots</string>
+    <string name="exevo_vis_hur">Exevo Vis Hur</string>
+    <string name="exevo_gran_mas_vis">Exevo Gran Mas Vis</string>
+    <string name="exevo_gran_mas_flam">Exevo Gran Mas Flam</string>
 
 </resources>

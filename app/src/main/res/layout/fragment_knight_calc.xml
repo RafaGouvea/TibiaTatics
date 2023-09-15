@@ -113,7 +113,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <RadioGroup
-                    android:id="@+id/radioGroupSanguineLegs"
+                    android:id="@+id/sanguine_legs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -154,7 +154,7 @@
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/radioGroupSanguineLegs" />
+                    app:layout_constraintTop_toBottomOf="@+id/sanguine_legs" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -182,7 +182,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView10">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_bow_attack"
+                        android:id="@+id/input_physical_attack"
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -205,7 +205,7 @@
                     app:layout_constraintTop_toTopOf="@+id/textInputLayoutBowAtk">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_arrow_attack"
+                        android:id="@+id/input_elemental_attack"
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -371,7 +371,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayoutDeathResistence"
+                    android:id="@+id/textInputLayoutHolyResistence"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -444,7 +444,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="Energy Resistence"
-                    app:layout_constraintStart_toStartOf="@+id/textInputLayoutDeathResistence"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayoutHolyResistence"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPhysicalResistence">
 
                     <com.google.android.material.textfield.TextInputEditText

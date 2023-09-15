@@ -46,7 +46,7 @@ class KnightCalcFragment : Fragment() {
     }
 
     private fun sanguineLegs(view: View) {
-        radioGroupSanguineLegs = view.findViewById(R.id.radioGroupSanguineLegs)
+        radioGroupSanguineLegs = view.findViewById(R.id.sanguine_legs)
 
         radioGroupSanguineLegs.setOnCheckedChangeListener { _, checkedId ->
             val selectedRadioButton = view.findViewById<RadioButton>(checkedId)
@@ -72,10 +72,10 @@ class KnightCalcFragment : Fragment() {
         val skills = view.findViewById<TextInputEditText>(R.id.input_skills)
         val skillsInt = skills.text.toString().toIntOrNull() ?: 0
 
-        val elementalAttack = view.findViewById<TextInputEditText>(R.id.input_arrow_attack)
+        val elementalAttack = view.findViewById<TextInputEditText>(R.id.input_elemental_attack)
         val elementalAttackInt = elementalAttack.text.toString().toIntOrNull() ?: 0
 
-        val physicalAttack = view.findViewById<TextInputEditText>(R.id.input_bow_attack)
+        val physicalAttack = view.findViewById<TextInputEditText>(R.id.input_physical_attack)
         val physicalAttackInt = physicalAttack.text.toString().toIntOrNull() ?: 0
 
         val physicalResistance =

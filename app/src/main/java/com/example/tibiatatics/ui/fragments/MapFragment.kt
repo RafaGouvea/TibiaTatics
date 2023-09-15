@@ -5,17 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.tibiatatics.R
 import com.example.tibiatatics.ui.extension.imageResources
+import com.github.chrisbanes.photoview.PhotoView
 
 
 class MapFragment : Fragment() {
 
     private val imageResources = imageResources()
     private var currentImageIndex = 8
+    private var currentZoom = 1f
+    private var currentX = 0
+    private var currentY = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,25 +32,30 @@ class MapFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val imageView = view.findViewById<ImageView>(R.id.imgMap)
+        buttons(view)
+
+    }
+
+    private fun buttons(view: View) {
+
+        val photoView = view.findViewById<PhotoView>(R.id.imgMap)
         val upMapButton = view.findViewById<ImageButton>(R.id.button_up)
         val downMapButton = view.findViewById<ImageButton>(R.id.button_down)
 
         val floorMap = view.findViewById<TextView>(R.id.floor_map)
-        imageView.setImageResource(imageResources[currentImageIndex])
+        photoView.setImageResource(imageResources[currentImageIndex])
 
         upMapButton.setOnClickListener {
             currentImageIndex = (currentImageIndex + 1).coerceAtMost(imageResources.size - 1)
-            imageView.setImageResource(imageResources[currentImageIndex])
+            photoView.setImageResource(imageResources[currentImageIndex])
             floorMapText(floorMap)
         }
 
         downMapButton.setOnClickListener {
             currentImageIndex = (currentImageIndex - 1).coerceAtLeast(imageResources.size - 16)
-            imageView.setImageResource(imageResources[currentImageIndex])
+            photoView.setImageResource(imageResources[currentImageIndex])
             floorMapText(floorMap)
         }
-
     }
 
     private fun floorMapText(floorMap: TextView) {

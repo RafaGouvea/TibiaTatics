@@ -26,14 +26,17 @@
         android:label="fragment_library"
         tools:layout="@layout/fragment_library" >
         <action
-            android:id="@+id/action_menu_library_to_knightCalcFragment2"
+            android:id="@+id/action_menu_library_to_knightCalcFragment"
             app:destination="@id/knightCalcFragment2" />
-
         <action
-            android:id="@+id/action_knightCalcFragment_to_anotherFragment"
-            app:destination="@+id/anotherFragment"
-            app:popUpTo="@+id/knightCalcFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_menu_library_to_paladinCalcFragment"
+            app:destination="@id/paladinCalcFragment" />
+        <action
+            android:id="@+id/action_menu_library_to_druidCalcFragment"
+            app:destination="@id/druidCalcFragment" />
+        <action
+            android:id="@+id/action_menu_library_to_sorcererCalcFragment"
+            app:destination="@id/sorcererCalcFragment" />
 
     </fragment>
     <fragment
@@ -51,4 +54,19 @@
         android:name="com.example.tibiatatics.ui.fragments.KnightCalcFragment"
         android:label="fragment_knight_calc"
         tools:layout="@layout/fragment_knight_calc" />
+    <fragment
+        android:id="@+id/paladinCalcFragment"
+        android:name="com.example.tibiatatics.ui.fragments.PaladinCalcFragment"
+        android:label="fragment_paladin_calc"
+        tools:layout="@layout/fragment_paladin_calc" />
+    <fragment
+        android:id="@+id/druidCalcFragment"
+        android:name="com.example.tibiatatics.ui.fragments.DruidCalcFragment"
+        android:label="fragment_druid_calc"
+        tools:layout="@layout/fragment_druid_calc" />
+    <fragment
+        android:id="@+id/sorcererCalcFragment"
+        android:name="com.example.tibiatatics.ui.fragments.SorcererCalcFragment"
+        android:label="fragment_sorcerer_calc"
+        tools:layout="@layout/fragment_sorcerer_calc" />
 </navigation>

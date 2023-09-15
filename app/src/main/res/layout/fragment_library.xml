@@ -22,45 +22,45 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/ek_calc"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:background="@drawable/knight"
-        app:layout_constraintBottom_toTopOf="@id/imageView8"
-        app:layout_constraintEnd_toStartOf="@id/imageView6"
+        app:layout_constraintBottom_toTopOf="@id/ed_calc"
+        app:layout_constraintEnd_toStartOf="@id/ms_calc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/ms_calc"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:background="@drawable/sorcerer"
-        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintBottom_toTopOf="@+id/rp_calc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/ek_calc"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/rp_calc"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:background="@drawable/paladin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintStart_toEndOf="@+id/ek_calc"
+        app:layout_constraintTop_toBottomOf="@+id/ek_calc" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/ed_calc"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:background="@drawable/druid"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/rp_calc"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"/>
+        app:layout_constraintTop_toBottomOf="@+id/ek_calc"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

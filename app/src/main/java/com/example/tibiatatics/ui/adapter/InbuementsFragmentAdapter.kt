@@ -45,7 +45,6 @@ class InbuementsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
             it.inbuementType == "Proteção Elemental"
         }
         notifyDataSetChanged()
-
     }
 
     fun filterAumentoSkill(inbuements: List<InbuementModel>) {
@@ -62,7 +61,6 @@ class InbuementsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
         notifyDataSetChanged()
     }
 
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         when (holder) {
@@ -70,7 +68,6 @@ class InbuementsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
                 holder.bind(inbuement[position])
             }
         }
-
     }
 
     class InbuementsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -118,9 +115,5 @@ class InbuementsFragmentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
                 .into(urlImgItem3)
 
         }
-
     }
-
-
-
 }
