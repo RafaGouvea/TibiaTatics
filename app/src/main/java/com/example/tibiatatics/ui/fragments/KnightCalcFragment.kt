@@ -121,9 +121,6 @@ class KnightCalcFragment : Fragment() {
 
         val formato = DecimalFormat("#")
 
-
-
-
         basicHit(
             physicalAttackInt,
             skillsInt,

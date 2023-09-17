@@ -9,7 +9,11 @@
         android:id="@+id/menu_news"
         android:name="com.example.tibiatatics.ui.fragments.NewsFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_menu_news_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menu_inbuement"
         android:name="com.example.tibiatatics.ui.fragments.InbuementFragment"

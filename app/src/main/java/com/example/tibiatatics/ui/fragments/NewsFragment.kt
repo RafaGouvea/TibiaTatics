@@ -1,29 +1,25 @@
 package com.example.tibiatatics.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tibiatatics.R
-import com.example.tibiatatics.databinding.ActivityMainBinding
-import com.example.tibiatatics.remote.NewsModelWebClient
+import com.example.tibiatatics.model.NewsModel
+import com.example.tibiatatics.remote.WebClient
 import com.example.tibiatatics.ui.adapter.NewsFragmentAdapter
 import kotlinx.coroutines.launch
 
 
 class NewsFragment : Fragment() {
 
-    private var newsModelWebClient = NewsModelWebClient()
-    private lateinit var adapter: NewsFragmentAdapter
+    private var newsModelWebClient = WebClient()
+    private lateinit var newsFragmentAdapter: NewsFragmentAdapter
     private lateinit var recyclerview: RecyclerView
 
 
@@ -39,16 +35,20 @@ class NewsFragment : Fragment() {
 
         initRecycleView(view)
         lifecycleScope.launch {
-            newsModelWebClient.loadNewsFrom()?.let { adapter.updateNewsList(it) }
+            newsModelWebClient.loadNewsFrom()
+                ?.let { newsFragmentAdapter.updateNewsList(it as MutableList<NewsModel>) }
         }
     }
 
     private fun initRecycleView(view: View) {
-        this.adapter = NewsFragmentAdapter{
-            Toast.makeText(requireContext(), "teste", Toast.LENGTH_LONG).show()
+        this.newsFragmentAdapter = NewsFragmentAdapter {
+            val id = it.id
+            val bundle = Bundle()
+            bundle.putString("id", id.toString())
+            findNavController().navigate(R.id.action_menu_news_to_newsDetailFragment, bundle)
         }
         recyclerview = view.findViewById(R.id.activity_lista_noticias_recyclerview)
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview.adapter = this.adapter
+        recyclerview.adapter = this.newsFragmentAdapter
     }
 }

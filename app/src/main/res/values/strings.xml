@@ -2,8 +2,6 @@
     <string name="app_name">Tibia Tatics</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
     <string name="menu_bottom_bar_home">Home</string>
     <string name="menu_bottom_bar_map">Map</string>
     <string name="menu_bottom_bar_library">Library</string>
@@ -11,7 +9,7 @@
     <string name="menu_bottom_bar_fansites">Inbuements</string>
     <string name="boss_bosted">BOSS BOSTED</string>
     <string name="creature_bosted">CREATURE BOSTED</string>
-    <string name="hit_maximo">Hit Maximo:</string>
+    <string name="hit_maximo">Hit Maximo: </string>
     <string name="_0000">0</string>
     <string name="_0">0</string>
     <string name="dados_do_personagem">Dados do Personagem</string>
@@ -36,12 +34,12 @@
     <string name="energy_resistence">Energy Resistance</string>
     <string name="calcular">Calcular</string>
     <string name="hit_basico">Hit Basico</string>
-    <string name="critico_maximo">Crítico Máximo:</string>
-    <string name="hit_medio">Hit Médio:</string>
-    <string name="critico_medio">Crítico Médio:</string>
+    <string name="critico_maximo">Crítico Máximo: </string>
+    <string name="hit_medio">Hit Médio: </string>
+    <string name="critico_medio">Crítico Médio: </string>
     <string name="exevo_mas_san">Exevo Mas San</string>
-    <string name="hit_minimo">Hit Mínimo:</string>
-    <string name="critico_minimo">Crítico Mínimo:</string>
+    <string name="hit_minimo">Hit Mínimo: </string>
+    <string name="critico_minimo">Crítico Mínimo: </string>
     <string name="great_fireball_rune">Great Fireball Rune</string>
     <string name="avalanche_rune">Avalanche Rune</string>
     <string name="thunderstorm_rune">Thunderstorm Rune</string>
