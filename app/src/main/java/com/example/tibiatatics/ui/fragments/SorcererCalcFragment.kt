@@ -353,14 +353,8 @@ class SorcererCalcFragment : Fragment() {
         formato: DecimalFormat
     ) {
         val minMasVisDmgBase = (levelInt / 5) + (magicLevelInt * 5.0)
-        val minMasVisSanguine = when (weaponModel) {
-            3 -> minMasVisDmgBase + (minMasVisDmgBase * 0.08)
-            4 -> minMasVisDmgBase + (minMasVisDmgBase * 0.15)
-            else -> {
-                minMasVisDmgBase
-            }
-        }
-        val minMasVis = (minMasVisSanguine * energyResistanceInt) / 100.0
+
+        val minMasVis = (minMasVisDmgBase * energyResistanceInt) / 100.0
         val minCritMasVis = minMasVis + (minMasVis * 0.5)
         val minCritCobraWand = minMasVis + (minMasVis * 0.35)
         val minCritSoultainter = minMasVis + (minMasVis * 0.60)
@@ -368,14 +362,8 @@ class SorcererCalcFragment : Fragment() {
 
 
         val maxMasVisDmgBase = (levelInt / 5) + (magicLevelInt * 12.0)
-        val maxMasVisSanguine = when (weaponModel) {
-            2 -> maxMasVisDmgBase + (maxMasVisDmgBase * 0.08)
-            3 -> maxMasVisDmgBase + (maxMasVisDmgBase * 0.15)
-            else -> {
-                maxMasVisDmgBase
-            }
-        }
-        val maxMasVis = (maxMasVisSanguine * energyResistanceInt) / 100.0
+
+        val maxMasVis = (maxMasVisDmgBase * energyResistanceInt) / 100.0
         val maxCritMasVis = maxMasVis + (maxMasVis * 0.5)
         val maxCritCobraWand = maxMasVis + (maxMasVis * 0.35)
         val maxCritSoultainter = maxMasVis + (maxMasVis * 0.60)
