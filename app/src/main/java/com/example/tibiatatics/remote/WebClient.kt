@@ -5,6 +5,8 @@ import com.example.tibiatatics.model.BostedBoss
 import com.example.tibiatatics.model.BostedCreature
 import com.example.tibiatatics.model.NewsDetailModel
 import com.example.tibiatatics.model.NewsModel
+import com.example.tibiatatics.model.Search
+import com.example.tibiatatics.model.WorldsStatus
 import com.example.tibiatatics.model.toModel
 
 class WebClient() {
@@ -56,7 +58,6 @@ class WebClient() {
         try {
             val resposta = apiInterface.getBostedBoss()
             if (resposta.isSuccessful) {
-                Log.i("###", "loadBostedBoss: ${resposta.body()?.boostable_bosses?.boosted?.toModel()}")
                 return resposta.body()?.boostable_bosses?.boosted?.toModel()
             } else {
                 Log.e("###", "loadBostedBoss: Response not sucessful")
@@ -66,4 +67,31 @@ class WebClient() {
         }
         return null
     }
+
+    suspend fun loadPlayersOnline(): WorldsStatus? {
+        try {
+            val resposta = apiInterface.getWorlds()
+            if (resposta.isSuccessful){
+                return resposta.body()?.worlds?.toModel()
+            } else {
+                Log.e("###", "loadPlayersOnline: Response not sucessful")
+            }
+        } catch (e: Exception){
+            Log.e("###", "loadBostedCreature: ", e)
+        }
+        return null
+    }
+
+    suspend fun searchCharacter(): Search? {
+        try {
+            val resposta = apiInterface.searchCharacter("Death Bonebreaker")
+            if (resposta.isSuccessful){
+                Log.i("###", "searchCharacter: ${resposta.body()?.character?.toModel()}")
+            }
+        } catch (e: java.lang.Exception){
+            Log.e("###", "searchCharacter: ", e)
+        }
+        return null
+    }
+
 }

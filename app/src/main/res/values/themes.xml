@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.TibiaTatics" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryVariant">@color/grey</item>
+        <item name="colorPrimaryVariant">@color/gray</item>
     </style>
 
     <style name="TextHintSize" parent="TextAppearance.Design.Hint">

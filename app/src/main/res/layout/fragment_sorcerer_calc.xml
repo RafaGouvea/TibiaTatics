@@ -16,8 +16,8 @@
             android:id="@+id/card_view_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="15dp"
             android:layout_marginHorizontal="12dp"
+            app:cardCornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -30,12 +30,12 @@
                     android:id="@+id/imageView9"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:importantForAccessibility="no"
                     android:scaleType="centerCrop"
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:importantForAccessibility="no" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -129,12 +129,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="6dp"
+                    android:importantForAccessibility="no"
                     android:scaleType="centerCrop"
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sanguine_boots"
-                    android:importantForAccessibility="no" />
+                    app:layout_constraintTop_toBottomOf="@+id/sanguine_boots" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -155,8 +155,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
-                    android:hint="@string/weapon_model"
                     android:layout_marginTop="12dp"
+                    android:hint="@string/weapon_model"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView10">
@@ -175,12 +175,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="12dp"
+                    android:importantForAccessibility="no"
                     android:scaleType="centerCrop"
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-                    android:importantForAccessibility="no" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
                 <TextView
                     android:id="@+id/textView9"
@@ -479,8 +479,8 @@
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
                     android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="12dp"
                     android:text="@string/hit_minimo"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -764,8 +764,8 @@
                     android:id="@+id/textView43"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/critico_maximo"
                     android:layout_marginStart="60dp"
+                    android:text="@string/critico_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView41"
@@ -919,8 +919,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:text="@string/critico_maximo"
                     android:layout_marginStart="60dp"
+                    android:text="@string/critico_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView41"
@@ -1073,9 +1073,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
+                    android:layout_marginStart="60dp"
                     android:text="@string/critico_maximo"
                     android:textSize="18sp"
-                    android:layout_marginStart="60dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView41"
                     app:layout_constraintTop_toTopOf="@+id/tv01" />
@@ -1226,8 +1226,8 @@
                     android:id="@+id/tv11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/critico_maximo"
                     android:layout_marginStart="60dp"
+                    android:text="@string/critico_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView41"
@@ -1332,8 +1332,8 @@
                     android:id="@+id/img_gfb_rune"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:importantForAccessibility="no"
                     android:layout_marginTop="12dp"
+                    android:importantForAccessibility="no"
                     android:scaleType="centerCrop"
                     android:src="@drawable/news_background_title"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1357,8 +1357,8 @@
                     android:id="@+id/tv20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
                     android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="12dp"
                     android:text="@string/hit_maximo"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -1402,9 +1402,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="12dp"
                     android:text="@string/hit_medio"
                     android:textSize="18sp"
-                    android:layout_marginTop="12dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv20" />
@@ -1444,8 +1444,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
-                    android:text="@string/hit_minimo"
                     android:layout_marginTop="12dp"
+                    android:text="@string/hit_minimo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
