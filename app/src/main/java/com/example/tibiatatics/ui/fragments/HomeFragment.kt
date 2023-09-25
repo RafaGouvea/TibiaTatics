@@ -71,6 +71,9 @@ class HomeFragment : Fragment() {
             newsModelWebClient.loadPlayersOnline().let { worlds ->
                 playersOnline.text = worlds?.players_online.toString()
             }
+
+            newsModelWebClient.getRank()
+
         }
         return view
     }

@@ -5,6 +5,7 @@ import com.example.tibiatatics.model.BostedBoss
 import com.example.tibiatatics.model.BostedCreature
 import com.example.tibiatatics.model.NewsDetailModel
 import com.example.tibiatatics.model.NewsModel
+import com.example.tibiatatics.model.RankModel
 import com.example.tibiatatics.model.SearchModel
 import com.example.tibiatatics.model.WorldsStatusModel
 import com.example.tibiatatics.model.toModel
@@ -86,7 +87,6 @@ class WebClient() {
         try {
             val resposta = apiInterface.searchCharacter(name)
             if (resposta.isSuccessful){
-                Log.i("###", "searchCharacter: ${resposta.body()?.character?.toModel()}")
                 return resposta.body()?.character?.toModel()
             } else {
                 Log.e("###", "searchCharacter: Response not sucessful ")
@@ -96,6 +96,23 @@ class WebClient() {
             Log.e("###", "searchCharacter: ", e)
         }
         return null
+    }
+
+    suspend fun getRank(): RankModel?{
+        try {
+            val resposta = apiInterface.getRank("all", "experience", "all", 1)
+            if (resposta.isSuccessful){
+                Log.i("@@@", "getRank: ${resposta.body()?.toModel()}")
+                return resposta.body()?.toModel()
+            } else {
+                Log.e("###", "getRank: Response not sucessful ")
+            }
+
+        } catch (e: java.lang.Exception){
+            Log.e("###", "getRank: ", e)
+        }
+        return null
+
     }
 
 }
