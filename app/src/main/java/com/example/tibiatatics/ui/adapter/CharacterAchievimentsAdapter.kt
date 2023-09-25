@@ -76,7 +76,7 @@ class CharacterAchievimentsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolde
                 true -> {
                     img_secret.visibility = View.VISIBLE
                 }
-                false -> {
+                else -> {
                     img_secret.visibility = View.INVISIBLE
                 }
             }

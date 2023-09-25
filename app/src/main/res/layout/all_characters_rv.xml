@@ -9,12 +9,14 @@
 
     <TextView
         android:id="@+id/other_character_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:textAlignment="center"
         android:text="Dirwal da silva sauro"
         android:textColor="@color/brown_text"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,10 +46,9 @@
         android:layout_height="wrap_content"
         android:text="Macabra"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/other_character_name" />
 
     <TextView
         android:id="@+id/textView4"
@@ -57,21 +58,47 @@
         android:text="Traded:"
         android:textColor="@color/brown_text"
         android:textSize="20sp"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_traded"
         app:layout_constraintTop_toBottomOf="@+id/other_character_name" />
 
     <TextView
         android:id="@+id/tv_traded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
         android:text="Yes"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginStart="10dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_view_character"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:background="@drawable/mediumbutton"
+        android:paddingHorizontal="8dp"
+        android:text="View"
+        android:textColor="@color/btn_color"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/other_character_name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

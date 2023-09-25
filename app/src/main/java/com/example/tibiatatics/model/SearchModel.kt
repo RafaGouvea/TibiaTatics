@@ -8,50 +8,50 @@ data class SearchModel(
 )
 
 data class OtherCharactersModel(
-    val name: String,
-    val world: String,
-    val status: String,
-    val deleted: Boolean,
-    val main: Boolean,
-    val traded: Boolean
+    val name: String? = "",
+    val world: String? = "",
+    val status: String? = "",
+    val deleted: Boolean? = false,
+    val main: Boolean? = false,
+    val traded: Boolean? = false
 )
 
 data class DeathsModel(
-    val time: String,
-    val level: Int,
+    val time: String? = "",
+    val level: Int? = 0,
     val killers: List<KillersModel>,
-    val reason: String
+    val reason: String? = ""
 )
 
 data class KillersModel(
-    val name: String
+    val name: String? = ""
 )
 
 data class AchievementsModels(
-    val name: String,
-    val grade: Int,
-    val secret: Boolean
+    val name: String? = "",
+    val grade: Int? = 0,
+    val secret: Boolean? = false
 )
 
 data class CharacterInfoModels(
-    val name: String,
-    val sex: String,
-    val title: String,
-    val unlocked_titles: Int,
-    val vocation: String,
-    val level: Int,
-    val achievement_points: Int,
-    val world: String,
-    val residence: String,
+    val name: String? = "",
+    val sex: String? = "",
+    val title: String? = "",
+    val unlocked_titles: Int? = 0,
+    val vocation: String? = "",
+    val level: Int? = 0,
+    val achievement_points: Int? = 0,
+    val world: String? = "",
+    val residence: String? = "",
     val guild: GuildModel,
-    val last_login: String,
-    val account_status: String,
-    val comment: String,
+    val last_login: String? = "",
+    val account_status: String? = "",
+    val comment: String? = "",
 )
 
 
 
 data class GuildModel(
-    val name: String,
-    val rank: String
+    val name: String? = "",
+    val rank: String? = ""
 )

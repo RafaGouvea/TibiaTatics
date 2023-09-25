@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tibiatatics.R
 import com.example.tibiatatics.model.DeathsModel
@@ -47,11 +48,10 @@ class CharacterDeathsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val deathTime = itemView.findViewById<TextView>(R.id.tv_death_time)
         val deathBy = itemView.findViewById<TextView>(R.id.tv_death_by)
 
-
         fun bind(deathsModel: DeathsModel) {
 
             val regex = Regex("(Died|Killed)", RegexOption.IGNORE_CASE)
-            val reason = regex.find(deathsModel.reason)
+            val reason = deathsModel.reason?.let { regex.find(it) }
 
             if (reason != null){
                 val index = reason.range.first

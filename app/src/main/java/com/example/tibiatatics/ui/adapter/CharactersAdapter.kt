@@ -58,7 +58,7 @@ class CharactersAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     traded.text = "Yes"
                     traded.setTextColor(itemView.context.resources.getColor(R.color.red))
                 }
-                false -> {
+                else -> {
                     traded.text = "No"
                     traded.setTextColor(itemView.context.resources.getColor(R.color.green))
                 }

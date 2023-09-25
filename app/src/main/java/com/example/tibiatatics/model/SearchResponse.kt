@@ -7,9 +7,9 @@ data class SearchResponse(
 
 data class PersonaCharacterResponse(
     val character: CharacterResponse,
-    val achievements: List<AchievementsResponse>,
-    val deaths: List<DeathsResponse>,
-    val other_characters: List<OtherCharactersResponse>
+    val achievements: List<AchievementsResponse>? = null,
+    val deaths: List<DeathsResponse>? = null,
+    val other_characters: List<OtherCharactersResponse>? = null
 )
 
 data class OtherCharactersResponse(
@@ -76,54 +76,62 @@ data class StatusSearch(
 )
 
 fun PersonaCharacterResponse.toModel(): SearchModel {
+    val characterInfo = CharacterInfoModels(
+        name = character.name,
+        sex = character.sex,
+        title = character.title,
+        unlocked_titles = character.unlocked_titles,
+        vocation = character.vocation,
+        level = character.level,
+        achievement_points = character.achievement_points,
+        world = character.world,
+        residence = character.residence,
+        last_login = character.last_login,
+        account_status = character.account_status,
+        comment = character.comment,
+        guild = GuildModel(
+            name = character.guild.name,
+            rank = character.guild.rank,
+        )
+    )
+
+    val achievementsList = achievements?.map { achievements ->
+        AchievementsModels(
+            name = achievements.name,
+            grade = achievements.grade,
+            secret = achievements.secret
+        )
+    } ?: emptyList()
+
+    val deathsList = deaths?.map { death ->
+        DeathsModel(
+            time = death.time,
+            level = death.level,
+            killers = death.killers.map { killers ->
+                KillersModel(
+                    name = killers.name
+                )
+            },
+            reason = death.reason
+        )
+    } ?: emptyList()
+
+    val otherCharacters = other_characters?.map { otherCharacters ->
+        OtherCharactersModel(
+            name = otherCharacters.name,
+            world = otherCharacters.world,
+            status = otherCharacters.status,
+            deleted = otherCharacters.deleted,
+            main = otherCharacters.main,
+            traded = otherCharacters.traded
+        )
+    } ?: emptyList()
+
     return SearchModel(
-        character = CharacterInfoModels(
-            name = character.name,
-            sex = character.sex,
-            title = character.title,
-            unlocked_titles = character.unlocked_titles,
-            vocation = character.vocation,
-            level = character.level,
-            achievement_points = character.achievement_points,
-            world = character.world,
-            residence = character.residence,
-            last_login = character.last_login,
-            account_status = character.account_status,
-            comment = character.comment,
-            guild = GuildModel(
-                name = character.guild.name,
-                rank = character.guild.rank,
-            )
-        ),
-        achievements = achievements.map { achiviements ->
-            AchievementsModels(
-                name = achiviements.name,
-                grade = achiviements.grade,
-                secret = achiviements.secret
-            )
-        },
-        deaths = deaths.map {
-            DeathsModel(
-                time = it.time,
-                level = it.level,
-                killers = it.killers.map { killers ->
-                    KillersModel(
-                        name = killers.name
-                    )
-                },
-                reason = it.reason
-            )
-        },
-        other_characters.map {
-            OtherCharactersModel(
-                name = it.name,
-                world = it.world,
-                status = it.status,
-                deleted = it.deleted,
-                main = it.main,
-                traded = it.traded
-            )
-        }
+        character = characterInfo,
+        achievements = achievementsList,
+        deaths = deathsList,
+        other_characters = otherCharacters
     )
 }
 
