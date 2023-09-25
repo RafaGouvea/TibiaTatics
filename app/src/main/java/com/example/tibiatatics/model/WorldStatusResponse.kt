@@ -43,8 +43,8 @@ data class ApiWorld(
     val commit: String
 )
 
-fun Worlds.toModel(): WorldsStatus{
-    return WorldsStatus(
+fun Worlds.toModel(): WorldsStatusModel{
+    return WorldsStatusModel(
         players_online = players_online,
         regular_worlds = regular_worlds
     )

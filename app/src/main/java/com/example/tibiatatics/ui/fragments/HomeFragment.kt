@@ -1,6 +1,5 @@
 package com.example.tibiatatics.ui.fragments
 
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,8 +14,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.tibiatatics.R
 import com.example.tibiatatics.remote.WebClient
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 import java.util.Calendar
 
 
@@ -42,11 +41,6 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         rashid(view)
-
-        val btn_search = view.findViewById<AppCompatButton>(R.id.pesquisar)
-        btn_search.setOnClickListener {
-            findNavController().navigate(R.id.action_menu_home_to_characterDetail)
-        }
 
         bostedCreatureName = view.findViewById(R.id.bosted_creature_name)
         imgCreature = view.findViewById(R.id.img_creature_bosted)
@@ -74,13 +68,25 @@ class HomeFragment : Fragment() {
                 }
             }
 
-            newsModelWebClient.searchCharacter()
-
             newsModelWebClient.loadPlayersOnline().let { worlds ->
                 playersOnline.text = worlds?.players_online.toString()
             }
         }
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val btn_search = view.findViewById<AppCompatButton>(R.id.btn_search_home)
+        val nameCharacterEditText = view.findViewById<TextInputEditText>(R.id.tv_search_character_home)
+
+        btn_search.setOnClickListener {
+            val nameCharacter = nameCharacterEditText.text.toString().trim()
+            if (nameCharacter.isNotEmpty()) {
+                val bundle = Bundle()
+                bundle.putString("name", nameCharacter)
+                findNavController().navigate(R.id.action_menu_home_to_characterDetail, bundle)
+            }
+        }
     }
 
     private fun rashid(view: View) {

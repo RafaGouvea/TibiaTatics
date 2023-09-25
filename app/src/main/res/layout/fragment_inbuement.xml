@@ -12,7 +12,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:background="@drawable/toolbar_background"
-        app:title="Inbuement"
+        app:title="Inbuements"
         app:menu="@menu/menu_inbuement_filter"
         app:titleTextColor="@color/white"
         app:navigationIcon="@drawable/baseline_arrow_back_24"

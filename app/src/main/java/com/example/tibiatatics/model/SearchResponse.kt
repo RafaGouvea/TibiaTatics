@@ -8,7 +8,17 @@ data class SearchResponse(
 data class PersonaCharacterResponse(
     val character: CharacterResponse,
     val achievements: List<AchievementsResponse>,
-    val deaths: List<DeathsResponse>
+    val deaths: List<DeathsResponse>,
+    val other_characters: List<OtherCharactersResponse>
+)
+
+data class OtherCharactersResponse(
+    val name: String,
+    val world: String,
+    val status: String,
+    val deleted: Boolean,
+    val main: Boolean,
+    val traded: Boolean
 )
 
 data class DeathsResponse(
@@ -40,7 +50,7 @@ data class CharacterResponse(
 
 data class AchievementsResponse(
     val name: String,
-    val gradle: Int,
+    val grade: Int,
     val secret: Boolean
 )
 
@@ -65,9 +75,9 @@ data class StatusSearch(
     val http_code: Int
 )
 
-fun PersonaCharacterResponse.toModel(): Search {
-    return Search(
-        character = CharacterInfo(
+fun PersonaCharacterResponse.toModel(): SearchModel {
+    return SearchModel(
+        character = CharacterInfoModels(
             name = character.name,
             sex = character.sex,
             title = character.title,
@@ -80,28 +90,38 @@ fun PersonaCharacterResponse.toModel(): Search {
             last_login = character.last_login,
             account_status = character.account_status,
             comment = character.comment,
-            guild = Guild(
+            guild = GuildModel(
                 name = character.guild.name,
                 rank = character.guild.rank,
             )
         ),
         achievements = achievements.map { achiviements ->
-            Achievements(
+            AchievementsModels(
                 name = achiviements.name,
-                gradle = achiviements.gradle,
+                grade = achiviements.grade,
                 secret = achiviements.secret
             )
         },
         deaths = deaths.map {
-            Deaths(
+            DeathsModel(
                 time = it.time,
                 level = it.level,
                 killers = it.killers.map { killers ->
-                    Killers(
+                    KillersModel(
                         name = killers.name
                     )
                 },
                 reason = it.reason
+            )
+        },
+        other_characters.map {
+            OtherCharactersModel(
+                name = it.name,
+                world = it.world,
+                status = it.status,
+                deleted = it.deleted,
+                main = it.main,
+                traded = it.traded
             )
         }
     )

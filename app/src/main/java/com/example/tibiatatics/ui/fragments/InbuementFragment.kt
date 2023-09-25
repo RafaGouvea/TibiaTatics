@@ -55,8 +55,6 @@ class InbuementFragment : Fragment(), MenuProvider {
     private fun addDataSource() {
         val dataSource = InbuementDataSource.createInbuementData()
         inbuementsFragmentAdapter.updateList(dataSource)
-
-
     }
 
     private fun initRecycleView(view: View) {

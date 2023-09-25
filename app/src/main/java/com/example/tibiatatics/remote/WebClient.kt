@@ -5,8 +5,8 @@ import com.example.tibiatatics.model.BostedBoss
 import com.example.tibiatatics.model.BostedCreature
 import com.example.tibiatatics.model.NewsDetailModel
 import com.example.tibiatatics.model.NewsModel
-import com.example.tibiatatics.model.Search
-import com.example.tibiatatics.model.WorldsStatus
+import com.example.tibiatatics.model.SearchModel
+import com.example.tibiatatics.model.WorldsStatusModel
 import com.example.tibiatatics.model.toModel
 
 class WebClient() {
@@ -68,7 +68,7 @@ class WebClient() {
         return null
     }
 
-    suspend fun loadPlayersOnline(): WorldsStatus? {
+    suspend fun loadPlayersOnline(): WorldsStatusModel? {
         try {
             val resposta = apiInterface.getWorlds()
             if (resposta.isSuccessful){
@@ -82,12 +82,16 @@ class WebClient() {
         return null
     }
 
-    suspend fun searchCharacter(): Search? {
+    suspend fun searchCharacter(name: String): SearchModel? {
         try {
-            val resposta = apiInterface.searchCharacter("Death Bonebreaker")
+            val resposta = apiInterface.searchCharacter(name)
             if (resposta.isSuccessful){
                 Log.i("###", "searchCharacter: ${resposta.body()?.character?.toModel()}")
+                return resposta.body()?.character?.toModel()
+            } else {
+                Log.e("###", "searchCharacter: Response not sucessful ")
             }
+
         } catch (e: java.lang.Exception){
             Log.e("###", "searchCharacter: ", e)
         }

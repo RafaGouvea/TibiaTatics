@@ -11,5 +11,7 @@
     <color name="transparent">#FFFFFF</color>
     <color name="brown">#d3c1a4</color>
     <color name="light_brown">#f0e1c8</color>
+    <color name="green">#179C00</color>
+    <color name="red">#A8000C</color>
 
 </resources>

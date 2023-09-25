@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.fragments.CharacterDetail">
+    android:background="@drawable/background_home"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    tools:context=".ui.fragments.CharacterDetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_home">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/character_information"
+            android:id="@+id/card_view_character_information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -54,7 +56,7 @@
                     android:id="@+id/tv_character_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/brown"
+                    android:background="@color/light_brown"
                     android:paddingStart="8dp"
                     android:text="Nome: "
                     android:textSize="20sp"
@@ -81,7 +83,7 @@
                     android:id="@+id/tv_character_2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/light_brown"
+                    android:background="@color/brown"
                     android:paddingStart="8dp"
                     android:text="Title: "
                     android:textSize="20sp"
@@ -108,7 +110,7 @@
                     android:id="@+id/tv_character_3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/brown"
+                    android:background="@color/light_brown"
                     android:paddingStart="8dp"
                     android:text="Sex: "
                     android:textSize="20sp"
@@ -135,7 +137,7 @@
                     android:id="@+id/tv_character_4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/light_brown"
+                    android:background="@color/brown"
                     android:paddingStart="8dp"
                     android:text="Vocation: "
                     android:textSize="20sp"
@@ -159,6 +161,36 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_character_3" />
 
                 <TextView
+                    android:id="@+id/tv_character_level"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_brown"
+                    android:paddingStart="8dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Level: "
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_character_4"
+                    tools:ignore="RtlSymmetry" />
+
+
+                <TextView
+                    android:id="@+id/character_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="75dp"
+                    android:text="221"
+                    android:textColor="@color/brown_text"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_character_level"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_character_4" />
+
+
+                <TextView
                     android:id="@+id/tv_character_5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -169,11 +201,11 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_character_4"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_character_level"
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:id="@+id/character_achievements"
+                    android:id="@+id/character_achievements_points"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="205dp"
@@ -183,7 +215,7 @@
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_character_4" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_character_5" />
 
                 <TextView
                     android:id="@+id/tv_character_6"
@@ -289,6 +321,7 @@
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
+                        android:id="@+id/character_comment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="6dp"
@@ -339,7 +372,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="8dp"
-                        android:text="Guild Membership: "
+                        android:text="Guild \nMembership: "
+                        android:textAlignment="center"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -352,11 +386,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="6dp"
+                        android:paddingBottom="8dp"
                         android:text="Heavy Infantary Knight of the Ultramarines"
                         android:textColor="@color/brown_text"
-                        android:paddingBottom="8dp"
                         android:textSize="18sp"
-                        android:textStyle="italic"/>
+                        android:textStyle="italic" />
 
                 </LinearLayout>
 
@@ -365,336 +399,36 @@
 
         </androidx.cardview.widget.CardView>
 
-
-        <androidx.cardview.widget.CardView
+        <include
+            android:id="@+id/card_view_achievements"
+            layout="@layout/character_achievements"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="20dp"
-            android:background="@color/brown_text"
-            android:elevation="8dp"
-            app:cardCornerRadius="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/character_information">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/news_background_title"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Achievements"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:paddingVertical="2dp"
-                    android:elevation="1dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="1dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:paddingVertical="2dp"
-                    android:elevation="1dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@id/card_view_character_information" />
 
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="No Horse Open Sleigh"
-                    android:textSize="18sp"
-                    android:background="@color/brown"
-                    android:paddingStart="100dp"
-                    android:textStyle="italic"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/imageView4"
-                    app:layout_constraintTop_toTopOf="@+id/imageView6"
-                    app:layout_constraintVertical_bias="0.0" />
+        <include
+            android:id="@+id/include_character_deaths"
+            layout="@layout/character_deaths"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/card_view_achievements" />
 
-                <ImageView
-                    android:id="@+id/imageView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/achievement_secret"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-                <ImageView
-                    android:id="@+id/imageView10"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="2dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-                <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="1dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                    app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="1dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/brown"
-                    android:paddingStart="100dp"
-                    android:text="No Horse Open Sleigh"
-                    android:textSize="18sp"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/achievement_secret"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-                <ImageView
-                    android:id="@+id/imageView15"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="2dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-                <ImageView
-                    android:id="@+id/imageView14"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="1dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                    app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-                <ImageView
-                    android:id="@+id/imageView13"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="1dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/brown"
-                    android:paddingStart="100dp"
-                    android:text="No Horse Open Sleigh"
-                    android:textSize="18sp"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-                <ImageView
-                    android:id="@+id/imageView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/achievement_secret"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-                <ImageView
-                    android:id="@+id/imageView16"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="2dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-                <ImageView
-                    android:id="@+id/imageView17"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="1dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
-                    app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-                <ImageView
-                    android:id="@+id/imageView18"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="1dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/brown"
-                    android:paddingStart="100dp"
-                    android:text="No Horse Open Sleigh"
-                    android:textSize="18sp"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-                <ImageView
-                    android:id="@+id/imageView19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/achievement_secret"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-                <ImageView
-                    android:id="@+id/imageView20"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="2dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-                <ImageView
-                    android:id="@+id/imageView21"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="1dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                    app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-                <ImageView
-                    android:id="@+id/imageView22"
-                    android:layout_width="30dp"
-                    android:layout_height="24dp"
-                    android:elevation="1dp"
-                    android:paddingVertical="2dp"
-                    android:src="@drawable/achievement"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/brown"
-                    android:paddingStart="100dp"
-                    android:text="No Horse Open Sleigh"
-                    android:textSize="18sp"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-                <ImageView
-                    android:id="@+id/imageView23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/achievement_secret"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView19" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
+        <include
+            android:id="@+id/all_characters"
+            layout="@layout/all_characters"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_character_deaths"
+            tools:layout_editor_absoluteX="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

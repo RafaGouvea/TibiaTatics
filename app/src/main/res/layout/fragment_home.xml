@@ -271,7 +271,6 @@
             app:layout_constraintTop_toBottomOf="@+id/box_mid_r" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutIceResistence"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -285,7 +284,7 @@
             app:startIconDrawable="@drawable/baseline_search_24">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_ms_creature_ice_resistence"
+                android:id="@+id/tv_search_character_home"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -297,7 +296,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/pesquisar"
+            android:id="@+id/btn_search_home"
             android:layout_width="260dp"
             android:layout_height="30dp"
             android:layout_marginTop="12dp"
