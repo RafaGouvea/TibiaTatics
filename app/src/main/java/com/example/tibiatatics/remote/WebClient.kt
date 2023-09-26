@@ -98,9 +98,9 @@ class WebClient() {
         return null
     }
 
-    suspend fun getRank(): RankModel?{
+    suspend fun getRank(world: String, category: String, vocation: String, page: Int): RankModel?{
         try {
-            val resposta = apiInterface.getRank("all", "experience", "all", 1)
+            val resposta = apiInterface.getRank(world, category, vocation, page)
             if (resposta.isSuccessful){
                 Log.i("@@@", "getRank: ${resposta.body()?.toModel()}")
                 return resposta.body()?.toModel()
@@ -112,7 +112,5 @@ class WebClient() {
             Log.e("###", "getRank: ", e)
         }
         return null
-
     }
-
 }

@@ -14,7 +14,7 @@
         android:layout_margin="12dp"
         android:text="Rank: "
         android:textColor="@color/brown_text"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,9 +23,9 @@
         android:id="@+id/tv_position_rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="2dp"
         android:textColor="@color/brown_text"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/textView5"
         tools:text="1" />
@@ -37,7 +37,7 @@
         android:text="Name: "
         android:layout_marginTop="12dp"
         android:textColor="@color/brown_text"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -46,9 +46,9 @@
         android:id="@+id/tv_name_rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="2dp"
         android:textColor="@color/brown_text"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/tv_1"
         app:layout_constraintTop_toTopOf="@+id/tv_1"
         tools:text="Sorcerer Manipulator" />
@@ -58,11 +58,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="World: "
-        android:layout_marginStart="20dp"
+        android:layout_marginEnd="2dp"
         android:textColor="@color/brown_text"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_position_rank"
+        app:layout_constraintEnd_toStartOf="@+id/tv_world_rank"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
     <TextView
@@ -70,9 +70,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/brown_text"
-        android:textSize="18sp"
-        android:layout_marginStart="6dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_2"
+        android:textSize="16sp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_2"
         tools:text="Menera" />
 
@@ -83,7 +83,7 @@
         android:text="Vocation: "
         android:textColor="@color/brown_text"
         android:layout_marginTop="12dp"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/tv_1" />
@@ -93,8 +93,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/brown_text"
-        android:textSize="18sp"
-        android:layout_marginStart="6dp"
+        android:textSize="16sp"
+        android:layout_marginStart="2dp"
         app:layout_constraintStart_toEndOf="@+id/tv_3"
         app:layout_constraintTop_toTopOf="@+id/tv_3"
         tools:text="Master Sorcerer" />
@@ -103,65 +103,66 @@
         android:id="@+id/tv_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Level: "
-        android:layout_marginStart="20dp"
-        android:textColor="@color/brown_text"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_world_rank"
-        app:layout_constraintTop_toTopOf="@+id/tv_world_rank" />
-
-    <TextView
-        android:id="@+id/tv_level_rank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:textColor="@color/brown_text"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_4"
-        app:layout_constraintTop_toTopOf="@+id/tv_4"
-        tools:text="2202" />
-
-    <TextView
-        android:id="@+id/tv_5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Experience: "
-        android:textColor="@color/brown_text"
         android:layout_marginTop="12dp"
-        android:textSize="18sp"
+        android:text="Level: "
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tv_3"
         app:layout_constraintTop_toBottomOf="@+id/tv_3" />
 
     <TextView
-        android:layout_marginStart="6dp"
+        android:id="@+id/tv_level_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_4"
+        app:layout_constraintTop_toTopOf="@+id/tv_4"
+        tools:text="2202" />
+
+    <TextView
+        android:id="@+id/tv_category_type_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Experience: "
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:layout_marginEnd="12dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tv_experience_rank"
+        app:layout_constraintTop_toBottomOf="@+id/tv_3" />
+
+    <TextView
         android:id="@+id/tv_experience_rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/brown_text"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_5"
-        app:layout_constraintTop_toTopOf="@+id/tv_5"
+        android:textSize="16sp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_category_type_name"
         tools:text="2362952255972" />
 
     <ImageView
         android:id="@+id/img_outfit_rank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="36dp"
         android:src="@drawable/knight_outfit"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_experience_rank"
+        app:layout_constraintBottom_toTopOf="@+id/tv_experience_rank"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_name_rank"
-        app:layout_constraintTop_toBottomOf="@+id/tv_level_rank" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_world_rank" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginVertical="6dp"
         android:background="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_experience_rank"
-        android:layout_marginVertical="6dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

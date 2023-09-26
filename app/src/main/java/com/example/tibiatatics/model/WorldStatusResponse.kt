@@ -9,11 +9,11 @@ data class Worlds(
     val players_online: Int,
     val record_players: Int,
     val record_date: String,
-    val regular_worlds: List<RegularWorlds>,
+    val regular_worlds: List<RegularWorldsResponse>,
     val tournament_worlds: String
 )
 
-data class RegularWorlds(
+data class RegularWorldsResponse(
     val name: String,
     val status: String,
     val players_online: Int,
@@ -46,7 +46,21 @@ data class ApiWorld(
 fun Worlds.toModel(): WorldsStatusModel{
     return WorldsStatusModel(
         players_online = players_online,
-        regular_worlds = regular_worlds
+        regular_worlds = regular_worlds.map {
+            RegularWorldsModel(
+                name = it.name,
+                status = it.status,
+                players_online = it.players_online,
+                location = it.location,
+                pvp_type = it.pvp_type,
+                premium_only = it.premium_only,
+                transfer_type = it.transfer_type,
+                battleye_protected = it.battleye_protected,
+                battleye_date = it.battleye_date,
+                game_world_type = it.game_world_type,
+                tournament_world_type = it.tournament_world_type
+            )
+        }
     )
 }
 

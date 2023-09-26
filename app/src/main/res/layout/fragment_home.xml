@@ -144,7 +144,7 @@
 
 
         <ImageView
-            android:id="@+id/box_bottom_l"
+            android:id="@+id/img_highscore"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:scaleType="centerCrop"
@@ -161,10 +161,10 @@
             android:textSize="18sp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/box_bottom_l"
-            app:layout_constraintEnd_toEndOf="@+id/box_bottom_l"
-            app:layout_constraintStart_toStartOf="@+id/box_bottom_l"
-            app:layout_constraintTop_toTopOf="@+id/box_bottom_l" />
+            app:layout_constraintBottom_toBottomOf="@+id/img_highscore"
+            app:layout_constraintEnd_toEndOf="@+id/img_highscore"
+            app:layout_constraintStart_toStartOf="@+id/img_highscore"
+            app:layout_constraintTop_toTopOf="@+id/img_highscore" />
 
 
         <ImageView
@@ -225,9 +225,9 @@
             android:layout_marginTop="20dp"
             android:scaleType="centerCrop"
             android:src="@drawable/news_background_title"
-            app:layout_constraintEnd_toEndOf="@+id/box_bottom_l"
-            app:layout_constraintStart_toStartOf="@+id/box_bottom_l"
-            app:layout_constraintTop_toBottomOf="@+id/box_bottom_l" />
+            app:layout_constraintEnd_toEndOf="@+id/img_highscore"
+            app:layout_constraintStart_toStartOf="@+id/img_highscore"
+            app:layout_constraintTop_toBottomOf="@+id/img_highscore" />
 
         <TextView
             android:id="@+id/tv_character_4"

@@ -1,7 +1,6 @@
 package com.example.tibiatatics.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +35,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
@@ -71,18 +69,15 @@ class HomeFragment : Fragment() {
             newsModelWebClient.loadPlayersOnline().let { worlds ->
                 playersOnline.text = worlds?.players_online.toString()
             }
-
-            newsModelWebClient.getRank()
-
         }
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val btn_search = view.findViewById<AppCompatButton>(R.id.btn_search_home)
+        val btnSearch = view.findViewById<AppCompatButton>(R.id.btn_search_home)
         val nameCharacterEditText = view.findViewById<TextInputEditText>(R.id.tv_search_character_home)
 
-        btn_search.setOnClickListener {
+        btnSearch.setOnClickListener {
             val nameCharacter = nameCharacterEditText.text.toString().trim()
             if (nameCharacter.isNotEmpty()) {
                 val bundle = Bundle()
@@ -90,6 +85,12 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_menu_home_to_characterDetail, bundle)
             }
         }
+
+        val btnToRank = view.findViewById<ImageView>(R.id.img_highscore)
+        btnToRank.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_home_to_highscoreFragment)
+        }
+
     }
 
     private fun rashid(view: View) {

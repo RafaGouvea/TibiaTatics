@@ -1,6 +1,5 @@
 package com.example.tibiatatics.ui.adapter
 
-import android.provider.CalendarContract.Colors
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ class CharactersAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        return DeathsViewHolder(
+        return CharacterViewHolder(
             LayoutInflater.from(
                 parent.context
             ).inflate(R.layout.all_characters_rv, parent, false)
@@ -36,13 +35,13 @@ class CharactersAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         when (holder) {
-            is DeathsViewHolder -> {
+            is CharacterViewHolder -> {
                 holder.bind(othersCharacters[position])
             }
         }
     }
 
-    class DeathsViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class CharacterViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val otherCharacterName = itemView.findViewById<TextView>(R.id.other_character_name)
         val otherCharacterWorld = itemView.findViewById<TextView>(R.id.other_character_world)
