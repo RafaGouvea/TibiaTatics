@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_server_br"
+        android:title="Server BR"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_server_eu"
+        android:title="Server EU"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_server_na"
+        android:title="Server NA"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_open_pvp"
+        android:title="Open PVP"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_optional_pvp"
+        android:title="Optional PVP"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu_retro_open_pvp"
+        android:title="Retro Open PVP"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu_retro_hardcore_pvp"
+        android:title="Retro Hardcore PVP"
+        app:showAsAction="never"/>
+
+</menu>

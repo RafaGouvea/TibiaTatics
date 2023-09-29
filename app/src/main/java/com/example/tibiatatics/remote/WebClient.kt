@@ -7,7 +7,8 @@ import com.example.tibiatatics.model.NewsDetailModel
 import com.example.tibiatatics.model.NewsModel
 import com.example.tibiatatics.model.RankModel
 import com.example.tibiatatics.model.SearchModel
-import com.example.tibiatatics.model.WorldsStatusModel
+import com.example.tibiatatics.model.WorldDetailModel
+import com.example.tibiatatics.model.WorldsModel
 import com.example.tibiatatics.model.toModel
 
 class WebClient() {
@@ -16,13 +17,13 @@ class WebClient() {
 
 
     suspend fun loadNewsFrom(): List<NewsModel>? {
-       return try {
-           val resposta = apiInterface.getNewsLasted()
+        return try {
+            val resposta = apiInterface.getNewsLasted()
             resposta.body()?.news?.map {
                 it.toModel()
             }
         } catch (e: Exception) {
-           Log.e("###", "loadNewsFrom: ", e)
+            Log.e("###", "loadNewsFrom: ", e)
             null
         }
     }
@@ -49,7 +50,7 @@ class WebClient() {
             } else {
                 Log.e("###", "loadBostedCreature: Response not sucessful")
             }
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Log.e("###", "loadBostedCreature: ", e)
         }
         return null
@@ -63,21 +64,21 @@ class WebClient() {
             } else {
                 Log.e("###", "loadBostedBoss: Response not sucessful")
             }
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Log.e("###", "loadBostedCreature: ", e)
         }
         return null
     }
 
-    suspend fun loadPlayersOnline(): WorldsStatusModel? {
+    suspend fun loadWorlds(): WorldsModel? {
         try {
             val resposta = apiInterface.getWorlds()
-            if (resposta.isSuccessful){
+            if (resposta.isSuccessful) {
                 return resposta.body()?.worlds?.toModel()
             } else {
                 Log.e("###", "loadPlayersOnline: Response not sucessful")
             }
-        } catch (e: Exception){
+        } catch (e: Exception) {
             Log.e("###", "loadBostedCreature: ", e)
         }
         return null
@@ -86,30 +87,46 @@ class WebClient() {
     suspend fun searchCharacter(name: String): SearchModel? {
         try {
             val resposta = apiInterface.searchCharacter(name)
-            if (resposta.isSuccessful){
+            if (resposta.isSuccessful) {
                 return resposta.body()?.character?.toModel()
             } else {
                 Log.e("###", "searchCharacter: Response not sucessful ")
             }
 
-        } catch (e: java.lang.Exception){
+        } catch (e: java.lang.Exception) {
             Log.e("###", "searchCharacter: ", e)
         }
         return null
     }
 
-    suspend fun getRank(world: String, category: String, vocation: String, page: Int): RankModel?{
+    suspend fun getRank(world: String, category: String, vocation: String, page: Int): RankModel? {
         try {
             val resposta = apiInterface.getRank(world, category, vocation, page)
-            if (resposta.isSuccessful){
+            if (resposta.isSuccessful) {
                 Log.i("@@@", "getRank: ${resposta.body()?.toModel()}")
                 return resposta.body()?.toModel()
             } else {
                 Log.e("###", "getRank: Response not sucessful ")
             }
 
-        } catch (e: java.lang.Exception){
+        } catch (e: java.lang.Exception) {
             Log.e("###", "getRank: ", e)
+        }
+        return null
+    }
+
+    suspend fun getWorldDetail(name: String): List<WorldDetailModel>? {
+        try {
+            val resposta = apiInterface.getWorldDetail(name)
+            if (resposta.isSuccessful) {
+                Log.i("###", "getWorldDetail: ${resposta.body()?.world?.online_players?.map { it.toModel() }}")
+                return resposta.body()?.world?.online_players?.map { it.toModel() }
+            } else {
+                Log.e("###", "getRank: Response not sucessful ")
+            }
+
+        } catch (e: java.lang.Exception) {
+            Log.e("###", "getWorldDetail: ", e)
         }
         return null
     }

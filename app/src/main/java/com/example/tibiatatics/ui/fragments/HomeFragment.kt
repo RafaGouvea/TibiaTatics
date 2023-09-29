@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
                 }
             }
 
-            newsModelWebClient.loadPlayersOnline().let { worlds ->
+            newsModelWebClient.loadWorlds().let { worlds ->
                 playersOnline.text = worlds?.players_online.toString()
             }
         }
@@ -89,6 +89,11 @@ class HomeFragment : Fragment() {
         val btnToRank = view.findViewById<ImageView>(R.id.img_highscore)
         btnToRank.setOnClickListener {
             findNavController().navigate(R.id.action_menu_home_to_highscoreFragment)
+        }
+
+        val btnToWorlds = view.findViewById<ImageView>(R.id.img_worlds)
+        btnToWorlds.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_home_to_worldsFragment)
         }
 
     }

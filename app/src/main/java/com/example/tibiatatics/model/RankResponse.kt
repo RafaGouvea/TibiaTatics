@@ -49,7 +49,6 @@ fun RankResponse.toModel(): RankModel {
     return RankModel(
         highscores = HighscoresModel(
             world = highscores.world,
-            category = highscores.category,
             vocation = highscores.vocation,
             highscore_age = highscores.highscore_age,
             highscore_list = highscores.highscore_list.map { highscoreResponse ->
@@ -59,7 +58,8 @@ fun RankResponse.toModel(): RankModel {
                     vocation = highscoreResponse.vocation,
                     world = highscoreResponse.world,
                     level = highscoreResponse.level,
-                    value = highscoreResponse.value
+                    value = highscoreResponse.value,
+                    category = highscores.category
                 )
             },
             highscore_page = highscores.highscore_page.let { highscorePage ->

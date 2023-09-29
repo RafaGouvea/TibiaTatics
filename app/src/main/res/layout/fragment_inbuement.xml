@@ -9,7 +9,7 @@
     tools:context=".ui.fragments.InbuementFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_inbuements"
         android:layout_width="match_parent"
         android:background="@drawable/toolbar_background"
         app:title="Inbuements"
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_inbuements">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -1,15 +1,12 @@
 package com.example.tibiatatics.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,6 +37,8 @@ class HighscoreFragment : Fragment() {
         dropMenuCategoryRank(view)
         dropMenuVocationRank(view)
         dropdMenuWorldRank(view)
+        setupPageInputs(view)
+
 
 
 
@@ -74,8 +73,6 @@ class HighscoreFragment : Fragment() {
 
     private fun dropMenuCategoryRank(view: View) {
 
-        val categoryTypeName = view.findViewById<TextView>(R.id.tv_category_type_name)
-
         val categoryMap = mapOf(
             "Axe Fighting" to "axefighting",
             "Club Fighting" to "clubfighting",
@@ -88,9 +85,9 @@ class HighscoreFragment : Fragment() {
             "Boss Points" to "bosspoints",
             "Charm Points" to "charmpoints",
             "Drome Score" to "dromescore",
-            "Experience Points" to "experiencepoints",
-            "Goshnar's Taints" to "goshnarstaints",
-            "Loyalt Points" to "loyaltpoints",
+            "Experience" to "experience",
+            "Goshnar's Taint" to "goshnarstaint",
+            "Loyalty Points" to "loyaltypoints",
             "Achievements" to "achievements"
         )
 
@@ -110,9 +107,9 @@ class HighscoreFragment : Fragment() {
                 "Boss Points",
                 "Charm Points",
                 "Drome Score",
-                "Experience Points",
-                "Goshnar's Taints",
-                "Loyalt Points"
+                "Experience",
+                "Goshnar's Taint",
+                "Loyalty Points"
             )
 
         val categoryModelAdapter = ArrayAdapter(
@@ -123,12 +120,11 @@ class HighscoreFragment : Fragment() {
         actCategoryRank.setAdapter(categoryModelAdapter)
 
         actCategoryRank.setOnItemClickListener { _, _, position, _ ->
-            val selectedVocation = listCategoryRank[position]
-            category = categoryMap[selectedVocation] ?: "experiencepoints"
-
+            val selectedCategory = listCategoryRank[position]
+            category = categoryMap[selectedCategory] ?: "experiencepoints"
         }
 
-        actCategoryRank.setText("Experience Points", false)
+        actCategoryRank.setText("Experience", false)
         actCategoryRank.setOnClickListener {
             actCategoryRank.showDropDown()
         }
@@ -172,12 +168,55 @@ class HighscoreFragment : Fragment() {
         }
     }
 
+    private fun setupPageInput(view: View, inputId: Int) {
+        val actPageRank: AutoCompleteTextView = view.findViewById(inputId)
+        val listVocationRank = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
+
+        val pageModelAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item,
+            listVocationRank
+        )
+        actPageRank.setAdapter(pageModelAdapter)
+
+        actPageRank.setOnItemClickListener { _, _, position, _ ->
+            val selectedPage = listVocationRank[position]
+            page = selectedPage.toInt()
+            updateRankingList()
+
+            if (inputId == R.id.tv_input_page_top) {
+                view.findViewById<AutoCompleteTextView>(R.id.tv_input_page_bottom).setText(selectedPage, false)
+            } else if (inputId == R.id.tv_input_page_bottom) {
+                view.findViewById<AutoCompleteTextView>(R.id.tv_input_page_top).setText(selectedPage, false)
+            }
+        }
+
+        actPageRank.setText(page.toString(), false)
+        actPageRank.setOnClickListener {
+            actPageRank.showDropDown()
+        }
+    }
+
+    private fun updateRankingList() {
+        lifecycleScope.launch {
+            val pageRank = newsModelWebClient.getRank(world, category, vocation, page)
+            pageRank?.let {
+                rankingAdapter.updateList(it.highscores.highscore_list)
+            }
+        }
+    }
+
+    private fun setupPageInputs(view: View) {
+        setupPageInput(view, R.id.tv_input_page_top)
+        setupPageInput(view, R.id.tv_input_page_bottom)
+    }
+
     private fun dropdMenuWorldRank(view: View) {
 
         val actWorldRank = view.findViewById<AutoCompleteTextView>(R.id.tv_input_world)
 
         lifecycleScope.launch {
-            val loadWorlds = newsModelWebClient.loadPlayersOnline()
+            val loadWorlds = newsModelWebClient.loadWorlds()
             loadWorlds?.let { worldsStatusModel ->
                 val listWorldsRank = mutableListOf<String>()
                 listWorldsRank.add("All")

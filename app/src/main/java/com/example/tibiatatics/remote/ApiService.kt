@@ -6,6 +6,7 @@ import com.example.tibiatatics.model.NewsDetailResponse
 import com.example.tibiatatics.model.NewsListResponse
 import com.example.tibiatatics.model.RankResponse
 import com.example.tibiatatics.model.SearchResponse
+import com.example.tibiatatics.model.WorldDetailResponse
 import com.example.tibiatatics.model.WorldResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -32,5 +33,8 @@ interface ApiService {
 
     @GET("/v4/highscores/{world}/{category}/{vocation}/{page}")
     suspend fun getRank(@Path("world") world: String, @Path("category") category: String, @Path("vocation") vocation: String, @Path("page") page: Int): Response<RankResponse>
+
+    @GET("/v4/world/{name}")
+    suspend fun getWorldDetail(@Path("name") name: String): Response<WorldDetailResponse>
 
 }

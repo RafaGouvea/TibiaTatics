@@ -7,7 +7,6 @@ data class RankModel(
 
 data class HighscoresModel(
     val world: String,
-    val category: String,
     val vocation: String,
     val highscore_age: Int,
     val highscore_list: List<HighscoreListModel>,
@@ -20,6 +19,7 @@ data class HighscoreListModel(
     val vocation: String,
     val world: String,
     val level: Int,
+    val category: String,
     val value: Long
 )
 

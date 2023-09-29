@@ -43,7 +43,7 @@ class InbuementFragment : Fragment(), MenuProvider {
     }
 
     private fun toolbar(view: View) {
-        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_inbuements)
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
@@ -94,10 +94,7 @@ class InbuementFragment : Fragment(), MenuProvider {
                 inbuementsFragmentAdapter.updateList(dataSource)
                 true
             }
-
             else -> true
         }
     }
-
-
 }

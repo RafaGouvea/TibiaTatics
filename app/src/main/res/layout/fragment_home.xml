@@ -168,114 +168,62 @@
 
 
         <ImageView
-            android:id="@+id/box_top_r"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/news_background_title"
-            app:layout_constraintEnd_toEndOf="@+id/box_bottom_r"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/box_bottom_r"
-            app:layout_constraintTop_toBottomOf="@+id/box_bottom_r" />
-
-        <TextView
-            android:id="@+id/tv_character_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Guilds"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/box_top_r"
-            app:layout_constraintEnd_toEndOf="@+id/box_top_r"
-            app:layout_constraintStart_toStartOf="@id/box_top_r"
-            app:layout_constraintTop_toTopOf="@+id/box_top_r" />
-
-        <ImageView
-            android:id="@+id/box_top_rs"
+            android:id="@+id/img_worlds"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:scaleType="centerCrop"
             android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@id/img_highscore"
             android:src="@drawable/news_background_title"
-            app:layout_constraintEnd_toEndOf="@+id/box_bottom_r"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/box_bottom_r"
-            app:layout_constraintTop_toBottomOf="@+id/box_top_r" />
-
-        <TextView
-            android:id="@+id/tv_character_52"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kills Statistics"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/box_top_rs"
-            app:layout_constraintEnd_toEndOf="@+id/box_top_r"
-            app:layout_constraintStart_toStartOf="@id/box_top_r"
-            app:layout_constraintTop_toTopOf="@+id/box_top_rs" />
-
-
-        <ImageView
-            android:id="@+id/box_mid_r"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/news_background_title"
-            app:layout_constraintEnd_toEndOf="@+id/img_highscore"
             app:layout_constraintStart_toStartOf="@+id/img_highscore"
             app:layout_constraintTop_toBottomOf="@+id/img_highscore" />
 
         <TextView
-            android:id="@+id/tv_character_4"
+            android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Spells"
-            android:textSize="18sp"
+            android:text="Worlds"
             android:textColor="@color/white"
+            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/box_mid_r"
-            app:layout_constraintEnd_toEndOf="@+id/box_mid_r"
-            app:layout_constraintStart_toStartOf="@+id/box_mid_r"
-            app:layout_constraintTop_toTopOf="@+id/box_mid_r" />
-
+            app:layout_constraintBottom_toBottomOf="@+id/img_worlds"
+            app:layout_constraintEnd_toEndOf="@+id/img_worlds"
+            app:layout_constraintStart_toStartOf="@+id/img_worlds"
+            app:layout_constraintTop_toTopOf="@+id/img_worlds" />
 
         <ImageView
-            android:id="@+id/box_bottom_r"
+            android:id="@+id/img_guilds"
             android:layout_width="0dp"
+            android:layout_marginTop="20dp"
             android:layout_height="40dp"
             android:scaleType="centerCrop"
-            android:layout_marginTop="20dp"
             android:src="@drawable/news_background_title"
-            app:layout_constraintEnd_toEndOf="@+id/box_mid_r"
-            app:layout_constraintStart_toStartOf="@+id/box_mid_r"
-            app:layout_constraintTop_toBottomOf="@+id/box_mid_r" />
+            app:layout_constraintEnd_toEndOf="@id/img_highscore"
+            app:layout_constraintStart_toStartOf="@+id/img_highscore"
+            app:layout_constraintTop_toBottomOf="@+id/img_worlds" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Worlds"
-            android:textSize="18sp"
+            android:text="Guilds"
             android:textColor="@color/white"
+            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/box_bottom_r"
-            app:layout_constraintEnd_toEndOf="@+id/box_bottom_r"
-            app:layout_constraintStart_toStartOf="@+id/box_bottom_r"
-            app:layout_constraintTop_toTopOf="@+id/box_bottom_r" />
+            app:layout_constraintBottom_toBottomOf="@+id/img_guilds"
+            app:layout_constraintEnd_toEndOf="@+id/img_worlds"
+            app:layout_constraintStart_toStartOf="@+id/img_worlds"
+            app:layout_constraintTop_toTopOf="@+id/img_guilds" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
             android:layout_width="270dp"
+            android:layout_marginTop="20dp"
             android:layout_height="55dp"
-            android:layout_marginTop="200dp"
             android:backgroundTint="@color/brown"
             app:cardCornerRadius="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/box_bottom_r"
-            app:layout_constraintStart_toStartOf="@+id/box_mid_r"
-            app:layout_constraintTop_toBottomOf="@+id/box_mid_r" />
+            app:layout_constraintEnd_toEndOf="@+id/img_worlds"
+            app:layout_constraintStart_toStartOf="@+id/img_worlds"
+            app:layout_constraintTop_toBottomOf="@+id/img_guilds" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"

@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_menu_home_to_highscoreFragment"
             app:destination="@id/highscoreFragment" />
+        <action
+            android:id="@+id/action_menu_home_to_worldsFragment"
+            app:destination="@id/worldsFragment" />
     </fragment>
     <fragment
         android:id="@+id/menu_library"
@@ -90,4 +93,18 @@
         android:name="com.example.tibiatatics.ui.fragments.HighscoreFragment"
         android:label="fragment_highscore"
         tools:layout="@layout/fragment_highscore" />
+    <fragment
+        android:id="@+id/worldsFragment"
+        android:name="com.example.tibiatatics.ui.fragments.WorldsFragment"
+        android:label="fragment_worlds"
+        tools:layout="@layout/fragment_worlds" >
+        <action
+            android:id="@+id/action_worldsFragment_to_worldDetailFragment"
+            app:destination="@id/worldDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/worldDetailFragment"
+        android:name="com.example.tibiatatics.ui.fragments.WorldDetailFragment"
+        android:label="fragment_world_detail"
+        tools:layout="@layout/fragment_world_detail" />
 </navigation>

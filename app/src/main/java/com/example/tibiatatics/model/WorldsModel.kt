@@ -1,6 +1,6 @@
 package com.example.tibiatatics.model
 
-data class WorldsStatusModel(
+data class WorldsModel(
     val players_online: Int,
     val regular_worlds: List<RegularWorldsModel>
 )

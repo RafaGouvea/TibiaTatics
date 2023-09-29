@@ -1,11 +1,11 @@
 package com.example.tibiatatics.model
 
 data class WorldResponse(
-    val worlds: Worlds,
+    val worlds: WorldsResponse,
     val information: InformationWorld,
 )
 
-data class Worlds(
+data class WorldsResponse(
     val players_online: Int,
     val record_players: Int,
     val record_date: String,
@@ -43,8 +43,8 @@ data class ApiWorld(
     val commit: String
 )
 
-fun Worlds.toModel(): WorldsStatusModel{
-    return WorldsStatusModel(
+fun WorldsResponse.toModel(): WorldsModel{
+    return WorldsModel(
         players_online = players_online,
         regular_worlds = regular_worlds.map {
             RegularWorldsModel(
