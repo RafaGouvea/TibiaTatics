@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_artwork"
-    tools:context=".ui.fragments.PaladinCalcFragment">
+    tools:context="com.tatics.tibiatatics.ui.fragments.PaladinCalcFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

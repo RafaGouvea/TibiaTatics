@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    tools:context=".ui.fragments.HighscoreFragment">
+    tools:context="com.tatics.tibiatatics.ui.fragments.HighscoreFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

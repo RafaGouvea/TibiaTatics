@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    namespace 'com.example.tibiatatics'
+    namespace 'com.tatics.tibiatatics'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.tibiatatics"
+        applicationId "com.tatics.tibiatatics"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "1.0.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

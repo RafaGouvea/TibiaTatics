@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_artwork"
-    tools:context=".ui.fragments.KnightCalcFragment">
+    tools:context="com.tatics.tibiatatics.ui.fragments.KnightCalcFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -191,7 +191,6 @@
                         android:text=""
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -199,7 +198,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Elemental Atack"
+                    android:hint="@string/elemental_atack"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textInputLayoutBowAtk"
                     app:layout_constraintTop_toTopOf="@+id/textInputLayoutBowAtk">

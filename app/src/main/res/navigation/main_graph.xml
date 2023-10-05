@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/menu_news"
-        android:name="com.example.tibiatatics.ui.fragments.NewsFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.NewsFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_news" >
         <action
@@ -16,12 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/menu_inbuement"
-        android:name="com.example.tibiatatics.ui.fragments.InbuementFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.InbuementFragment"
         android:label="fragment_boosted_today"
         tools:layout="@layout/fragment_inbuement" />
     <fragment
         android:id="@+id/menu_home"
-        android:name="com.example.tibiatatics.ui.fragments.HomeFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.HomeFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_home" >
         <action
@@ -33,10 +33,13 @@
         <action
             android:id="@+id/action_menu_home_to_worldsFragment"
             app:destination="@id/worldsFragment" />
+        <action
+            android:id="@+id/action_menu_home_to_guildsFragments"
+            app:destination="@id/guildsFragments" />
     </fragment>
     <fragment
         android:id="@+id/menu_library"
-        android:name="com.example.tibiatatics.ui.fragments.LibraryFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.LibraryFragment"
         android:label="fragment_library"
         tools:layout="@layout/fragment_library" >
         <action
@@ -55,47 +58,54 @@
     </fragment>
     <fragment
         android:id="@+id/menu_map"
-        android:name="com.example.tibiatatics.ui.fragments.MapFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/newsDetailFragment"
-        android:name="com.example.tibiatatics.ui.fragments.NewsDetailFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.NewsDetailFragment"
         android:label="fragment_news_detail"
         tools:layout="@layout/fragment_news_detail" />
     <fragment
         android:id="@+id/knightCalcFragment2"
-        android:name="com.example.tibiatatics.ui.fragments.KnightCalcFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.KnightCalcFragment"
         android:label="fragment_knight_calc"
         tools:layout="@layout/fragment_knight_calc" />
     <fragment
         android:id="@+id/paladinCalcFragment"
-        android:name="com.example.tibiatatics.ui.fragments.PaladinCalcFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.PaladinCalcFragment"
         android:label="fragment_paladin_calc"
         tools:layout="@layout/fragment_paladin_calc" />
     <fragment
         android:id="@+id/druidCalcFragment"
-        android:name="com.example.tibiatatics.ui.fragments.DruidCalcFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.DruidCalcFragment"
         android:label="fragment_druid_calc"
         tools:layout="@layout/fragment_druid_calc" />
     <fragment
         android:id="@+id/sorcererCalcFragment"
-        android:name="com.example.tibiatatics.ui.fragments.SorcererCalcFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.SorcererCalcFragment"
         android:label="fragment_sorcerer_calc"
         tools:layout="@layout/fragment_sorcerer_calc" />
     <fragment
         android:id="@+id/characterDetail"
-        android:name="com.example.tibiatatics.ui.fragments.CharacterDetailFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.CharacterDetailFragment"
         android:label="fragment_character_detail"
-        tools:layout="@layout/fragment_character_detail" />
+        tools:layout="@layout/fragment_character_detail" >
+        <action
+            android:id="@+id/action_characterDetail_to_guildsDetailFragment"
+            app:destination="@id/guildsDetailFragment" />
+        <action
+            android:id="@+id/action_characterDetail_to_worldDetailFragment"
+            app:destination="@id/worldDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/highscoreFragment"
-        android:name="com.example.tibiatatics.ui.fragments.HighscoreFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.HighscoreFragment"
         android:label="fragment_highscore"
         tools:layout="@layout/fragment_highscore" />
     <fragment
         android:id="@+id/worldsFragment"
-        android:name="com.example.tibiatatics.ui.fragments.WorldsFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.WorldsFragment"
         android:label="fragment_worlds"
         tools:layout="@layout/fragment_worlds" >
         <action
@@ -104,7 +114,25 @@
     </fragment>
     <fragment
         android:id="@+id/worldDetailFragment"
-        android:name="com.example.tibiatatics.ui.fragments.WorldDetailFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.WorldDetailFragment"
         android:label="fragment_world_detail"
         tools:layout="@layout/fragment_world_detail" />
+    <fragment
+        android:id="@+id/guildsFragments"
+        android:name="com.tatics.tibiatatics.ui.fragments.GuildsFragments"
+        android:label="fragment_guilds_fragments"
+        tools:layout="@layout/fragment_guilds_fragments" >
+        <action
+            android:id="@+id/action_guildsFragments_to_guildsDetailFragment"
+            app:destination="@id/guildsDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/guildsDetailFragment"
+        android:name="com.tatics.tibiatatics.ui.fragments.GuildsDetailFragment"
+        android:label="fragment_guilds_detail"
+        tools:layout="@layout/fragment_guilds_detail" >
+        <action
+            android:id="@+id/action_guildsDetailFragment_to_characterDetail"
+            app:destination="@id/characterDetail" />
+    </fragment>
 </navigation>
