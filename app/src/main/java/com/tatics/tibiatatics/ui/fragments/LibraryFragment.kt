@@ -11,50 +11,30 @@ import com.tatics.tibiatatics.R
 
 class LibraryFragment : Fragment() {
 
+    private lateinit var navigateToKnightCalc: View
+    private lateinit var navigateToPaladinCalc: View
+    private lateinit var navigateToDruidCalc: View
+    private lateinit var navigateToSorcererCalc: View
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_library, container, false)
 
-        val navigateToKnightCalc = view.findViewById<View>(R.id.ek_calc)
-        navigateToKnightCalc.setOnClickListener {
-            val navController = findNavController()
-            val currentDestinationId = navController.currentDestination?.id
-            val isOnMenuHome = currentDestinationId == R.id.menu_library
-            if (isOnMenuHome) {
-                navController.navigate(R.id.action_menu_library_to_knightCalcFragment)
-            } else {
-                navController.navigate(R.id.menu_library)
-            }
-        }
+        navigateToSorcererCalc = view.findViewById(R.id.ms_calc)
+        navigateToKnightCalc = view.findViewById(R.id.ek_calc)
+        navigateToPaladinCalc = view.findViewById(R.id.rp_calc)
+        navigateToDruidCalc = view.findViewById(R.id.ed_calc)
 
-        val navigateToPaladinCalc = view.findViewById<View>(R.id.rp_calc)
-        navigateToPaladinCalc.setOnClickListener {
-            val navController = findNavController()
-            val currentDestinationId = navController.currentDestination?.id
-            val isOnMenuHome = currentDestinationId == R.id.menu_library
-            if (isOnMenuHome) {
-                navController.navigate(R.id.action_menu_library_to_paladinCalcFragment)
-            } else {
-                navController.navigate(R.id.menu_library)
-            }
-        }
+        navigateKnightCalc()
+        navigatePaladinCalc()
+        navigateToDruidCalc()
+        navigateSorcecerCalc()
 
-        val navigateToDruidCalc = view.findViewById<View>(R.id.ed_calc)
-        navigateToDruidCalc.setOnClickListener {
-            val navController = findNavController()
-            val currentDestinationId = navController.currentDestination?.id
-            val isOnMenuHome = currentDestinationId == R.id.menu_library
-            if (isOnMenuHome) {
-                navController.navigate(R.id.action_menu_library_to_druidCalcFragment)
-            } else {
-                navController.navigate(R.id.menu_library)
-            }
-        }
+        return view
+    }
 
-        val navigateToSorcererCalc = view.findViewById<View>(R.id.ms_calc)
+    private fun navigateSorcecerCalc() {
         navigateToSorcererCalc.setOnClickListener {
             val navController = findNavController()
             val currentDestinationId = navController.currentDestination?.id
@@ -65,6 +45,44 @@ class LibraryFragment : Fragment() {
                 navController.navigate(R.id.menu_library)
             }
         }
-        return view
+    }
+
+    private fun navigateToDruidCalc() {
+        navigateToDruidCalc.setOnClickListener {
+            val navController = findNavController()
+            val currentDestinationId = navController.currentDestination?.id
+            val isOnMenuHome = currentDestinationId == R.id.menu_library
+            if (isOnMenuHome) {
+                navController.navigate(R.id.action_menu_library_to_druidCalcFragment)
+            } else {
+                navController.navigate(R.id.menu_library)
+            }
+        }
+    }
+
+    private fun navigatePaladinCalc() {
+        navigateToPaladinCalc.setOnClickListener {
+            val navController = findNavController()
+            val currentDestinationId = navController.currentDestination?.id
+            val isOnMenuHome = currentDestinationId == R.id.menu_library
+            if (isOnMenuHome) {
+                navController.navigate(R.id.action_menu_library_to_paladinCalcFragment)
+            } else {
+                navController.navigate(R.id.menu_library)
+            }
+        }
+    }
+
+    private fun navigateKnightCalc() {
+        navigateToKnightCalc.setOnClickListener {
+            val navController = findNavController()
+            val currentDestinationId = navController.currentDestination?.id
+            val isOnMenuHome = currentDestinationId == R.id.menu_library
+            if (isOnMenuHome) {
+                navController.navigate(R.id.action_menu_library_to_knightCalcFragment)
+            } else {
+                navController.navigate(R.id.menu_library)
+            }
+        }
     }
 }

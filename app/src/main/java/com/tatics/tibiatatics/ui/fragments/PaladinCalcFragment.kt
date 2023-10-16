@@ -23,6 +23,55 @@ class PaladinCalcFragment : Fragment() {
     private var weaponModel = 0
     private var attackMode = 1.0
     private var sanguineGreaves = 0
+    private lateinit var actWeaponModel: AutoCompleteTextView
+    private lateinit var actAttackMode: AutoCompleteTextView
+    private lateinit var level: TextInputEditText
+    private lateinit var magicLevel: TextInputEditText
+    private lateinit var skills: TextInputEditText
+    private lateinit var arrowAttack: TextInputEditText
+    private lateinit var bowAttack: TextInputEditText
+    private lateinit var physicalResistance: TextInputEditText
+    private lateinit var iceResistance: TextInputEditText
+    private lateinit var earthResistance: TextInputEditText
+    private lateinit var energyResistance: TextInputEditText
+    private lateinit var fireResistance: TextInputEditText
+    private lateinit var holyResistance: TextInputEditText
+    private lateinit var armor: TextInputEditText
+    private lateinit var tvMinThunder: TextView
+    private lateinit var tvMinCritThunder: TextView
+    private lateinit var tvAverageThunder: TextView
+    private lateinit var tvAverageCritThunder: TextView
+    private lateinit var tvMaxThunder: TextView
+    private lateinit var tvMaxCritThunder: TextView
+    private lateinit var tvMinGfb: TextView
+    private lateinit var tvMinCritGfb: TextView
+    private lateinit var tvMaxCritGfb: TextView
+    private lateinit var tvAverageGfb: TextView
+    private lateinit var tvAverageCritGfb: TextView
+    private lateinit var tvMaxGfb: TextView
+    private lateinit var tvMinStShower: TextView
+    private lateinit var tvMinCritStShower: TextView
+    private lateinit var tvAverageStShower: TextView
+    private lateinit var tvAverageCritStShower: TextView
+    private lateinit var tvMaxStShower: TextView
+    private lateinit var tvMaxCritStShower: TextView
+    private lateinit var tvMinAva: TextView
+    private lateinit var tvMinCritAva: TextView
+    private lateinit var tvAverageAva: TextView
+    private lateinit var tvAverageCritAva: TextView
+    private lateinit var tvMaxAva: TextView
+    private lateinit var tvMaxCritAva: TextView
+    private lateinit var tvMaxMasSan: TextView
+    private lateinit var tvMaxCritMasSan: TextView
+    private lateinit var tvAverageMasSan: TextView
+    private lateinit var tvMinMasSan: TextView
+    private lateinit var tvAverageCritMasSan: TextView
+    private lateinit var tvMinCritMasSan: TextView
+    private lateinit var maxRpBasic: TextView
+    private lateinit var critMaxDmg: TextView
+    private lateinit var averageCritDmg: TextView
+    private lateinit var averageRpBasic: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,23 +79,71 @@ class PaladinCalcFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_paladin_calc, container, false)
 
-        dropMenuWeaponMode(view)
-        dropMenuAttackMode(view)
+        viewById(view)
+        dropMenuWeaponMode()
+        dropMenuAttackMode()
         sanguineGreaves(view)
-
 
         val btnCalcular = view.findViewById<AppCompatButton>(R.id.btn_rp_calcular)
         btnCalcular.setOnClickListener {
-            dmgPaladin(view)
+            dmgPaladin()
         }
 
         return view
     }
 
-    private fun dropMenuWeaponMode(view: View) {
+    private fun viewById(view: View) {
+        maxRpBasic = view.findViewById(R.id.max_rp_basic)
+        critMaxDmg = view.findViewById(R.id.max_rp_critc_basic)
+        averageCritDmg = view.findViewById(R.id.average_crit_basic)
+        averageRpBasic = view.findViewById(R.id.average_rp_basic)
+        tvMaxMasSan = view.findViewById(R.id.max_mas_san)
+        tvMaxCritMasSan = view.findViewById(R.id.max_crit_mas_san)
+        tvAverageMasSan = view.findViewById(R.id.average_mas_san)
+        tvAverageCritMasSan = view.findViewById(R.id.average_crit_mas_san)
+        tvMinMasSan = view.findViewById(R.id.min_mas_san)
+        tvMinCritMasSan = view.findViewById(R.id.min_crit_mas_san)
+        tvMinAva = view.findViewById(R.id.min_avalanche_rune)
+        tvMinCritAva = view.findViewById(R.id.min_crit_avalanche_rune)
+        tvAverageAva = view.findViewById(R.id.average_avalanche_rune)
+        tvAverageCritAva = view.findViewById(R.id.average_crit_avalanche_rune)
+        tvMaxAva = view.findViewById(R.id.max_avalanche_rune)
+        tvMaxCritAva = view.findViewById(R.id.max_crit_avalanche_rune)
+        tvMinStShower = view.findViewById(R.id.min_stoneshower_rune)
+        tvMinCritStShower = view.findViewById(R.id.min_crit_stoneshower_rune)
+        tvAverageStShower = view.findViewById(R.id.average_stoneshower_rune)
+        tvAverageCritStShower = view.findViewById(R.id.average_crit_stoneshower_rune)
+        tvMaxStShower = view.findViewById(R.id.max_stoneshower_rune)
+        tvMaxCritStShower = view.findViewById(R.id.max_crit_stoneshower_rune)
+        tvMinGfb = view.findViewById(R.id.min_gfb_rune)
+        tvMinCritGfb = view.findViewById(R.id.min_crit_gfb_rune)
+        tvAverageGfb = view.findViewById(R.id.average_gfb_rune)
+        tvAverageCritGfb = view.findViewById(R.id.average_crit_gfb_rune)
+        tvMaxGfb = view.findViewById(R.id.max_gfb_rune)
+        tvMaxCritGfb = view.findViewById(R.id.max_crit_gfb_rune)
+        tvMinThunder = view.findViewById(R.id.min_thunderstorm_rune)
+        tvMinCritThunder = view.findViewById(R.id.min_crit_thunderstorm_rune)
+        tvAverageThunder = view.findViewById(R.id.average_thunderstorm_rune)
+        tvAverageCritThunder = view.findViewById(R.id.average_crit_thunderstorm_rune)
+        tvMaxThunder = view.findViewById(R.id.max_thunderstorm_rune)
+        tvMaxCritThunder = view.findViewById(R.id.max_crit_thunderstorm_rune)
+        level = view.findViewById(R.id.input_rp_level)
+        magicLevel = view.findViewById(R.id.input_rp_magic_level)
+        skills = view.findViewById(R.id.input_rp_skills)
+        arrowAttack = view.findViewById(R.id.input_arrow_attack)
+        bowAttack = view.findViewById(R.id.input_bow_attack)
+        physicalResistance = view.findViewById(R.id.input_rp_creature_physical_resistence)
+        iceResistance = view.findViewById(R.id.input_rp_creature_ice_resistence)
+        earthResistance = view.findViewById(R.id.input_rp_creature_earth_resistence)
+        energyResistance = view.findViewById(R.id.input_rp_creature_energy_resistence)
+        fireResistance = view.findViewById(R.id.input_rp_creature_fire_resistence)
+        holyResistance = view.findViewById(R.id.input_rp_creature_holy_resistence)
+        armor = view.findViewById(R.id.input_rp_creature_armor)
+        actWeaponModel = view.findViewById(R.id.weapon_rp_complete)
+        actAttackMode = view.findViewById(R.id.attack_rp)
+    }
 
-        val actWeaponModel: AutoCompleteTextView =
-            view.findViewById(R.id.weapon_rp_complete)
+    private fun dropMenuWeaponMode() {
         val listElementalType =
             arrayOf(
                 "Normal Weapon",
@@ -79,11 +176,8 @@ class PaladinCalcFragment : Fragment() {
         }
     }
 
-    private fun dropMenuAttackMode(view: View) {
-
-        val actAttackMode: AutoCompleteTextView = view.findViewById(R.id.attack_rp)
+    private fun dropMenuAttackMode() {
         val listAttackMode = arrayOf("Full Attack", "Balanced Attack", "Full Defensive")
-
 
         val listAttackAdapter = ArrayAdapter(
             requireContext(),
@@ -115,8 +209,8 @@ class PaladinCalcFragment : Fragment() {
 
             if (selectedRadioButton != null) {
                 when (selectedRadioButton.id) {
-                    R.id.yesRadioButton -> sanguineGreaves = 1
-                    R.id.noRadioButton -> sanguineGreaves = 0
+                    R.id.yes_radio_button -> sanguineGreaves = 1
+                    R.id.no_radio_button -> sanguineGreaves = 0
                 }
             }
             when (sanguineGreaves) {
@@ -135,48 +229,20 @@ class PaladinCalcFragment : Fragment() {
         }
     }
 
-    private fun dmgPaladin(view: View) {
+    private fun dmgPaladin() {
 
-        val level = view.findViewById<TextInputEditText>(R.id.input_rp_level)
         val levelInt = level.text.toString().toIntOrNull() ?: 0
-
-        val magicLevel = view.findViewById<TextInputEditText>(R.id.input_rp_magic_level)
         val magicLevelInt = magicLevel.text.toString().toIntOrNull() ?: 0
-
-        val skills = view.findViewById<TextInputEditText>(R.id.input_rp_skills)
         val skillsInt = skills.text.toString().toIntOrNull() ?: 10
-
-        val arrowAttack = view.findViewById<TextInputEditText>(R.id.input_arrow_attack)
         val arrowAttackInt = arrowAttack.text.toString().toIntOrNull() ?: 0
-
-        val bowAttack = view.findViewById<TextInputEditText>(R.id.input_bow_attack)
         val bowAttackInt = bowAttack.text.toString().toIntOrNull() ?: 0
-
-        val physicalResistance =
-            view.findViewById<TextInputEditText>(R.id.input_rp_creature_physical_resistence)
         val physicalResistanceInt = physicalResistance.text.toString().toIntOrNull() ?: 100
-
-        val iceResistance =
-            view.findViewById<TextInputEditText>(R.id.input_rp_creature_ice_resistence)
         val iceResistanceInt = iceResistance.text.toString().toIntOrNull() ?: 100
-
-        val earthResistance =
-            view.findViewById<TextInputEditText>(R.id.input_rp_creature_earth_resistence)
         val earthResistanceInt = earthResistance.text.toString().toIntOrNull() ?: 100
-
-        val energyResistance =
-            view.findViewById<TextInputEditText>(R.id.input_rp_creature_energy_resistence)
         val energyResistanceInt = energyResistance.text.toString().toIntOrNull() ?: 100
-
-        val fireResistance =
-            view.findViewById<TextInputEditText>(R.id.input_rp_creature_fire_resistence)
         val fireResistanceInt = fireResistance.text.toString().toIntOrNull() ?: 100
-
-        val holyResistance =
-            view.findViewById<TextInputEditText>(R.id.input_rp_creature_holy_resistence)
         val holyResistanceInt = holyResistance.text.toString().toIntOrNull() ?: 100
 
-        val armor = view.findViewById<TextInputEditText>(R.id.input_rp_creature_armor)
         var armorInt = armor.text.toString().toIntOrNull() ?: 1
         if (armorInt > 130) {
             armorInt = 130
@@ -192,7 +258,6 @@ class PaladinCalcFragment : Fragment() {
             arrowAttackInt,
             calcArmor,
             physicalResistanceInt,
-            view,
             formato
         )
 
@@ -200,7 +265,6 @@ class PaladinCalcFragment : Fragment() {
             levelInt,
             magicLevelInt,
             holyResistanceInt,
-            view,
             formato
         )
 
@@ -208,7 +272,6 @@ class PaladinCalcFragment : Fragment() {
             levelInt,
             magicLevelInt,
             iceResistanceInt,
-            view,
             formato
         )
 
@@ -216,7 +279,6 @@ class PaladinCalcFragment : Fragment() {
             levelInt,
             magicLevelInt,
             earthResistanceInt,
-            view,
             formato
         )
 
@@ -224,7 +286,6 @@ class PaladinCalcFragment : Fragment() {
             levelInt,
             magicLevelInt,
             energyResistanceInt,
-            view,
             formato
         )
 
@@ -232,7 +293,6 @@ class PaladinCalcFragment : Fragment() {
             levelInt,
             magicLevelInt,
             fireResistanceInt,
-            view,
             formato
         )
     }
@@ -241,7 +301,6 @@ class PaladinCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         energyResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minBaseDmgThunder = (levelInt * 0.2) + (magicLevelInt * 1) + 6
@@ -267,13 +326,6 @@ class PaladinCalcFragment : Fragment() {
         val averageThunder = (minDmgThunder + maxDmgThunder) / 2
         val averageCritThunder = (minCritThunder + maxCritThunder) / 2
 
-        val tvMinThunder = view.findViewById<TextView>(R.id.min_thunderstorm_rune)
-        val tvMinCritThunder = view.findViewById<TextView>(R.id.min_crit_thunderstorm_rune)
-        val tvAverageThunder = view.findViewById<TextView>(R.id.average_thunderstorm_rune)
-        val tvAverageCritThunder = view.findViewById<TextView>(R.id.average_crit_thunderstorm_rune)
-        val tvMaxThunder = view.findViewById<TextView>(R.id.max_thunderstorm_rune)
-        val tvMaxCritThunder = view.findViewById<TextView>(R.id.max_crit_thunderstorm_rune)
-
         tvMinThunder.text = formato.format(minDmgThunder)
         tvMinCritThunder.text = formato.format(minCritThunder)
         tvAverageThunder.text = formato.format(averageThunder)
@@ -286,7 +338,6 @@ class PaladinCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         fireResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minBaseDmgGfb = (levelInt * 0.2) + (magicLevelInt * 1.81) + 10
@@ -312,13 +363,6 @@ class PaladinCalcFragment : Fragment() {
         val averageGfb = (minDmgGfb + maxDmgGfb) / 2
         val averageCritGfb = (minCritGfb + maxCritGfb) / 2
 
-        val tvMinGfb = view.findViewById<TextView>(R.id.min_gran_mas_frigo)
-        val tvMinCritGfb = view.findViewById<TextView>(R.id.min_crit_gran_mas_frigo)
-        val tvAverageGfb = view.findViewById<TextView>(R.id.average_gran_mas_frigo)
-        val tvAverageCritGfb = view.findViewById<TextView>(R.id.average_crit_gran_mas_frigo)
-        val tvMaxGfb = view.findViewById<TextView>(R.id.max_gran_mas_frigo)
-        val tvMaxCritGfb = view.findViewById<TextView>(R.id.max_crit_gran_mas_frigo)
-
         tvMinGfb.text = formato.format(minDmgGfb)
         tvMinCritGfb.text = formato.format(minCritGfb)
         tvAverageGfb.text = formato.format(averageGfb)
@@ -331,7 +375,6 @@ class PaladinCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         earthResistaceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minBaseDmgStShower = (levelInt * 0.2) + (magicLevelInt * 1) + 6
@@ -357,13 +400,6 @@ class PaladinCalcFragment : Fragment() {
         val averageStShower = (minDmgStShower + maxDmgStShower) / 2
         val averageCritStShower = (minCritStShower + maxCritStShower) / 2
 
-        val tvMinStShower = view.findViewById<TextView>(R.id.min_stoneshower_rune)
-        val tvMinCritStShower = view.findViewById<TextView>(R.id.min_crit_stoneshower_rune)
-        val tvAverageStShower = view.findViewById<TextView>(R.id.average_stoneshower_rune)
-        val tvAverageCritStShower = view.findViewById<TextView>(R.id.average_crit_stoneshower_rune)
-        val tvMaxStShower = view.findViewById<TextView>(R.id.max_stoneshower_rune)
-        val tvMaxCritStShower = view.findViewById<TextView>(R.id.max_crit_stoneshower_rune)
-
         tvMinStShower.text = formato.format(minDmgStShower)
         tvMinCritStShower.text = formato.format(minCritStShower)
         tvAverageStShower.text = formato.format(averageStShower)
@@ -376,7 +412,6 @@ class PaladinCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         iceResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minBaseDmgAva = (levelInt * 0.2) + (magicLevelInt * 1.81) + 10
@@ -402,13 +437,6 @@ class PaladinCalcFragment : Fragment() {
         val averageAva = (minDmgAva + maxDmgAva) / 2
         val averageCritAva = (minCritAva + maxCritAva) / 2
 
-        val tvMinAva = view.findViewById<TextView>(R.id.min_avalanche_rune)
-        val tvMinCritAva = view.findViewById<TextView>(R.id.min_crit_avalanche_rune)
-        val tvAverageAva = view.findViewById<TextView>(R.id.average_avalanche_rune)
-        val tvAverageCritAva = view.findViewById<TextView>(R.id.average_crit_avalanche_rune)
-        val tvMaxAva = view.findViewById<TextView>(R.id.max_avalanche_rune)
-        val tvMaxCritAva = view.findViewById<TextView>(R.id.max_crit_avalanche_rune)
-
         tvMinAva.text = formato.format(minDmgAva)
         tvMinCritAva.text = formato.format(minCritAva)
         tvAverageAva.text = formato.format(averageAva)
@@ -421,7 +449,6 @@ class PaladinCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         holyResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minDmgBase = (levelInt / 5) + (magicLevelInt * 4)
@@ -471,13 +498,6 @@ class PaladinCalcFragment : Fragment() {
             }
         }
 
-        val tvMaxMasSan = view.findViewById<TextView>(R.id.max_mas_san)
-        val tvMaxCritMasSan = view.findViewById<TextView>(R.id.max_crit_mas_san)
-        val tvAverageMasSan = view.findViewById<TextView>(R.id.average_mas_san)
-        val tvAverageCritMasSan = view.findViewById<TextView>(R.id.average_crit_mas_san)
-        val tvMinMasSan = view.findViewById<TextView>(R.id.min_mas_san)
-        val tvMinCritMasSan = view.findViewById<TextView>(R.id.min_crit_mas_san)
-
         tvMaxMasSan.text = formato.format(maxMasSanDmg)
         tvAverageMasSan.text = formato.format(averageMasSan)
         tvMinMasSan.text = formato.format(minMasSanDmg)
@@ -510,7 +530,6 @@ class PaladinCalcFragment : Fragment() {
         arrowAttackInt: Int,
         calcArmor: Double,
         physicalResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minDmgBasic = levelInt / 5
@@ -519,14 +538,12 @@ class PaladinCalcFragment : Fragment() {
         val maxDmgBasicAtkWithArmor = maxDmgBasic - calcArmor
         val maxTotalDmgBasic = (maxDmgBasicAtkWithArmor * physicalResistanceInt) / 100
 
-        val maxRpBasic = view.findViewById<TextView>(R.id.max_rp_basic)
         maxRpBasic.text = formato.format(maxTotalDmgBasic)
 
         val maxDmgCritBasicAtk = maxTotalDmgBasic + (maxTotalDmgBasic * 0.5)
         val maxDmgCritBasicAtkSoulWar = maxTotalDmgBasic + (maxTotalDmgBasic * 0.6)
         val maxDmgCritBasicAtkSanguine = maxTotalDmgBasic + (maxTotalDmgBasic * 0.62)
 
-        val critMaxDmg = view.findViewById<TextView>(R.id.max_rp_critc_basic)
         when (weaponModel) {
             0 -> critMaxDmg.text = formato.format(maxDmgCritBasicAtk)
             1 -> critMaxDmg.text = formato.format(maxDmgCritBasicAtkSoulWar)
@@ -534,14 +551,12 @@ class PaladinCalcFragment : Fragment() {
         }
 
         val averageBasicHit = maxTotalDmgBasic / 2
-        val averageRpBasic = view.findViewById<TextView>(R.id.average_rp_basic)
         averageRpBasic.text = formato.format(averageBasicHit)
 
         val averageDmgCritBasicAtk = averageBasicHit + (averageBasicHit * 0.5)
         val averageDmgCritBasicAtkSoulWar = averageBasicHit + (averageBasicHit * 0.6)
         val averageDmgCritBasicAtkSanguine = averageBasicHit + (averageBasicHit * 0.62)
 
-        val averageCritDmg = view.findViewById<TextView>(R.id.average_crit_basic)
         when (weaponModel) {
             0 -> averageCritDmg.text = formato.format(averageDmgCritBasicAtk)
             1 -> averageCritDmg.text = formato.format(averageDmgCritBasicAtkSoulWar)

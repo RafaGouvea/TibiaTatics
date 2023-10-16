@@ -24,25 +24,30 @@ class InbuementFragment : Fragment(), MenuProvider {
 
     private lateinit var inbuementsFragmentAdapter: InbuementsFragmentAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var toolbar: Toolbar
+    private val dataSource = InbuementDataSource.createInbuementData()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.fragment_inbuement, container, false)
-        val menuHost : MenuHost = requireActivity()
-        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        toolbar(view)
+        toolbar = view.findViewById(R.id.toolbar_inbuements)
+        menu()
+        toolbar()
         initRecycleView(view)
-        addDataSource()
+        inbuementsFragmentAdapter.updateList(dataSource)
 
         return view
     }
 
-    private fun toolbar(view: View) {
-        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_inbuements)
+    private fun menu() {
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    private fun toolbar() {
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
@@ -51,13 +56,7 @@ class InbuementFragment : Fragment(), MenuProvider {
         }
     }
 
-    private fun addDataSource() {
-        val dataSource = InbuementDataSource.createInbuementData()
-        inbuementsFragmentAdapter.updateList(dataSource)
-    }
-
     private fun initRecycleView(view: View) {
-
         this.inbuementsFragmentAdapter = InbuementsFragmentAdapter()
         recyclerView = view.findViewById(R.id.inbuements_list_recycleview)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -69,7 +68,6 @@ class InbuementFragment : Fragment(), MenuProvider {
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        val dataSource = InbuementDataSource.createInbuementData()
         recyclerView.smoothScrollToPosition(0)
         return when (menuItem.itemId) {
             R.id.menu_search_suporte -> {

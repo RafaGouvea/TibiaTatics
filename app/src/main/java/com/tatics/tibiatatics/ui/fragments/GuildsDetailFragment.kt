@@ -30,6 +30,10 @@ class GuildsDetailFragment : Fragment() {
     private var isAscendingOrder = false
     private lateinit var clickableView: View
     private var nameGuild = ""
+    private lateinit var tvGuildName: TextView
+    private lateinit var tvGuildDescription: TextView
+    private lateinit var imgGif: ImageView
+    private lateinit var actFilters: AutoCompleteTextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,13 +41,23 @@ class GuildsDetailFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_guilds_detail, container, false)
 
+        viewById(view)
         initRecycleView(view)
         orderView(view)
-        dropMenuFilters(view)
+        dropMenuFilters()
+        loadItems()
 
-        val tvGuildName =  view.findViewById<TextView>(R.id.tv_guild_name)
-        val tvGuildDescription = view.findViewById<TextView>(R.id.tv_guild_description)
-        val imgGif = view.findViewById<ImageView>(R.id.img_gif_guild)
+        return view
+    }
+
+    private fun viewById(view: View) {
+        tvGuildName = view.findViewById(R.id.tv_guild_name)
+        tvGuildDescription = view.findViewById(R.id.tv_guild_description)
+        imgGif = view.findViewById(R.id.img_gif_guild)
+        actFilters = view.findViewById(R.id.filters_detail_guild)
+    }
+
+    private fun loadItems() {
 
         val bundle = arguments
         nameGuild = bundle?.getString("guilds").toString()
@@ -62,19 +76,18 @@ class GuildsDetailFragment : Fragment() {
                     .placeholder(R.drawable.ic_launcher_background)
                     .error(R.drawable.ic_launcher_background)
 
-                Glide.with(view.context)
-                    .applyDefaultRequestOptions(requestOptions)
-                    .load(it.logo_url)
-                    .into(imgGif)
+                view?.let { imgLoader ->
+                    Glide.with(imgLoader.context)
+                        .applyDefaultRequestOptions(requestOptions)
+                        .load(it.logo_url)
+                        .into(imgGif)
+                }
             }
-
         }
-
-        return view
     }
 
     private fun initRecycleView(view: View) {
-        this.guildsDetailAdapter = GuildsDetailAdapter{
+        this.guildsDetailAdapter = GuildsDetailAdapter {
 
             val playerName = it.name
             if (playerName.isNotEmpty()) {
@@ -85,7 +98,10 @@ class GuildsDetailFragment : Fragment() {
                 val currentDestinationId = navController.currentDestination?.id
                 val isOnMenuHome = currentDestinationId == R.id.guildsDetailFragment
                 if (isOnMenuHome) {
-                    navController.navigate(R.id.action_guildsDetailFragment_to_characterDetail, bundle)
+                    navController.navigate(
+                        R.id.action_guildsDetailFragment_to_characterDetail,
+                        bundle
+                    )
                 } else {
                     navController.navigate(R.id.guildsFragments)
                 }
@@ -110,9 +126,7 @@ class GuildsDetailFragment : Fragment() {
         }
     }
 
-    private fun dropMenuFilters(view: View) {
-        val actFilters: AutoCompleteTextView =
-            view.findViewById(R.id.filters_detail_guild)
+    private fun dropMenuFilters() {
         val listFilters =
             arrayOf(
                 "No Filters",
@@ -139,12 +153,16 @@ class GuildsDetailFragment : Fragment() {
             val selectedVocation = listFilters[position]
             lifecycleScope.launch {
                 newsModelWebClient.getGuildsDetail(nameGuild)?.guild?.members?.let {
-                    if (selectedVocation == "No Filters") {
-                        guildsDetailAdapter.updateList(it)
-                    } else if (selectedVocation == "Status") {
-                        guildsDetailAdapter.updateListStatus(it)
-                    } else {
-                        guildsDetailAdapter.filteredList(it, isAscendingOrder, selectedVocation)
+                    when (selectedVocation) {
+                        "No Filters" -> {
+                            guildsDetailAdapter.updateList(it)
+                        }
+                        "Status" -> {
+                            guildsDetailAdapter.updateListStatus(it)
+                        }
+                        else -> {
+                            guildsDetailAdapter.filteredList(it, isAscendingOrder, selectedVocation)
+                        }
                     }
                 }
             }
@@ -162,5 +180,4 @@ class GuildsDetailFragment : Fragment() {
     private fun updateView(ascending: Boolean) {
         guildsDetailAdapter.filteredList(guildsDetailAdapter.guildDetailModel, ascending)
     }
-
 }

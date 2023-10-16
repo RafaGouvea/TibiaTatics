@@ -30,26 +30,32 @@ class WorldsFragment : Fragment(), MenuProvider {
     private var newsModelWebClient = WebClient()
     private lateinit var recyclerView: RecyclerView
     private lateinit var worldsAdapter: WorldsAdapter
+    private lateinit var toolbar: Toolbar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_worlds, container, false)
+
+        toolbar = view.findViewById(R.id.toolbar_worlds)
+
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         setAdapterWorlds(view)
-        toolbar(view)
+        toolbar()
+        loadWorlds()
 
+        return view
+    }
+
+    private fun loadWorlds() {
         lifecycleScope.launch {
             newsModelWebClient.loadWorlds()?.let {
                 worldsAdapter.updateNewsList(it.regular_worlds)
             }
         }
-
-        return view
     }
 
     private fun setAdapterWorlds(view: View) {
@@ -80,8 +86,7 @@ class WorldsFragment : Fragment(), MenuProvider {
         recyclerView.adapter = this.worldsAdapter
     }
 
-    private fun toolbar(view: View) {
-        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_worlds)
+    private fun toolbar() {
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
@@ -166,7 +171,6 @@ class WorldsFragment : Fragment(), MenuProvider {
                 }
                 true
             }
-
             else -> true
         }
     }

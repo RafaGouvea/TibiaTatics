@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,17 +9,17 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_inbuements"
-        android:layout_width="match_parent"
-        android:background="@drawable/toolbar_background"
-        app:title="Inbuements"
-        app:menu="@menu/menu_inbuement_filter"
-        app:titleTextColor="@color/white"
-        app:navigationIcon="@drawable/baseline_arrow_back_24"
         style="@style/Base.Theme.TibiaTatics"
+        android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu_inbuement_filter"
+        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:title="Inbuements"
+        app:titleTextColor="@color/white" />
 
 
     <ScrollView

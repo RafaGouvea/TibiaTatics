@@ -17,6 +17,7 @@ import com.tatics.tibiatatics.R
 import com.tatics.tibiatatics.remote.WebClient
 import com.tatics.tibiatatics.ui.adapter.WorldDetailAdapter
 import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 
 
 class WorldDetailFragment : Fragment() {
@@ -28,36 +29,41 @@ class WorldDetailFragment : Fragment() {
     private lateinit var arrowImageView: ImageView
     private var isAscendingOrder = false
     private lateinit var clickableView: View
+    private lateinit var actFilterVocation: AutoCompleteTextView
+    private lateinit var worldName: TextView
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_world_detail, container, false)
 
+        actFilterVocation = view.findViewById(R.id.actv_filter_vocations)
+        worldName = view.findViewById(R.id.tv_detail_name_world)
+
         initRecycleView(view)
-        dropMenuFilterVocation(view)
-
+        dropMenuFilterVocation()
         orderView(view)
+        loadWorlds()
 
-        val worldName = view.findViewById<TextView>(R.id.tv_detail_name_world)
+        return view
+    }
 
+    private fun loadWorlds() {
         val bundle = arguments
         if (bundle != null) {
             nameWorld = bundle.getString("world").toString()
 
             worldName.text = nameWorld
         }
-        
+
         lifecycleScope.launch {
             newsModelWebClient.getWorldDetail(nameWorld)?.let {
                 worldsDetailAdapter.updateList(it)
                 Log.i("###", "onCreateView: $it")
             }
         }
-        return view
     }
 
     private fun initRecycleView(view: View) {
@@ -80,9 +86,7 @@ class WorldDetailFragment : Fragment() {
         }
     }
 
-    private fun dropMenuFilterVocation(view: View) {
-        val actFilterVocation: AutoCompleteTextView =
-            view.findViewById(R.id.actv_filter_vocations)
+    private fun dropMenuFilterVocation() {
         val listFilterVocation =
             arrayOf(
                 "All Vocation",
@@ -125,5 +129,4 @@ class WorldDetailFragment : Fragment() {
     private fun updateView(ascending: Boolean) {
         worldsDetailAdapter.updateList(worldsDetailAdapter.worldDetail, ascending)
     }
-
 }

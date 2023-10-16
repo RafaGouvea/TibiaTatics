@@ -30,22 +30,40 @@ class HomeFragment : Fragment() {
     private lateinit var bostedBossName: TextView
     private lateinit var imgBoss: ImageView
     private lateinit var playersOnline: TextView
+    private lateinit var btnSearch: AppCompatButton
+    private lateinit var nameCharacterEditText: TextInputEditText
+    private lateinit var btnToRank: ImageView
+    private lateinit var btnToWorlds: ImageView
+    private lateinit var btnToGuilds: ImageView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        viewById(view)
         rashid(view)
+        loadItems()
 
+        return view
+    }
+
+    private fun viewById(view: View) {
+        btnToGuilds = view.findViewById(R.id.img_guilds)
+        btnToWorlds = view.findViewById(R.id.img_worlds)
+        btnToRank = view.findViewById(R.id.img_highscore)
+        nameCharacterEditText = view.findViewById(R.id.tv_search_character_home)
+        btnSearch = view.findViewById(R.id.btn_search_home)
         bostedCreatureName = view.findViewById(R.id.bosted_creature_name)
         imgCreature = view.findViewById(R.id.img_creature_bosted)
         bostedBossName = view.findViewById(R.id.tv_boss_name)
         imgBoss = view.findViewById(R.id.iv_boss)
         playersOnline = view.findViewById(R.id.players_online)
+    }
 
+    private fun loadItems() {
         lifecycleScope.launch {
             newsModelWebClient.loadBostedCreature().let { creature ->
                 bostedCreatureName.text = creature?.name
@@ -70,13 +88,9 @@ class HomeFragment : Fragment() {
                 playersOnline.text = worlds?.players_online.toString()
             }
         }
-        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val btnSearch = view.findViewById<AppCompatButton>(R.id.btn_search_home)
-        val nameCharacterEditText = view.findViewById<TextInputEditText>(R.id.tv_search_character_home)
-
         btnSearch.setOnClickListener {
             val nameCharacter = nameCharacterEditText.text.toString().trim()
             if (nameCharacter.isNotEmpty()) {
@@ -94,7 +108,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val btnToRank = view.findViewById<ImageView>(R.id.img_highscore)
         btnToRank.setOnClickListener {
             val navController = findNavController()
             val currentDestinationId = navController.currentDestination?.id
@@ -106,7 +119,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val btnToWorlds = view.findViewById<ImageView>(R.id.img_worlds)
         btnToWorlds.setOnClickListener {
             val navController = findNavController()
             val currentDestinationId = navController.currentDestination?.id
@@ -118,7 +130,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val btnToGuilds = view.findViewById<ImageView>(R.id.img_guilds)
         btnToGuilds.setOnClickListener {
             val navController = findNavController()
             val currentDestinationId = navController.currentDestination?.id

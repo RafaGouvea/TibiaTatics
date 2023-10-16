@@ -26,6 +26,12 @@ class HighscoreFragment : Fragment() {
     private var category = "experience"
     private var vocation = "all"
     private var page = 1
+    private lateinit var btnSearch: AppCompatButton
+    private lateinit var actCategoryRank: AutoCompleteTextView
+    private lateinit var actVocationRank: AutoCompleteTextView
+    private lateinit var tvInputPageBottom: AutoCompleteTextView
+    private lateinit var tvInputPageTop: AutoCompleteTextView
+    private lateinit var actWorldRank: AutoCompleteTextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,27 +39,37 @@ class HighscoreFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_highscore, container, false)
 
+        viewById(view)
         rankAdapter(view)
-        dropMenuCategoryRank(view)
-        dropMenuVocationRank(view)
-        dropdMenuWorldRank(view)
+        dropMenuCategoryRank()
+        dropMenuVocationRank()
+        dropdMenuWorldRank()
         setupPageInputs(view)
+        loadCharacterRank()
 
+        return view
+    }
 
+    private fun viewById(view: View) {
+        btnSearch = view.findViewById(R.id.btn_search_highscore)
+        actCategoryRank = view.findViewById(R.id.tv_input_category)
+        actVocationRank = view.findViewById(R.id.tv_input_vocation)
+        tvInputPageBottom = view.findViewById(R.id.tv_input_page_bottom)
+        tvInputPageTop = view.findViewById(R.id.tv_input_page_top)
+        actWorldRank = view.findViewById(R.id.tv_input_world)
+    }
 
-
+    private fun loadCharacterRank() {
         lifecycleScope.launch {
             val characterRank = newsModelWebClient.getRank(world, category, vocation, page)
             characterRank?.let {
                 rankingAdapter.updateList(it.highscores.highscore_list)
             }
-            setDetailRank(view)
+            setDetailRank()
         }
-        return view
     }
 
-    private suspend fun setDetailRank(view: View) {
-        val btnSearch = view.findViewById<AppCompatButton>(R.id.btn_search_highscore)
+    private suspend fun setDetailRank() {
         btnSearch.setOnClickListener {
             lifecycleScope.launch {
                 val characterRank = newsModelWebClient.getRank(world, category, vocation, page)
@@ -71,7 +87,7 @@ class HighscoreFragment : Fragment() {
         recyclerView.adapter = this.rankingAdapter
     }
 
-    private fun dropMenuCategoryRank(view: View) {
+    private fun dropMenuCategoryRank() {
 
         val categoryMap = mapOf(
             "Axe Fighting" to "axefighting",
@@ -91,8 +107,6 @@ class HighscoreFragment : Fragment() {
             "Achievements" to "achievements"
         )
 
-        val actCategoryRank: AutoCompleteTextView =
-            view.findViewById(R.id.tv_input_category)
         val listCategoryRank =
             arrayOf(
                 "Axe Fighting",
@@ -130,7 +144,7 @@ class HighscoreFragment : Fragment() {
         }
     }
 
-    private fun dropMenuVocationRank(view: View) {
+    private fun dropMenuVocationRank() {
 
         val vocationMap = mapOf(
             "Master Sorcerer" to "sorcerer",
@@ -139,8 +153,6 @@ class HighscoreFragment : Fragment() {
             "Elite Knight" to "knight"
         )
 
-        val actVocationRank: AutoCompleteTextView =
-            view.findViewById(R.id.tv_input_vocation)
         val listVocationRank =
             arrayOf(
                 "All",
@@ -185,9 +197,9 @@ class HighscoreFragment : Fragment() {
             updateRankingList()
 
             if (inputId == R.id.tv_input_page_top) {
-                view.findViewById<AutoCompleteTextView>(R.id.tv_input_page_bottom).setText(selectedPage, false)
+                tvInputPageBottom.setText(selectedPage, false)
             } else if (inputId == R.id.tv_input_page_bottom) {
-                view.findViewById<AutoCompleteTextView>(R.id.tv_input_page_top).setText(selectedPage, false)
+                tvInputPageTop.setText(selectedPage, false)
             }
         }
 
@@ -211,10 +223,7 @@ class HighscoreFragment : Fragment() {
         setupPageInput(view, R.id.tv_input_page_bottom)
     }
 
-    private fun dropdMenuWorldRank(view: View) {
-
-        val actWorldRank = view.findViewById<AutoCompleteTextView>(R.id.tv_input_world)
-
+    private fun dropdMenuWorldRank() {
         lifecycleScope.launch {
             val loadWorlds = newsModelWebClient.loadWorlds()
             loadWorlds?.let { worldsStatusModel ->

@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/x"
+    android:id="@+id/sv_detail_character"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_home"
@@ -72,13 +72,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
-                    tools:text="Dirwal"
                     android:textColor="@color/brown_text"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView25" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView25"
+                    tools:text="Dirwal" />
 
                 <TextView
                     android:id="@+id/tv_character_2"
@@ -99,13 +99,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="65dp"
-                    tools:text="None (11 titles unlocked)"
                     android:textColor="@color/brown_text"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_character_1" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_character_1"
+                    tools:text="None (11 titles unlocked)" />
 
                 <TextView
                     android:id="@+id/tv_character_3"
@@ -126,13 +126,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="60dp"
-                    tools:text="Male"
                     android:textColor="@color/brown_text"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_3"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_character_2" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_character_2"
+                    tools:text="Male" />
 
                 <TextView
                     android:id="@+id/tv_character_4"
@@ -153,21 +153,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="105dp"
-                    tools:text="Elite Knight"
                     android:textColor="@color/brown_text"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_4"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_character_3" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_character_3"
+                    tools:text="Elite Knight" />
 
                 <TextView
                     android:id="@+id/tv_character_level"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
                     android:background="@color/light_brown"
                     android:paddingStart="8dp"
-                    android:layout_marginTop="0dp"
                     android:text="Level: "
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -182,13 +182,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="75dp"
-                    tools:text="221"
                     android:textColor="@color/brown_text"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_level"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_character_4" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_character_4"
+                    tools:text="221" />
 
 
                 <TextView
@@ -210,13 +210,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="205dp"
-                    tools:text="221"
                     android:textColor="@color/brown_text"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tv_character_5" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_character_5"
+                    tools:text="221" />
 
                 <TextView
                     android:id="@+id/tv_character_6"
@@ -237,13 +237,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="75dp"
-                    tools:text="Menera"
                     android:textColor="@color/brown_text"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_6"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_character_5" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_character_5"
+                    tools:text="Menera" />
 
                 <TextView
                     android:id="@+id/tv_character_7"
@@ -264,13 +264,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="120dp"
-                    tools:text="Thais"
                     android:textColor="@color/brown_text"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_7"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_character_6" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_character_6"
+                    tools:text="Thais" />
 
 
                 <TextView
@@ -292,13 +292,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="120dp"
-                    tools:text="Sep 21 2023, 15:03:25 CEST"
                     android:textColor="@color/brown_text"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_8"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_character_7" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_character_7"
+                    tools:text="Sep 21 2023, 15:03:25 CEST" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
@@ -327,8 +327,8 @@
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="6dp"
                         android:paddingBottom="10dp"
-                        tools:text="TibiaTaticsApp"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:text="TibiaTaticsApp" />
 
                 </LinearLayout>
 
@@ -352,13 +352,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="165dp"
-                    tools:text="Premium Account"
                     android:textColor="@color/brown_text"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_character_10"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                    tools:text="Premium Account" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout1"
@@ -388,10 +388,10 @@
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="6dp"
                         android:paddingBottom="8dp"
-                        tools:text="Heavy Infantary Knight of the Ultramarines"
                         android:textColor="@color/brown_text"
                         android:textSize="18sp"
-                        android:textStyle="italic" />
+                        android:textStyle="italic"
+                        tools:text="Heavy Infantary Knight of the Ultramarines" />
 
                 </LinearLayout>
 

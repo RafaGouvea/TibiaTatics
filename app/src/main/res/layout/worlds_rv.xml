@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -9,24 +9,24 @@
         android:id="@+id/card_view_worlds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="12dp"
         android:layout_marginVertical="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@drawable/all_background"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/all_background">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5"/>
+                app:layout_constraintGuide_percent="0.5" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -43,21 +43,21 @@
                 android:id="@+id/tv_world_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Menera"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                 app:layout_constraintEnd_toEndOf="@+id/imageView4"
                 app:layout_constraintStart_toStartOf="@+id/imageView4"
-                app:layout_constraintTop_toTopOf="@+id/imageView4" />
+                app:layout_constraintTop_toTopOf="@+id/imageView4"
+                tools:text="Menera" />
 
             <TextView
                 android:id="@+id/tv_worlds_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Location: "
+                android:text="@string/location"
                 android:textColor="@color/brown_text"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
-                android:text="Players Online: "
+                android:text="@string/players_online"
                 android:textColor="@color/brown_text"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -82,7 +82,7 @@
                 android:id="@+id/tv_worlds_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pvp Type: "
+                android:text="@string/pvp_type"
                 android:textColor="@color/brown_text"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -94,7 +94,7 @@
                 android:id="@+id/tv_worlds_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Transfer: "
+                android:text="@string/transfer"
                 android:textColor="@color/brown_text"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -106,54 +106,54 @@
                 android:id="@+id/tv_world_players_online"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1000"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/brown_text"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="@+id/tv_worlds_1"
                 app:layout_constraintStart_toStartOf="@+id/tv_worlds_1"
-                app:layout_constraintTop_toBottomOf="@+id/tv_worlds_1" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_worlds_1"
+                tools:text="1000" />
 
             <TextView
                 android:id="@+id/tv_world_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="South America"
                 android:layout_marginTop="8dp"
+                android:paddingBottom="12dp"
                 android:textColor="@color/brown_text"
                 android:textSize="16sp"
-                android:paddingBottom="12dp"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="@+id/tv_worlds_2"
                 app:layout_constraintStart_toStartOf="@+id/tv_worlds_2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_worlds_2" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_worlds_2"
+                tools:text="South America" />
 
             <TextView
                 android:id="@+id/tv_world_transfer_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Regular"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/brown_text"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="@+id/tv_worlds_4"
                 app:layout_constraintStart_toStartOf="@+id/tv_worlds_4"
-                app:layout_constraintTop_toBottomOf="@+id/tv_worlds_4" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_worlds_4"
+                tools:text="Regular" />
 
             <TextView
                 android:id="@+id/tv_world_pvp_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Retro Hardcore PvP"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/brown_text"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="@+id/tv_worlds_3"
                 app:layout_constraintStart_toStartOf="@+id/tv_worlds_3"
-                app:layout_constraintTop_toBottomOf="@+id/tv_worlds_3" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_worlds_3"
+                tools:text="Retro Hardcore PvP" />
 
             <LinearLayout
                 android:layout_width="match_parent"

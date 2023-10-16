@@ -1,6 +1,5 @@
 package com.tatics.tibiatatics.ui.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -32,11 +31,37 @@ class CharacterDetailFragment : Fragment() {
     private var newsModelWebClient = WebClient()
     private var guildName = ""
 
+    private lateinit var name: TextView
+    private lateinit var title: TextView
+    private lateinit var sex: TextView
+    private lateinit var vocation: TextView
+    private lateinit var achievementsPoins: TextView
+    private lateinit var world: TextView
+    private lateinit var residence: TextView
+    private lateinit var lastLogin: TextView
+    private lateinit var comment: TextView
+    private lateinit var guild: TextView
+    private lateinit var level: TextView
+    private lateinit var scrollView: ScrollView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_character_detail, container, false)
+
+        name = view.findViewById(R.id.character_name)
+        title = view.findViewById(R.id.character_title)
+        sex = view.findViewById(R.id.character_sex)
+        vocation = view.findViewById(R.id.character_vocation)
+        achievementsPoins = view.findViewById(R.id.character_achievements_points)
+        world = view.findViewById(R.id.character_world)
+        residence = view.findViewById(R.id.character_residence)
+        lastLogin = view.findViewById(R.id.character_last_login)
+        comment = view.findViewById(R.id.character_comment)
+        guild = view.findViewById(R.id.character_guild_membership)
+        level = view.findViewById(R.id.character_level)
+        scrollView = view.findViewById(R.id.sv_detail_character)
 
         deathRecycleView(view)
         charactersRecycleView(view)
@@ -45,22 +70,9 @@ class CharacterDetailFragment : Fragment() {
         return view
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val nameCharacter = arguments?.getString("name").toString()
-
-        val name = view.findViewById<TextView>(R.id.character_name)
-        val title = view.findViewById<TextView>(R.id.character_title)
-        val sex = view.findViewById<TextView>(R.id.character_sex)
-        val vocation = view.findViewById<TextView>(R.id.character_vocation)
-        val achievementsPoins = view.findViewById<TextView>(R.id.character_achievements_points)
-        val world = view.findViewById<TextView>(R.id.character_world)
-        val residence = view.findViewById<TextView>(R.id.character_residence)
-        val lastLogin = view.findViewById<TextView>(R.id.character_last_login)
-        val comment = view.findViewById<TextView>(R.id.character_comment)
-        val guild = view.findViewById<TextView>(R.id.character_guild_membership)
-        val level = view.findViewById<TextView>(R.id.character_level)
 
         world.setTextColor(view.context.resources.getColor(R.color.blue))
 
@@ -181,20 +193,7 @@ class CharacterDetailFragment : Fragment() {
     private fun charactersRecycleView(view: View) {
         this.charactersAdapter = CharactersAdapter {
 
-            val name = view.findViewById<TextView>(R.id.character_name)
-            val title = view.findViewById<TextView>(R.id.character_title)
-            val sex = view.findViewById<TextView>(R.id.character_sex)
-            val vocation = view.findViewById<TextView>(R.id.character_vocation)
-            val achievementsPoins = view.findViewById<TextView>(R.id.character_achievements_points)
-            val world = view.findViewById<TextView>(R.id.character_world)
-            val residence = view.findViewById<TextView>(R.id.character_residence)
-            val lastLogin = view.findViewById<TextView>(R.id.character_last_login)
-            val comment = view.findViewById<TextView>(R.id.character_comment)
-            val guild = view.findViewById<TextView>(R.id.character_guild_membership)
-            val level = view.findViewById<TextView>(R.id.character_level)
-
             lifecycleScope.launch {
-                val scrollView = view.findViewById<ScrollView>(R.id.x)
                 scrollView.smoothScrollTo(0, 0)
 
                 newsModelWebClient.searchCharacter(it.name.toString())?.let {
@@ -238,5 +237,4 @@ class CharacterDetailFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = this.characterAchievementsAdapter
     }
-
 }

@@ -22,6 +22,63 @@ class SorcererCalcFragment : Fragment() {
     private lateinit var radioGroupSanguineGaloshes: RadioGroup
     private var weaponModel = 0
     private var sanguineBoots = 0
+    private lateinit var actWeaponModel: AutoCompleteTextView
+    private lateinit var level: TextInputEditText
+    private lateinit var magicLevel: TextInputEditText
+    private lateinit var iceResistance: TextInputEditText
+    private lateinit var earthResistance: TextInputEditText
+    private lateinit var energyResistance: TextInputEditText
+    private lateinit var deathResistance: TextInputEditText
+    private lateinit var fireResistance: TextInputEditText
+    private lateinit var tvMinSd: TextView
+    private lateinit var tvMinCritSd: TextView
+    private lateinit var tvAverageSd: TextView
+    private lateinit var tvAverageCritSd: TextView
+    private lateinit var tvMaxSd: TextView
+    private lateinit var tvMaxCritSd: TextView
+    private lateinit var tvMinMasFlam: TextView
+    private lateinit var tvMinCritMasFlam: TextView
+    private lateinit var tvAverageMasFlam: TextView
+    private lateinit var tvMaxMasFlam: TextView
+    private lateinit var tvAverageCritMasFlam: TextView
+    private lateinit var tvMaxCritMasFlam: TextView
+    private lateinit var tvMinMasVis: TextView
+    private lateinit var tvAverageCritMasVis: TextView
+    private lateinit var tvMinCritMasVis: TextView
+    private lateinit var tvAverageMasVis: TextView
+    private lateinit var tvMaxMasVis: TextView
+    private lateinit var tvMaxCritMasVis: TextView
+    private lateinit var tvMinVisHur: TextView
+    private lateinit var tvMinCritVisHur: TextView
+    private lateinit var tvAverageVisHur: TextView
+    private lateinit var tvAverageCritVisHur: TextView
+    private lateinit var tvMaxVisHur: TextView
+    private lateinit var tvMaxCritVisHur: TextView
+    private lateinit var tvMinThunder: TextView
+    private lateinit var tvMinCritThunder: TextView
+    private lateinit var tvAverageThunder: TextView
+    private lateinit var tvAverageCritThunder: TextView
+    private lateinit var tvMaxCritThunder: TextView
+    private lateinit var tvMaxThunder: TextView
+    private lateinit var tvMinGfb: TextView
+    private lateinit var tvMinCritGfb: TextView
+    private lateinit var tvAverageGfb: TextView
+    private lateinit var tvAverageCritGfb: TextView
+    private lateinit var tvMaxGfb: TextView
+    private lateinit var tvMaxCritGfb: TextView
+    private lateinit var tvMinStShower: TextView
+    private lateinit var tvMinCritStShower: TextView
+    private lateinit var tvAverageStShower: TextView
+    private lateinit var tvAverageCritStShower: TextView
+    private lateinit var tvMaxStShower: TextView
+    private lateinit var tvMaxCritStShower: TextView
+    private lateinit var tvMinAva: TextView
+    private lateinit var tvMinCritAva: TextView
+    private lateinit var tvAverageAva: TextView
+    private lateinit var tvAverageCritAva: TextView
+    private lateinit var tvMaxAva: TextView
+    private lateinit var tvMaxCritAva: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,16 +86,75 @@ class SorcererCalcFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sorcerer_calc, container, false)
 
-        dropMenuWeaponMode(view)
+        viewById(view)
+        dropMenuWeaponMode()
         sanguineGaloshes(view)
 
         val btnCalcular = view.findViewById<AppCompatButton>(R.id.btn_ms_calcular)
         btnCalcular.setOnClickListener {
-            dmgDruid(view)
+            dmgDruid()
         }
 
-
         return view
+    }
+
+    private fun viewById(view: View) {
+        tvMinAva = view.findViewById(R.id.min_ed_avalanche_rune)
+        tvMinCritAva = view.findViewById(R.id.min_crit_ed_avalanche_rune)
+        tvAverageAva = view.findViewById(R.id.average_ed_avalanche_rune)
+        tvAverageCritAva = view.findViewById(R.id.average_crit_ed_avalanche_rune)
+        tvMaxAva = view.findViewById(R.id.max_ed_avalanche_rune)
+        tvMaxCritAva = view.findViewById(R.id.max_crit_ed_avalanche_rune)
+        tvMinStShower = view.findViewById(R.id.min_ed_stoneshower_rune)
+        tvMinCritStShower = view.findViewById(R.id.min_crit_ed_stoneshower_rune)
+        tvAverageStShower = view.findViewById(R.id.average_ed_stoneshower_rune)
+        tvAverageCritStShower = view.findViewById(R.id.average_crit_ed_stoneshower_rune)
+        tvMaxStShower = view.findViewById(R.id.max_ed_stoneshower_rune)
+        tvMaxCritStShower = view.findViewById(R.id.max_crit_ed_stoneshower_rune)
+        tvMinGfb = view.findViewById(R.id.min_ed_gfb_rune)
+        tvMinCritGfb = view.findViewById(R.id.min_crit_ed_gfb_rune)
+        tvAverageGfb = view.findViewById(R.id.average_ed_gfb_rune)
+        tvAverageCritGfb = view.findViewById(R.id.average_ed_crit_gfb_rune)
+        tvMaxGfb = view.findViewById(R.id.max_ed_gfb_rune)
+        tvMaxCritGfb = view.findViewById(R.id.max_crit_ed_gfb_rune)
+        tvMinThunder = view.findViewById(R.id.min_ed_thunderstorm_rune)
+        tvMinCritThunder = view.findViewById(R.id.min_crit_ed_thunderstorm_rune)
+        tvAverageThunder = view.findViewById(R.id.average_ed_thunderstorm_rune)
+        tvAverageCritThunder = view.findViewById(R.id.average_crit_ed_thunderstorm_rune)
+        tvMaxThunder = view.findViewById(R.id.max_ed_thunderstorm_rune)
+        tvMaxCritThunder = view.findViewById(R.id.max_crit_ed_thunderstorm_rune)
+        tvMinVisHur = view.findViewById(R.id.min_vis_hur)
+        tvMinCritVisHur = view.findViewById(R.id.min_crit_vis_hur)
+        tvAverageVisHur = view.findViewById(R.id.average_vis_hur)
+        tvAverageCritVisHur = view.findViewById(R.id.average_crit_vis_hur)
+        tvMaxVisHur = view.findViewById(R.id.max_vis_hur)
+        tvMaxCritVisHur = view.findViewById(R.id.max_crit_vis_hur)
+        tvMinMasVis = view.findViewById(R.id.min_mas_vis)
+        tvMinCritMasVis = view.findViewById(R.id.min_crit_mas_vis)
+        tvAverageMasVis = view.findViewById(R.id.average_mas_vis)
+        tvAverageCritMasVis = view.findViewById(R.id.average_crit_mas_vis)
+        tvMaxMasVis = view.findViewById(R.id.max_mas_vis)
+        tvMaxCritMasVis = view.findViewById(R.id.max_crit_mas_vis)
+        tvMinMasFlam = view.findViewById(R.id.min_mas_flam)
+        tvMinCritMasFlam = view.findViewById(R.id.min_crit_mas_flam)
+        tvAverageMasFlam = view.findViewById(R.id.average_mas_flam)
+        tvAverageCritMasFlam = view.findViewById(R.id.average_crit_mas_flam)
+        tvMaxMasFlam = view.findViewById(R.id.max_mas_flam)
+        tvMaxCritMasFlam = view.findViewById(R.id.max_crit_mas_flam)
+        tvMinSd = view.findViewById(R.id.min_ed_sd_rune)
+        tvMinCritSd = view.findViewById(R.id.min_crit_ed_sd_rune)
+        tvAverageSd = view.findViewById(R.id.average_ed_sd_rune)
+        tvAverageCritSd = view.findViewById(R.id.average_crit_ed_sd_rune)
+        tvMaxSd = view.findViewById(R.id.max_ed_sd_rune)
+        tvMaxCritSd = view.findViewById(R.id.max_crit_ed_sd_rune)
+        level = view.findViewById(R.id.input_ms_level)
+        magicLevel = view.findViewById(R.id.input_ms_magic_level)
+        iceResistance = view.findViewById(R.id.input_ms_creature_ice_resistence)
+        earthResistance = view.findViewById(R.id.input_ms_creature_earth_resistence)
+        energyResistance = view.findViewById(R.id.input_ms_creature_energy_resistence)
+        deathResistance = view.findViewById(R.id.input_ms_creature_death_resistence)
+        fireResistance = view.findViewById(R.id.input_ms_creature_fire_resistence)
+        actWeaponModel = view.findViewById(R.id.weapon_ms_complete)
     }
 
     private fun sanguineGaloshes(view: View) {
@@ -49,8 +165,8 @@ class SorcererCalcFragment : Fragment() {
 
             if (selectedRadioButton != null) {
                 when (selectedRadioButton.id) {
-                    R.id.yesRadioButton -> sanguineBoots = 1
-                    R.id.noRadioButton -> sanguineBoots = 0
+                    R.id.yes_radio_button -> sanguineBoots = 1
+                    R.id.no_radio_button -> sanguineBoots = 0
                 }
             }
             when (sanguineBoots) {
@@ -69,10 +185,7 @@ class SorcererCalcFragment : Fragment() {
         }
     }
 
-    private fun dropMenuWeaponMode(view: View) {
-
-        val actWeaponModel: AutoCompleteTextView =
-            view.findViewById(R.id.weapon_ms_complete)
+    private fun dropMenuWeaponMode() {
         val listElementalType =
             arrayOf(
                 "Normal Rod",
@@ -107,40 +220,21 @@ class SorcererCalcFragment : Fragment() {
         }
     }
 
-    private fun dmgDruid(view: View) {
+    private fun dmgDruid() {
 
-        val level = view.findViewById<TextInputEditText>(R.id.input_ms_level)
         val levelInt = level.text.toString().toIntOrNull() ?: 0
-
-        val magicLevel = view.findViewById<TextInputEditText>(R.id.input_ms_magic_level)
         val magicLevelInt = magicLevel.text.toString().toIntOrNull() ?: 0
-
-        val iceResistance =
-            view.findViewById<TextInputEditText>(R.id.input_ms_creature_ice_resistence)
         val iceResistanceInt = iceResistance.text.toString().toIntOrNull() ?: 100
-
-        val earthResistance =
-            view.findViewById<TextInputEditText>(R.id.input_ms_creature_earth_resistence)
         val earthResistanceInt = earthResistance.text.toString().toIntOrNull() ?: 100
-
-        val energyResistance =
-            view.findViewById<TextInputEditText>(R.id.input_ms_creature_energy_resistence)
         val energyResistanceInt = energyResistance.text.toString().toIntOrNull() ?: 100
-
-        val deathResistance = view.findViewById<TextInputEditText>(R.id.input_ms_creature_death_resistence)
         val deathResistanceInt = deathResistance.text.toString().toIntOrNull() ?: 100
-
-        val fireResistance =
-            view.findViewById<TextInputEditText>(R.id.input_ms_creature_fire_resistence)
         val fireResistanceInt = fireResistance.text.toString().toIntOrNull() ?: 100
-
         val formato = DecimalFormat("#")
 
         avalancheDmg(
             levelInt,
             magicLevelInt,
             iceResistanceInt,
-            view,
             formato
         )
 
@@ -148,7 +242,6 @@ class SorcererCalcFragment : Fragment() {
             levelInt,
             magicLevelInt,
             earthResistanceInt,
-            view,
             formato
         )
 
@@ -156,7 +249,6 @@ class SorcererCalcFragment : Fragment() {
             levelInt,
             magicLevelInt,
             energyResistanceInt,
-            view,
             formato
         )
 
@@ -164,7 +256,6 @@ class SorcererCalcFragment : Fragment() {
             levelInt,
             magicLevelInt,
             fireResistanceInt,
-            view,
             formato
         )
 
@@ -172,37 +263,36 @@ class SorcererCalcFragment : Fragment() {
             levelInt,
             magicLevelInt,
             energyResistanceInt,
-            view,
-            formato)
+            formato
+        )
 
 
         granMasVis(
             levelInt,
             magicLevelInt,
             energyResistanceInt,
-            view,
-            formato)
+            formato
+        )
 
-        granMasFlam(levelInt,
+        granMasFlam(
+            levelInt,
             magicLevelInt,
             fireResistanceInt,
-            view,
-            formato)
+            formato
+        )
 
         sdRune(
             levelInt,
             magicLevelInt,
             deathResistanceInt,
-            view,
-            formato)
-
+            formato
+        )
     }
 
     private fun sdRune(
         levelInt: Int,
         magicLevelInt: Int,
         deathResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minBaseDmgSd = (levelInt * 0.2) + (magicLevelInt * 4.605) + 28
@@ -226,16 +316,8 @@ class SorcererCalcFragment : Fragment() {
                 maxDmgSd + (maxDmgSd * 0.62)
             }
         }
-
         val averageSd = (minDmgSd + maxDmgSd) / 2
         val averageCritSd = (minCritSd + maxCritSd) / 2
-
-        val tvMinSd = view.findViewById<TextView>(R.id.min_ed_sd_rune)
-        val tvMinCritSd = view.findViewById<TextView>(R.id.min_crit_ed_sd_rune)
-        val tvAverageSd = view.findViewById<TextView>(R.id.average_ed_sd_rune)
-        val tvAverageCritSd = view.findViewById<TextView>(R.id.average_crit_ed_sd_rune)
-        val tvMaxSd = view.findViewById<TextView>(R.id.max_ed_sd_rune)
-        val tvMaxCritSd = view.findViewById<TextView>(R.id.max_crit_ed_sd_rune)
 
         tvMinSd.text = formato.format(minDmgSd)
         tvMinCritSd.text = formato.format(minCritSd)
@@ -250,7 +332,6 @@ class SorcererCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         fireResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minMasFlamDmgBase = (levelInt / 5) + (magicLevelInt * 7.0)
@@ -308,13 +389,6 @@ class SorcererCalcFragment : Fragment() {
             }
         }
 
-        val tvMinMasFlam = view.findViewById<TextView>(R.id.min_mas_flam)
-        val tvMinCritMasFlam = view.findViewById<TextView>(R.id.min_crit_mas_flam)
-        val tvAverageMasFlam = view.findViewById<TextView>(R.id.average_mas_flam)
-        val tvAverageCritMasFlam = view.findViewById<TextView>(R.id.average_crit_mas_flam)
-        val tvMaxMasFlam = view.findViewById<TextView>(R.id.max_mas_flam)
-        val tvMaxCritMasFlam = view.findViewById<TextView>(R.id.max_crit_mas_flam)
-
         tvMinMasFlam.text = formato.format(minMasFlam)
         tvAverageMasFlam.text = formato.format(averageMasFlam)
         tvMaxMasFlam.text = formato.format(maxMasFlam)
@@ -331,6 +405,7 @@ class SorcererCalcFragment : Fragment() {
                 tvAverageCritMasFlam.text = formato.format(averageCritCobraWand)
                 tvMaxCritMasFlam.text = formato.format(maxCritCobraWand)
             }
+
             2 -> {
                 tvMinCritMasFlam.text = formato.format(minCritSoultainter)
                 tvAverageCritMasFlam.text = formato.format(averageCritSoultainter)
@@ -349,7 +424,6 @@ class SorcererCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         energyResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minMasVisDmgBase = (levelInt / 5) + (magicLevelInt * 5.0)
@@ -375,13 +449,6 @@ class SorcererCalcFragment : Fragment() {
         val averageCritSoultainter = (minCritSoultainter + maxCritSoultainter) / 2
         val averageCritSanguine = (minCritSanguine + maxCritSanguine) / 2
 
-        val tvMinMasVis = view.findViewById<TextView>(R.id.min_mas_vis)
-        val tvMinCritMasVis = view.findViewById<TextView>(R.id.min_crit_mas_vis)
-        val tvAverageMasVis = view.findViewById<TextView>(R.id.average_mas_vis)
-        val tvAverageCritMasVis = view.findViewById<TextView>(R.id.average_crit_mas_vis)
-        val tvMaxMasVis = view.findViewById<TextView>(R.id.max_mas_vis)
-        val tvMaxCritMasVis = view.findViewById<TextView>(R.id.max_crit_mas_vis)
-
         tvMinMasVis.text = formato.format(minMasVis)
         tvAverageMasVis.text = formato.format(averageMasVis)
         tvMaxMasVis.text = formato.format(maxMasVis)
@@ -398,6 +465,7 @@ class SorcererCalcFragment : Fragment() {
                 tvAverageCritMasVis.text = formato.format(averageCritCobraWand)
                 tvMaxCritMasVis.text = formato.format(maxCritCobraWand)
             }
+
             2 -> {
                 tvMinCritMasVis.text = formato.format(minCritSoultainter)
                 tvAverageCritMasVis.text = formato.format(averageCritSoultainter)
@@ -416,7 +484,6 @@ class SorcererCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         energyResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minVisHurDmgBase = (levelInt / 5) + (magicLevelInt * 4.5)
@@ -474,13 +541,6 @@ class SorcererCalcFragment : Fragment() {
             }
         }
 
-        val tvMinVisHur = view.findViewById<TextView>(R.id.min_vis_hur)
-        val tvMinCritVisHur = view.findViewById<TextView>(R.id.min_crit_vis_hur)
-        val tvAverageVisHur = view.findViewById<TextView>(R.id.average_vis_hur)
-        val tvAverageCritVisHur = view.findViewById<TextView>(R.id.average_crit_vis_hur)
-        val tvMaxVisHur = view.findViewById<TextView>(R.id.max_vis_hur)
-        val tvMaxCritVisHur = view.findViewById<TextView>(R.id.max_crit_vis_hur)
-
         tvMinVisHur.text = formato.format(minVisHur)
         tvAverageVisHur.text = formato.format(averageVisHur)
         tvMaxVisHur.text = formato.format(maxVisHur)
@@ -497,11 +557,13 @@ class SorcererCalcFragment : Fragment() {
                 tvAverageCritVisHur.text = formato.format(averageCritCobraWand)
                 tvMaxCritVisHur.text = formato.format(maxCritCobraWand)
             }
+
             2 -> {
                 tvMinCritVisHur.text = formato.format(minCritSoultainter)
                 tvAverageCritVisHur.text = formato.format(averageCritSoultainter)
                 tvMaxCritVisHur.text = formato.format(maxCritSoultainter)
             }
+
             else -> {
                 tvMinCritVisHur.text = formato.format(minCritSanguine)
                 tvAverageCritVisHur.text = formato.format(averageCritSanguine)
@@ -514,7 +576,6 @@ class SorcererCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         energyResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minBaseDmgThunder = (levelInt * 0.2) + (magicLevelInt * 1) + 6
@@ -542,13 +603,6 @@ class SorcererCalcFragment : Fragment() {
         val averageThunder = (minDmgThunder + maxDmgThunder) / 2
         val averageCritThunder = (minCritThunder + maxCritThunder) / 2
 
-        val tvMinThunder = view.findViewById<TextView>(R.id.min_ed_thunderstorm_rune)
-        val tvMinCritThunder = view.findViewById<TextView>(R.id.min_crit_ed_thunderstorm_rune)
-        val tvAverageThunder = view.findViewById<TextView>(R.id.average_ed_thunderstorm_rune)
-        val tvAverageCritThunder = view.findViewById<TextView>(R.id.average_crit_ed_thunderstorm_rune)
-        val tvMaxThunder = view.findViewById<TextView>(R.id.max_ed_thunderstorm_rune)
-        val tvMaxCritThunder = view.findViewById<TextView>(R.id.max_crit_ed_thunderstorm_rune)
-
         tvMinThunder.text = formato.format(minDmgThunder)
         tvMinCritThunder.text = formato.format(minCritThunder)
         tvAverageThunder.text = formato.format(averageThunder)
@@ -561,7 +615,6 @@ class SorcererCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         fireResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minBaseDmgGfb = (levelInt * 0.2) + (magicLevelInt * 1.81) + 10
@@ -589,13 +642,6 @@ class SorcererCalcFragment : Fragment() {
         val averageGfb = (minDmgGfb + maxDmgGfb) / 2
         val averageCritGfb = (minCritGfb + maxCritGfb) / 2
 
-        val tvMinGfb = view.findViewById<TextView>(R.id.min_ed_gfb_rune)
-        val tvMinCritGfb = view.findViewById<TextView>(R.id.min_crit_ed_gfb_rune)
-        val tvAverageGfb = view.findViewById<TextView>(R.id.average_ed_gfb_rune)
-        val tvAverageCritGfb = view.findViewById<TextView>(R.id.average_ed_crit_gfb_rune)
-        val tvMaxGfb = view.findViewById<TextView>(R.id.max_ed_gfb_rune)
-        val tvMaxCritGfb = view.findViewById<TextView>(R.id.max_crit_ed_gfb_rune)
-
         tvMinGfb.text = formato.format(minDmgGfb)
         tvMinCritGfb.text = formato.format(minCritGfb)
         tvAverageGfb.text = formato.format(averageGfb)
@@ -608,7 +654,6 @@ class SorcererCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         earthResistaceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minBaseDmgStShower = (levelInt * 0.2) + (magicLevelInt * 1) + 6
@@ -636,13 +681,6 @@ class SorcererCalcFragment : Fragment() {
         val averageStShower = (minDmgStShower + maxDmgStShower) / 2
         val averageCritStShower = (minCritStShower + maxCritStShower) / 2
 
-        val tvMinStShower = view.findViewById<TextView>(R.id.min_ed_stoneshower_rune)
-        val tvMinCritStShower = view.findViewById<TextView>(R.id.min_crit_ed_stoneshower_rune)
-        val tvAverageStShower = view.findViewById<TextView>(R.id.average_ed_stoneshower_rune)
-        val tvAverageCritStShower = view.findViewById<TextView>(R.id.average_crit_ed_stoneshower_rune)
-        val tvMaxStShower = view.findViewById<TextView>(R.id.max_ed_stoneshower_rune)
-        val tvMaxCritStShower = view.findViewById<TextView>(R.id.max_crit_ed_stoneshower_rune)
-
         tvMinStShower.text = formato.format(minDmgStShower)
         tvMinCritStShower.text = formato.format(minCritStShower)
         tvAverageStShower.text = formato.format(averageStShower)
@@ -655,7 +693,6 @@ class SorcererCalcFragment : Fragment() {
         levelInt: Int,
         magicLevelInt: Int,
         iceResistanceInt: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val minBaseDmgAva = (levelInt * 0.2) + (magicLevelInt * 1.81) + 10
@@ -683,13 +720,6 @@ class SorcererCalcFragment : Fragment() {
         val averageAva = (minDmgAva + maxDmgAva) / 2
         val averageCritAva = (minCritAva + maxCritAva) / 2
 
-        val tvMinAva = view.findViewById<TextView>(R.id.min_ed_avalanche_rune)
-        val tvMinCritAva = view.findViewById<TextView>(R.id.min_crit_ed_avalanche_rune)
-        val tvAverageAva = view.findViewById<TextView>(R.id.average_ed_avalanche_rune)
-        val tvAverageCritAva = view.findViewById<TextView>(R.id.average_crit_ed_avalanche_rune)
-        val tvMaxAva = view.findViewById<TextView>(R.id.max_ed_avalanche_rune)
-        val tvMaxCritAva = view.findViewById<TextView>(R.id.max_crit_ed_avalanche_rune)
-
         tvMinAva.text = formato.format(minDmgAva)
         tvMinCritAva.text = formato.format(minCritAva)
         tvAverageAva.text = formato.format(averageAva)
@@ -697,6 +727,4 @@ class SorcererCalcFragment : Fragment() {
         tvMaxAva.text = formato.format(maxDmgAva)
         tvMaxCritAva.text = formato.format(maxCritAva)
     }
-
-
 }

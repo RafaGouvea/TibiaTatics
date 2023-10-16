@@ -57,5 +57,27 @@
     <string name="exevo_gran_mas_vis">Exevo Gran Mas Vis</string>
     <string name="exevo_gran_mas_flam">Exevo Gran Mas Flam</string>
     <string name="elemental_atack">Elemental Atack</string>
+    <string name="hit_corpo_a_corpo">Hit Corpo a Corpo</string>
+    <string name="exori_mas">Exori Mas</string>
+    <string name="exori">Exori</string>
+    <string name="exori_gran">Exori Gran</string>
+    <string name="sanguine_legs">Sanguine Legs</string>
+    <string name="physical_atack">Physical Atack</string>
+    <string name="elemental_weapon_type">Elemental weapon type</string>
+    <string name="name">Name:</string>
+    <string name="leveel">Level:</string>
+    <string name="master_sorcerer">Master Sorcerer</string>
+    <string name="vocation">Vocation:</string>
+    <string name="rank">Rank:</string>
+    <string name="status">Status:</string>
+    <string name="joined">Joined:</string>
+    <string name="title">Title:</string>
+    <string name="read_more">Read more</string>
+    <string name="world">World:</string>
+    <string name="experience">Experience:</string>
+    <string name="location">Location:</string>
+    <string name="players_online">Players Online:</string>
+    <string name="pvp_type">Pvp Type:</string>
+    <string name="transfer">Transfer:</string>
 
 </resources>

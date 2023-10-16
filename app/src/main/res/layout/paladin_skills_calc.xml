@@ -1,6 +1,334 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/all_background"
+    android:paddingBottom="12dp"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_skills_paladin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/img_exevo_vis_hur"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/news_background_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hit_basico"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_exevo_vis_hur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_exevo_vis_hur" />
+
+    <TextView
+        android:id="@+id/text_view_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@id/max_rp_basic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_exevo_vis_hur" />
+
+    <TextView
+        android:id="@+id/max_rp_basic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_skills_paladin"
+        app:layout_constraintStart_toEndOf="@+id/text_view_10"
+        app:layout_constraintTop_toTopOf="@+id/text_view_10" />
+
+
+    <TextView
+        android:id="@+id/text_view_11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@+id/max_rp_critc_basic"
+        app:layout_constraintStart_toStartOf="@+id/guideline_skills_paladin"
+        app:layout_constraintTop_toTopOf="@+id/text_view_10" />
+
+    <TextView
+        android:id="@+id/max_rp_critc_basic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/text_view_11"
+        app:layout_constraintTop_toTopOf="@+id/text_view_11" />
+
+    <TextView
+        android:id="@+id/text_view_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@id/average_rp_basic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_10" />
+
+    <TextView
+        android:id="@+id/average_rp_basic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_skills_paladin"
+        app:layout_constraintStart_toEndOf="@+id/text_view_12"
+        app:layout_constraintTop_toTopOf="@+id/text_view_12" />
+
+    <TextView
+        android:id="@+id/text_view_17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@id/average_crit_basic"
+        app:layout_constraintStart_toStartOf="@+id/guideline_skills_paladin"
+        app:layout_constraintTop_toTopOf="@+id/text_view_12" />
+
+    <TextView
+        android:id="@+id/average_crit_basic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_17"
+        app:layout_constraintTop_toTopOf="@+id/text_view_12" />
+
+    <ImageView
+        android:id="@+id/img_exori_mas"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/news_background_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_12" />
+
+    <TextView
+        android:id="@+id/tv_exevo_mas_san"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exevo_mas_san"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_exori_mas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_exori_mas" />
+
+    <TextView
+        android:id="@+id/text_view_22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@id/max_mas_san"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_exori_mas" />
+
+    <TextView
+        android:id="@+id/max_mas_san"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_skills_paladin"
+        app:layout_constraintStart_toEndOf="@+id/text_view_22"
+        app:layout_constraintTop_toTopOf="@+id/text_view_22" />
+
+
+    <TextView
+        android:id="@+id/text_view_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@id/max_crit_mas_san"
+        app:layout_constraintStart_toStartOf="@+id/guideline_skills_paladin"
+        app:layout_constraintTop_toTopOf="@+id/text_view_22" />
+
+    <TextView
+        android:id="@+id/max_crit_mas_san"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_24"
+        app:layout_constraintTop_toTopOf="@+id/text_view_22" />
+
+    <TextView
+        android:id="@+id/text_view_26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@id/average_mas_san"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_22" />
+
+    <TextView
+        android:id="@+id/average_mas_san"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_skills_paladin"
+        app:layout_constraintStart_toEndOf="@+id/text_view_26"
+        app:layout_constraintTop_toTopOf="@+id/text_view_26" />
+
+    <TextView
+        android:id="@+id/text_view_28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@+id/average_crit_mas_san"
+        app:layout_constraintStart_toStartOf="@+id/guideline_skills_paladin"
+        app:layout_constraintTop_toTopOf="@+id/text_view_26" />
+
+    <TextView
+        android:id="@+id/average_crit_mas_san"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_28"
+        app:layout_constraintTop_toTopOf="@+id/text_view_26" />
+
+    <TextView
+        android:id="@+id/text_view_32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@+id/min_mas_san"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_26" />
+
+    <TextView
+        android:id="@+id/min_mas_san"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_skills_paladin"
+        app:layout_constraintStart_toEndOf="@+id/text_view_32"
+        app:layout_constraintTop_toTopOf="@+id/text_view_32" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@+id/min_crit_mas_san"
+        app:layout_constraintStart_toStartOf="@+id/guideline_skills_paladin"
+        app:layout_constraintTop_toTopOf="@+id/text_view_32" />
+
+    <TextView
+        android:id="@+id/min_crit_mas_san"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView29"
+        app:layout_constraintTop_toTopOf="@+id/textView29" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

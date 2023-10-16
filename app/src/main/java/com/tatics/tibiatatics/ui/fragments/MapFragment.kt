@@ -16,29 +16,29 @@ class MapFragment : Fragment() {
 
     private val imageResources = imageResources()
     private var currentImageIndex = 8
+    private lateinit var photoView: PhotoView
+    private lateinit var upMapButton: ImageButton
+    private lateinit var downMapButton: ImageButton
+    private lateinit var floorMap: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_map, container, false)
 
-        return inflater.inflate(R.layout.fragment_map, container, false)
+        photoView = view.findViewById(R.id.imgMap)
+        upMapButton = view.findViewById(R.id.button_up)
+        downMapButton = view.findViewById(R.id.button_down)
+        floorMap = view.findViewById(R.id.floor_map)
+
+        buttons()
+
+        return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun buttons() {
 
-        buttons(view)
-
-    }
-
-    private fun buttons(view: View) {
-
-        val photoView = view.findViewById<PhotoView>(R.id.imgMap)
-        val upMapButton = view.findViewById<ImageButton>(R.id.button_up)
-        val downMapButton = view.findViewById<ImageButton>(R.id.button_down)
-
-        val floorMap = view.findViewById<TextView>(R.id.floor_map)
         photoView.setImageResource(imageResources[currentImageIndex])
 
         upMapButton.setOnClickListener {

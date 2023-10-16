@@ -1,6 +1,944 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/all_background">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_rune_paladin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+    <ImageView
+        android:id="@+id/img_avalanche_rune"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/news_background_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_avalanche_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/avalanche_rune"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_avalanche_rune"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_avalanche_rune" />
+
+    <TextView
+        android:id="@+id/tv41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_ed_avalanche_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_avalanche_rune" />
+
+    <TextView
+        android:id="@+id/max_ed_avalanche_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv41"
+        app:layout_constraintTop_toTopOf="@+id/tv41" />
+
+
+    <TextView
+        android:id="@+id/tv43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_crit_ed_avalanche_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv41" />
+
+    <TextView
+        android:id="@+id/max_crit_ed_avalanche_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv43"
+        app:layout_constraintTop_toTopOf="@+id/tv41" />
+
+    <TextView
+        android:id="@+id/tv45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/average_ed_avalanche_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv41" />
+
+    <TextView
+        android:id="@+id/average_ed_avalanche_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv45"
+        app:layout_constraintTop_toTopOf="@+id/tv45" />
+
+    <TextView
+        android:id="@+id/tv47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/average_crit_ed_avalanche_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv45" />
+
+    <TextView
+        android:id="@+id/average_crit_ed_avalanche_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv47"
+        app:layout_constraintTop_toTopOf="@+id/tv45" />
+
+    <TextView
+        android:id="@+id/tv49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/min_ed_avalanche_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv45" />
+
+    <TextView
+        android:id="@+id/min_ed_avalanche_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv49"
+        app:layout_constraintTop_toTopOf="@+id/tv49" />
+
+    <TextView
+        android:id="@+id/tv51"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/min_crit_ed_avalanche_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv49" />
+
+    <TextView
+        android:id="@+id/min_crit_ed_avalanche_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv51"
+        app:layout_constraintTop_toTopOf="@+id/tv49" />
+
+    <ImageView
+        android:id="@+id/img_thunderstorm_rune"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/news_background_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv49" />
+
+    <TextView
+        android:id="@+id/tv_thunderstorm_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/thunderstorm_rune"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_thunderstorm_rune"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_thunderstorm_rune" />
+
+    <TextView
+        android:id="@+id/tv01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_ed_thunderstorm_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_thunderstorm_rune" />
+
+    <TextView
+        android:id="@+id/max_ed_thunderstorm_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv01"
+        app:layout_constraintTop_toTopOf="@+id/tv01" />
+
+
+    <TextView
+        android:id="@+id/tv02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_crit_ed_thunderstorm_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv01" />
+
+    <TextView
+        android:id="@+id/max_crit_ed_thunderstorm_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv02"
+        app:layout_constraintTop_toTopOf="@+id/tv02" />
+
+    <TextView
+        android:id="@+id/tv03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/average_ed_thunderstorm_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv01" />
+
+    <TextView
+        android:id="@+id/average_ed_thunderstorm_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv03"
+        app:layout_constraintTop_toTopOf="@+id/tv03" />
+
+    <TextView
+        android:id="@+id/tv04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/average_crit_ed_thunderstorm_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv03" />
+
+    <TextView
+        android:id="@+id/average_crit_ed_thunderstorm_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv04"
+        app:layout_constraintTop_toTopOf="@+id/tv04" />
+
+    <TextView
+        android:id="@+id/tv05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/min_ed_thunderstorm_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv03" />
+
+    <TextView
+        android:id="@+id/min_ed_thunderstorm_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv05"
+        app:layout_constraintTop_toTopOf="@+id/tv05" />
+
+    <TextView
+        android:id="@+id/tv06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/min_crit_ed_thunderstorm_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv05" />
+
+    <TextView
+        android:id="@+id/min_crit_ed_thunderstorm_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv06"
+        app:layout_constraintTop_toTopOf="@+id/tv06" />
+
+    <ImageView
+        android:id="@+id/img_stoneshower_rune"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/news_background_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv05" />
+
+    <TextView
+        android:id="@+id/tv_stoneshower_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stoneshower_rune"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_stoneshower_rune"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_stoneshower_rune" />
+
+    <TextView
+        android:id="@+id/tv10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_ed_stoneshower_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_stoneshower_rune" />
+
+    <TextView
+        android:id="@+id/max_ed_stoneshower_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv10"
+        app:layout_constraintTop_toTopOf="@+id/tv10" />
+
+
+    <TextView
+        android:id="@+id/tv11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_crit_ed_stoneshower_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv10" />
+
+    <TextView
+        android:id="@+id/max_crit_ed_stoneshower_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv11"
+        app:layout_constraintTop_toTopOf="@+id/tv11" />
+
+    <TextView
+        android:id="@+id/tv12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/average_ed_stoneshower_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv10" />
+
+    <TextView
+        android:id="@+id/average_ed_stoneshower_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv12"
+        app:layout_constraintTop_toTopOf="@+id/tv12" />
+
+    <TextView
+        android:id="@+id/tv13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/average_crit_ed_stoneshower_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv12" />
+
+    <TextView
+        android:id="@+id/average_crit_ed_stoneshower_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv13"
+        app:layout_constraintTop_toTopOf="@+id/tv13" />
+
+    <TextView
+        android:id="@+id/tv14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/min_ed_stoneshower_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv12" />
+
+    <TextView
+        android:id="@+id/min_ed_stoneshower_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv14"
+        app:layout_constraintTop_toTopOf="@+id/tv14" />
+
+    <TextView
+        android:id="@+id/tv15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp"
+        android:text="@string/critico_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/min_crit_ed_stoneshower_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv14" />
+
+    <TextView
+        android:id="@+id/min_crit_ed_stoneshower_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv15"
+        app:layout_constraintTop_toTopOf="@+id/tv15" />
+
+    <ImageView
+        android:id="@+id/img_gfb_rune"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/news_background_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv14" />
+
+    <TextView
+        android:id="@+id/tv_gfb_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/great_fireball_rune"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_gfb_rune"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_gfb_rune" />
+
+    <TextView
+        android:id="@+id/tv20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_ed_gfb_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_gfb_rune" />
+
+    <TextView
+        android:id="@+id/max_ed_gfb_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv20"
+        app:layout_constraintTop_toTopOf="@+id/tv20" />
+
+
+    <TextView
+        android:id="@+id/tv21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_crit_ed_gfb_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv20" />
+
+    <TextView
+        android:id="@+id/max_crit_ed_gfb_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv21"
+        app:layout_constraintTop_toTopOf="@+id/tv21" />
+
+    <TextView
+        android:id="@+id/tv22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/average_ed_gfb_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv20" />
+
+    <TextView
+        android:id="@+id/average_ed_gfb_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv22"
+        app:layout_constraintTop_toTopOf="@+id/tv22" />
+
+    <TextView
+        android:id="@+id/tv23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/average_ed_crit_gfb_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv22" />
+
+    <TextView
+        android:id="@+id/average_ed_crit_gfb_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv23"
+        app:layout_constraintTop_toTopOf="@+id/tv23" />
+
+    <TextView
+        android:id="@+id/tv24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/min_ed_gfb_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv22" />
+
+    <TextView
+        android:id="@+id/min_ed_gfb_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv24"
+        app:layout_constraintTop_toTopOf="@+id/tv24" />
+
+    <TextView
+        android:id="@+id/tv25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp"
+        android:text="@string/critico_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/min_crit_ed_gfb_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv24" />
+
+    <TextView
+        android:id="@+id/min_crit_ed_gfb_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv25"
+        app:layout_constraintTop_toTopOf="@+id/tv25" />
+
+    <ImageView
+        android:id="@+id/img_sd_rune"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/news_background_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv24" />
+
+    <TextView
+        android:id="@+id/tv_sd_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sudden_death_rune"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_sd_rune"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_sd_rune" />
+
+    <TextView
+        android:id="@+id/tv30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_ed_sd_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_sd_rune" />
+
+    <TextView
+        android:id="@+id/max_ed_sd_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv30"
+        app:layout_constraintTop_toTopOf="@+id/tv30" />
+
+
+    <TextView
+        android:id="@+id/tv31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_maximo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/max_crit_ed_sd_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv30" />
+
+    <TextView
+        android:id="@+id/max_crit_ed_sd_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv31"
+        app:layout_constraintTop_toTopOf="@+id/tv31" />
+
+    <TextView
+        android:id="@+id/tv32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/average_ed_sd_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv30" />
+
+    <TextView
+        android:id="@+id/average_ed_sd_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv32"
+        app:layout_constraintTop_toTopOf="@+id/tv32" />
+
+    <TextView
+        android:id="@+id/tv33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/critico_medio"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/average_crit_ed_sd_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv32" />
+
+    <TextView
+        android:id="@+id/average_crit_ed_sd_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv33"
+        app:layout_constraintTop_toTopOf="@+id/tv33" />
+
+    <TextView
+        android:id="@+id/tv34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/hit_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/min_ed_sd_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv32" />
+
+    <TextView
+        android:id="@+id/min_ed_sd_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintStart_toEndOf="@+id/tv34"
+        app:layout_constraintTop_toTopOf="@+id/tv34" />
+
+    <TextView
+        android:id="@+id/tv35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp"
+        android:text="@string/critico_minimo"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/min_crit_ed_sd_rune"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline_rune_paladin"
+        app:layout_constraintTop_toTopOf="@+id/tv34" />
+
+    <TextView
+        android:id="@+id/min_crit_ed_sd_rune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/_0"
+        android:textColor="@color/brown_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/tv35"
+        app:layout_constraintTop_toTopOf="@+id/tv35" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

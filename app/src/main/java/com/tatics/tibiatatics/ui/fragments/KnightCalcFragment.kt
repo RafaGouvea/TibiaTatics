@@ -23,6 +23,42 @@ class KnightCalcFragment : Fragment() {
     private var dmgType = 1
     private var weaponModel = 0
     private var sanguineLegs = 0
+    private lateinit var level: TextInputEditText
+    private lateinit var skills: TextInputEditText
+    private lateinit var elementalAttack: TextInputEditText
+    private lateinit var physicalAttack: TextInputEditText
+    private lateinit var physicalResistance: TextInputEditText
+    private lateinit var iceResistance: TextInputEditText
+    private lateinit var earthResistance: TextInputEditText
+    private lateinit var energyResistance: TextInputEditText
+    private lateinit var fireResistance: TextInputEditText
+    private lateinit var deathResistance: TextInputEditText
+    private lateinit var armor: TextInputEditText
+    private lateinit var maxBasic: TextView
+    private lateinit var averageBasic: TextView
+    private lateinit var averageCritBasic: TextView
+    private lateinit var maxCritBasic: TextView
+    private lateinit var minExori: TextView
+    private lateinit var minCritExori: TextView
+    private lateinit var averageExori: TextView
+    private lateinit var averageCritExori: TextView
+    private lateinit var maxExori: TextView
+    private lateinit var maxCritExori: TextView
+    private lateinit var minExoriGran: TextView
+    private lateinit var minCritExoriGran: TextView
+    private lateinit var averageExoriGran: TextView
+    private lateinit var averageCritExoriGran: TextView
+    private lateinit var maxExoriGran: TextView
+    private lateinit var maxCritExoriGran: TextView
+    private lateinit var minExoriMas: TextView
+    private lateinit var minCritExoriMas: TextView
+    private lateinit var averageExoriMas: TextView
+    private lateinit var averageCritExoriMas: TextView
+    private lateinit var maxExoriMas: TextView
+    private lateinit var maxCritExoriMas: TextView
+    private lateinit var actAttackMode: AutoCompleteTextView
+    private lateinit var actElementalType: AutoCompleteTextView
+    private lateinit var actWeaponModel: AutoCompleteTextView
 
 
     override fun onCreateView(
@@ -31,18 +67,58 @@ class KnightCalcFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_knight_calc, container, false)
 
-        dropMenuElementalAttack(view)
-        dropMenuAttackMode(view)
-        dropMenuWeaponMode(view)
+        viewById(view)
+        dropMenuElementalAttack()
+        dropMenuAttackMode()
+        dropMenuWeaponMode()
         sanguineLegs(view)
 
         val btnCalcular = view.findViewById<AppCompatButton>(R.id.btn_calcular)
 
         btnCalcular.setOnClickListener {
-            dmgKnight(view)
+            dmgKnight()
         }
 
         return view
+    }
+
+    private fun viewById(view: View) {
+        actWeaponModel = view.findViewById(R.id.weaponComplete)
+        actElementalType = view.findViewById(R.id.elementalTypeAutoComplete)
+        actAttackMode = view.findViewById(R.id.AttackAutoCompleter)
+        minExoriMas = view.findViewById(R.id.min_exori_mas)
+        minCritExoriMas = view.findViewById(R.id.min_crit_exori_mas)
+        averageExoriMas = view.findViewById(R.id.average_exori_mas)
+        averageCritExoriMas = view.findViewById(R.id.average_crit_exori_mas)
+        maxExoriMas = view.findViewById(R.id.max_exori_mas)
+        maxCritExoriMas = view.findViewById(R.id.max_crit_exori_mas)
+        minExoriGran = view.findViewById(R.id.min_exori_gran)
+        minCritExoriGran = view.findViewById(R.id.min_crit_exori_gran)
+        averageExoriGran = view.findViewById(R.id.average_exori_gran)
+        averageCritExoriGran = view.findViewById(R.id.average_crit_exori_gran)
+        maxExoriGran = view.findViewById(R.id.max_exori_gran)
+        maxCritExoriGran = view.findViewById(R.id.max_crit_exori_gran)
+        minExori = view.findViewById(R.id.min_exori)
+        minCritExori = view.findViewById(R.id.min_crit_exori)
+        averageExori = view.findViewById(R.id.average_exori)
+        averageCritExori = view.findViewById(R.id.average_crit_exori)
+        maxExori = view.findViewById(R.id.max_exori)
+        maxCritExori = view.findViewById(R.id.max_crit_exori)
+        level = view.findViewById(R.id.input_level)
+        skills = view.findViewById(R.id.input_skills)
+        elementalAttack = view.findViewById(R.id.input_elemental_attack)
+        physicalAttack = view.findViewById(R.id.input_physical_attack)
+        physicalResistance = view.findViewById(R.id.input_creature_physical_resistence)
+        iceResistance = view.findViewById(R.id.input_creature_ice_resistence)
+        earthResistance = view.findViewById(R.id.input_creature_earth_resistence)
+        energyResistance = view.findViewById(R.id.input_creature_energy_resistence)
+        fireResistance = view.findViewById(R.id.input_creature_fire_resistence)
+        deathResistance = view.findViewById(R.id.input_creature_death_resistence)
+        armor = view.findViewById(R.id.input_creature_armor)
+        maxBasic = view.findViewById(R.id.max_basic)
+        averageBasic = view.findViewById(R.id.average_basic)
+        averageCritBasic = view.findViewById(R.id.average_crit_basic)
+        maxCritBasic = view.findViewById(R.id.max_crit_basic)
     }
 
     private fun sanguineLegs(view: View) {
@@ -53,57 +129,39 @@ class KnightCalcFragment : Fragment() {
 
             if (selectedRadioButton != null) {
                 when (selectedRadioButton.id) {
-                    R.id.yesRadioButton -> sanguineLegs = 1
-                    R.id.noRadioButton -> sanguineLegs = 0
+                    R.id.yes_radio_button -> sanguineLegs = 1
+                    R.id.no_radio_button -> sanguineLegs = 0
                 }
             }
-            when (sanguineLegs){
-                1 -> Toast.makeText(requireContext(), "+8% damage on Exori Gran", Toast.LENGTH_SHORT).show()
-                0 -> Toast.makeText(requireContext(), "No bonus on Exori Gran", Toast.LENGTH_SHORT).show()
+            when (sanguineLegs) {
+                1 -> Toast.makeText(
+                    requireContext(),
+                    "+8% damage on Exori Gran",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                0 -> Toast.makeText(requireContext(), "No bonus on Exori Gran", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
 
-    private fun dmgKnight(view: View) {
-
-        val level = view.findViewById<TextInputEditText>(R.id.input_level)
+    private fun dmgKnight() {
         val levelInt = level.text.toString().toIntOrNull() ?: 0
-
-        val skills = view.findViewById<TextInputEditText>(R.id.input_skills)
         val skillsInt = skills.text.toString().toIntOrNull() ?: 0
-
-        val elementalAttack = view.findViewById<TextInputEditText>(R.id.input_elemental_attack)
         val elementalAttackInt = elementalAttack.text.toString().toIntOrNull() ?: 0
-
-        val physicalAttack = view.findViewById<TextInputEditText>(R.id.input_physical_attack)
         val physicalAttackInt = physicalAttack.text.toString().toIntOrNull() ?: 0
-
-        val physicalResistance =
-            view.findViewById<TextInputEditText>(R.id.input_creature_physical_resistence)
         val physicalResistanceInt = physicalResistance.text.toString().toIntOrNull() ?: 100
-
-        val iceResistance = view.findViewById<TextInputEditText>(R.id.input_creature_ice_resistence)
         val iceResistanceInt = iceResistance.text.toString().toIntOrNull() ?: 100
-
-        val earthResistance =
-            view.findViewById<TextInputEditText>(R.id.input_creature_earth_resistence)
         val earthResistanceInt = earthResistance.text.toString().toIntOrNull() ?: 100
-
-        val energyResistance =
-            view.findViewById<TextInputEditText>(R.id.input_creature_energy_resistence)
         val energyResistanceInt = energyResistance.text.toString().toIntOrNull() ?: 100
-
-        val fireResistance =
-            view.findViewById<TextInputEditText>(R.id.input_creature_fire_resistence)
         val fireResistanceInt = fireResistance.text.toString().toIntOrNull() ?: 100
-
-        val deathResistance =
-            view.findViewById<TextInputEditText>(R.id.input_creature_death_resistence)
         val deathResistanceInt = deathResistance.text.toString().toIntOrNull() ?: 100
 
-        val armor = view.findViewById<TextInputEditText>(R.id.input_creature_armor)
         var armorInt = armor.text.toString().toIntOrNull() ?: 1
-        if (armorInt > 130) { armorInt = 130 }
+        if (armorInt > 130) {
+            armorInt = 130
+        }
 
         val resistanceElemental = when (dmgType) {
             1 -> earthResistanceInt
@@ -129,7 +187,6 @@ class KnightCalcFragment : Fragment() {
             calcArmor,
             physicalResistanceInt,
             resistanceElemental,
-            view,
             formato
         )
 
@@ -143,7 +200,6 @@ class KnightCalcFragment : Fragment() {
             physicalResistanceInt,
             percentageElementalAttack,
             resistanceElemental,
-            view,
             formato
 
         )
@@ -158,7 +214,6 @@ class KnightCalcFragment : Fragment() {
             physicalResistanceInt,
             percentageElementalAttack,
             resistanceElemental,
-            view,
             formato
         )
 
@@ -172,7 +227,6 @@ class KnightCalcFragment : Fragment() {
             physicalResistanceInt,
             percentageElementalAttack,
             resistanceElemental,
-            view,
             formato
         )
 
@@ -186,7 +240,6 @@ class KnightCalcFragment : Fragment() {
         calcArmor: Double,
         physicalResistanceInt: Int,
         resistanceElemental: Int,
-        view: View,
         stringFormat: DecimalFormat
     ) {
         val calcTotalDmgPhysical =
@@ -199,16 +252,10 @@ class KnightCalcFragment : Fragment() {
         val dmgElementalWithResistence = (calcTotalDmgElemental * resistanceElemental) / 100
 
         val dmgTotal = dmgElementalWithResistence + dmgPhysicalWithResistence
-        val maxBasic = view.findViewById<TextView>(R.id.maxBasic)
         maxBasic.text = stringFormat.format(dmgTotal)
 
-
         val averageDmgTotal = dmgTotal / 2
-        val averageBasic = view.findViewById<TextView>(R.id.averageBasic)
         averageBasic.text = stringFormat.format(averageDmgTotal)
-
-        val averageCritBasic = view.findViewById<TextView>(R.id.averageCritBasic)
-        val maxCritBasic = view.findViewById<TextView>(R.id.maxCritBasic)
 
         val dmgCritTotal = dmgTotal + (dmgTotal * 0.5)
         val averageDmgCrit = dmgCritTotal / 2
@@ -224,6 +271,7 @@ class KnightCalcFragment : Fragment() {
                 maxCritBasic.text = stringFormat.format(dmgCritTotal)
                 averageCritBasic.text = stringFormat.format(averageDmgCrit)
             }
+
             1 -> {
                 maxCritBasic.text = stringFormat.format(dmgCritSoulWar)
                 averageCritBasic.text = stringFormat.format(averageDmgCritSoulWar)
@@ -246,7 +294,6 @@ class KnightCalcFragment : Fragment() {
         physicalResistanceInt: Int,
         percentageElementalAttack: Double,
         resistanceElemental: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val dmgMinBaseExori = skillsInt * 0.5 + (levelInt / 5)
@@ -266,7 +313,6 @@ class KnightCalcFragment : Fragment() {
         val minCritExoriTotalDmg = minExoriTotalDmg + (minExoriTotalDmg * 0.5)
         val minCritSoulWar = minExoriTotalDmg + (minExoriTotalDmg * 0.6)
         val minCritSanguine = minExoriTotalDmg + (minExoriTotalDmg * 0.62)
-
 
 
         val dmgMaxBaseExori = skillsInt * 1.5 + (levelInt / 5)
@@ -292,15 +338,6 @@ class KnightCalcFragment : Fragment() {
         val averageNormalCritExori = averageNormalExori + (averageNormalExori * 0.5)
         val averageCritSoulWar = averageNormalExori + (averageNormalExori * 0.6)
         val averageCritSanguine = averageNormalExori + (averageNormalExori * 0.62)
-
-
-        val minExori = view.findViewById<TextView>(R.id.minExori)
-        val minCritExori = view.findViewById<TextView>(R.id.minCritExori)
-        val averageExori = view.findViewById<TextView>(R.id.averageExori)
-        val averageCritExori = view.findViewById<TextView>(R.id.averageCritExori)
-        val maxExori = view.findViewById<TextView>(R.id.maxExori)
-        val maxCritExori = view.findViewById<TextView>(R.id.maxCritExori)
-
 
         minExori.text = formato.format(minExoriTotalDmg)
         averageExori.text = formato.format(averageNormalExori)
@@ -337,14 +374,13 @@ class KnightCalcFragment : Fragment() {
         physicalResistanceInt: Int,
         percentageElementalAttack: Double,
         resistanceElemental: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val dmgMinBaseExoriGran = (skillsInt * 2) * 1.1 + (levelInt / 5).toDouble()
         val minPhysicalExoriGran = physicalAttackInt * 2 * 1.1
         val minElementalExoriGran = elementalAttackInt * 2 * 1.1
         val minDmgValue = dmgMinBaseExoriGran + minPhysicalExoriGran + minElementalExoriGran
-        val minExoriGranDmg = when (weaponModel){
+        val minExoriGranDmg = when (weaponModel) {
             2 -> minDmgValue + (minDmgValue * 0.08)
             3 -> minDmgValue + (minDmgValue * 0.15)
             else -> {
@@ -393,17 +429,18 @@ class KnightCalcFragment : Fragment() {
 
         val averageNormalExoriGran = (minExoriGranTotalDmg + maxExoriGranTotalDmg) / 2
         var averageNormalCritExoriGran = averageNormalExoriGran + (averageNormalExoriGran * 0.5)
-        var averageCritSoulWar= averageNormalExoriGran + (averageNormalExoriGran * 0.6)
+        var averageCritSoulWar = averageNormalExoriGran + (averageNormalExoriGran * 0.6)
         var averageCritSanguine = averageNormalExoriGran + (averageNormalExoriGran * 0.62)
 
-        when (sanguineLegs){
+        when (sanguineLegs) {
             1 -> {
                 minCritExoriGranTotalDmg = minExoriGranTotalDmg + (minExoriGranTotalDmg * 0.58)
                 minCritSoulWar = minExoriGranTotalDmg + (minExoriGranTotalDmg * 0.68)
                 minCritSanguine = minExoriGranTotalDmg + (minExoriGranTotalDmg * 0.70)
 
-                averageNormalCritExoriGran = averageNormalExoriGran + (averageNormalExoriGran * 0.58)
-                averageCritSoulWar= averageNormalExoriGran + (averageNormalExoriGran * 0.68)
+                averageNormalCritExoriGran =
+                    averageNormalExoriGran + (averageNormalExoriGran * 0.58)
+                averageCritSoulWar = averageNormalExoriGran + (averageNormalExoriGran * 0.68)
                 averageCritSanguine = averageNormalExoriGran + (averageNormalExoriGran * 0.70)
 
                 maxCritExoriGranTotalDmg = maxExoriGranTotalDmg + (maxExoriGranTotalDmg * 0.58)
@@ -411,14 +448,6 @@ class KnightCalcFragment : Fragment() {
                 maxCritSanguine = maxExoriGranTotalDmg + (maxExoriGranTotalDmg * 0.70)
             }
         }
-
-        val minExoriGran = view.findViewById<TextView>(R.id.minExoriGran)
-        val minCritExoriGran = view.findViewById<TextView>(R.id.minCritExoriGran)
-        val averageExoriGran = view.findViewById<TextView>(R.id.averageExoriGran)
-        val averageCritExoriGran = view.findViewById<TextView>(R.id.averageCritExoriGran)
-        val maxExoriGran = view.findViewById<TextView>(R.id.maxExoriGran)
-        val maxCritExoriGran = view.findViewById<TextView>(R.id.maxCritExoriGran)
-
 
         minExoriGran.text = formato.format(minExoriGranTotalDmg)
         averageExoriGran.text = formato.format(averageNormalExoriGran)
@@ -457,7 +486,6 @@ class KnightCalcFragment : Fragment() {
         physicalResistanceInt: Int,
         percentageElementalAttack: Double,
         resistanceElemental: Int,
-        view: View,
         formato: DecimalFormat
     ) {
         val dmgMinExoriMas =
@@ -498,14 +526,6 @@ class KnightCalcFragment : Fragment() {
         val averageCritSoulWar = averageNormalExoriMas + (averageNormalExoriMas * 0.6)
         val averageCritSanguine = averageNormalExoriMas + (averageNormalExoriMas * 0.62)
 
-        val minExoriMas = view.findViewById<TextView>(R.id.minExoriMas)
-        val minCritExoriMas = view.findViewById<TextView>(R.id.minCritExoriMas)
-        val averageExoriMas = view.findViewById<TextView>(R.id.averageExoriMas)
-        val averageCritExoriMas = view.findViewById<TextView>(R.id.averageCritExoriMas)
-        val maxExoriMas = view.findViewById<TextView>(R.id.maxExoriMas)
-        val maxCritExoriMas = view.findViewById<TextView>(R.id.maxCritExoriMas)
-
-
         minExoriMas.text = formato.format(minExoriMasTotalDmg)
         averageExoriMas.text = formato.format(averageNormalExoriMas)
         maxExoriMas.text = formato.format(maxExoriMasTotalDmg)
@@ -531,11 +551,8 @@ class KnightCalcFragment : Fragment() {
         }
     }
 
-    private fun dropMenuAttackMode(view: View) {
-
-        val actAttackMode: AutoCompleteTextView = view.findViewById(R.id.AttackAutoCompleter)
+    private fun dropMenuAttackMode() {
         val listAttackMode = arrayOf("Full Attack", "Balanced Attack", "Full Defensive")
-
 
         val listAttackAdapter = ArrayAdapter(
             requireContext(),
@@ -559,10 +576,7 @@ class KnightCalcFragment : Fragment() {
         }
     }
 
-    private fun dropMenuElementalAttack(view: View) {
-
-        val actElementalType: AutoCompleteTextView =
-            view.findViewById(R.id.elementalTypeAutoComplete)
+    private fun dropMenuElementalAttack() {
         val listElementalType =
             arrayOf(
                 "Earth Damage",
@@ -592,10 +606,7 @@ class KnightCalcFragment : Fragment() {
         }
     }
 
-    private fun dropMenuWeaponMode(view: View) {
-
-        val actWeaponModel: AutoCompleteTextView =
-            view.findViewById(R.id.weaponComplete)
+    private fun dropMenuWeaponMode() {
         val listElementalType =
             arrayOf(
                 "Normal Weapon",

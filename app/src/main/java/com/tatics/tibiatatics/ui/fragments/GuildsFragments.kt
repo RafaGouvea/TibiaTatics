@@ -25,32 +25,38 @@ class GuildsFragments : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var guildsAdapter: GuildsAdapter
     private var guildsWorlds = "Antica"
+    private lateinit var actGuildsWorlds: AutoCompleteTextView
+    private lateinit var btnSearch: AppCompatButton
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.fragment_guilds_fragments, container, false)
 
-        initRecycleView(view)
-        dropMenuGuildsWorld(view)
-        btnOtherWorlds(view)
+        actGuildsWorlds = view.findViewById(R.id.input_guild_world)
+        btnSearch = view.findViewById(R.id.btn_search_guild_world)
 
+        initRecycleView(view)
+        dropMenuGuildsWorld()
+        btnOtherWorlds()
+        updateCharacterRank()
+
+        return view
+    }
+
+    private fun updateCharacterRank() {
         lifecycleScope.launch {
             val characterRank = newsModelWebClient.getGuilds("antica")
             characterRank?.let {
                 guildsAdapter.updateNewsList(it)
             }
         }
-        return view
     }
 
-    private fun dropMenuGuildsWorld(view: View) {
-
-        val actGuildsWorlds = view.findViewById<AutoCompleteTextView>(R.id.input_guild_world)
+    private fun dropMenuGuildsWorld() {
         actGuildsWorlds.setText("Antica", false)
-
         lifecycleScope.launch {
             val loadWorlds = newsModelWebClient.loadWorlds()
             loadWorlds?.let { worldsStatusModel ->
@@ -76,8 +82,7 @@ class GuildsFragments : Fragment() {
         }
     }
 
-    private fun btnOtherWorlds(view: View) {
-        val btnSearch = view.findViewById<AppCompatButton>(R.id.btn_search_guild_world)
+    private fun btnOtherWorlds() {
         btnSearch.setOnClickListener {
             lifecycleScope.launch {
                 newsModelWebClient.getGuilds(guildsWorlds)?.let {
@@ -89,7 +94,6 @@ class GuildsFragments : Fragment() {
 
     private fun initRecycleView(view: View) {
         this.guildsAdapter = GuildsAdapter {
-
             val guildName = it.name
             if (guildName.isNotEmpty()) {
                 val bundle = Bundle()
@@ -109,5 +113,4 @@ class GuildsFragments : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = this.guildsAdapter
     }
-
 }
