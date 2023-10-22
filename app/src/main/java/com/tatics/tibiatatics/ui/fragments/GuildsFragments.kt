@@ -1,7 +1,6 @@
 package com.tatics.tibiatatics.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.widget.AppCompatButton
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,11 +16,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tatics.tibiatatics.R
 import com.tatics.tibiatatics.remote.WebClient
 import com.tatics.tibiatatics.ui.adapter.GuildsAdapter
+import com.tatics.tibiatatics.ui.viewmodel.GuildsViewModel
 import kotlinx.coroutines.launch
 
 
 class GuildsFragments : Fragment() {
 
+    private val viewModel by viewModels<GuildsViewModel>()
     private var newsModelWebClient = WebClient()
     private lateinit var recyclerView: RecyclerView
     private lateinit var guildsAdapter: GuildsAdapter
@@ -41,16 +43,24 @@ class GuildsFragments : Fragment() {
         initRecycleView(view)
         dropMenuGuildsWorld()
         btnOtherWorlds()
-        updateCharacterRank()
+        updateGuilds()
 
         return view
     }
 
-    private fun updateCharacterRank() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         lifecycleScope.launch {
-            val characterRank = newsModelWebClient.getGuilds("antica")
-            characterRank?.let {
-                guildsAdapter.updateNewsList(it)
+            viewModel.loadGuilds(guildsWorlds)
+            viewModel.loadWorlds()
+        }
+    }
+
+    private fun updateGuilds() {
+        viewModel.guildsModelLiveData.observe(viewLifecycleOwner) { listGuildsModel ->
+            if (listGuildsModel != null) {
+                guildsAdapter.updateNewsList(listGuildsModel)
             }
         }
     }
@@ -58,11 +68,10 @@ class GuildsFragments : Fragment() {
     private fun dropMenuGuildsWorld() {
         actGuildsWorlds.setText("Antica", false)
         lifecycleScope.launch {
-            val loadWorlds = newsModelWebClient.loadWorlds()
-            loadWorlds?.let { worldsStatusModel ->
+            viewModel.worldsModelLiveData.observe(viewLifecycleOwner) { worldsModel ->
                 val listGuildsWorlds = mutableListOf<String>()
                 listGuildsWorlds.add("Antica")
-                listGuildsWorlds.addAll(worldsStatusModel.regular_worlds.map { it.name })
+                worldsModel?.regular_worlds?.map { it.name }?.let { listGuildsWorlds.addAll(it) }
 
                 val worldsModelAdapter = ArrayAdapter(
                     requireContext(),
@@ -85,9 +94,7 @@ class GuildsFragments : Fragment() {
     private fun btnOtherWorlds() {
         btnSearch.setOnClickListener {
             lifecycleScope.launch {
-                newsModelWebClient.getGuilds(guildsWorlds)?.let {
-                    guildsAdapter.updateNewsList(it)
-                }
+                viewModel.loadGuilds(guildsWorlds)
             }
         }
     }
@@ -103,7 +110,10 @@ class GuildsFragments : Fragment() {
                 val currentDestinationId = navController.currentDestination?.id
                 val isOnMenuHome = currentDestinationId == R.id.guildsFragments
                 if (isOnMenuHome) {
-                    navController.navigate(R.id.action_guildsFragments_to_guildsDetailFragment, bundle)
+                    navController.navigate(
+                        R.id.action_guildsFragments_to_guildsDetailFragment,
+                        bundle
+                    )
                 } else {
                     navController.navigate(R.id.guildsFragments)
                 }
