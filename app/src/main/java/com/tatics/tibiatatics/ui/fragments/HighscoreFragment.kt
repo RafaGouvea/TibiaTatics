@@ -8,18 +8,19 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tatics.tibiatatics.R
-import com.tatics.tibiatatics.remote.WebClient
 import com.tatics.tibiatatics.ui.adapter.RankingAdapter
+import com.tatics.tibiatatics.ui.viewmodel.HighscoreViewModel
 import kotlinx.coroutines.launch
 
 
 class HighscoreFragment : Fragment() {
 
-    private var newsModelWebClient = WebClient()
+    private val viewModel by viewModels<HighscoreViewModel>()
     private lateinit var recyclerView: RecyclerView
     private lateinit var rankingAdapter: RankingAdapter
     private var world = "all"
@@ -50,6 +51,14 @@ class HighscoreFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        lifecycleScope.launch {
+            viewModel.getRank(world, category, vocation, page)
+            viewModel.loadWorlds()
+        }
+    }
+
     private fun viewById(view: View) {
         btnSearch = view.findViewById(R.id.btn_search_highscore)
         actCategoryRank = view.findViewById(R.id.tv_input_category)
@@ -60,22 +69,19 @@ class HighscoreFragment : Fragment() {
     }
 
     private fun loadCharacterRank() {
-        lifecycleScope.launch {
-            val characterRank = newsModelWebClient.getRank(world, category, vocation, page)
-            characterRank?.let {
-                rankingAdapter.updateList(it.highscores.highscore_list)
+        viewModel.rankLiveData.observe(viewLifecycleOwner) { rankModel ->
+            rankModel?.highscores?.highscore_list?.let { listHighscore ->
+                rankingAdapter.updateList(listHighscore)
             }
-            setDetailRank()
         }
+
+        setDetailRank()
     }
 
-    private suspend fun setDetailRank() {
+    private fun setDetailRank() {
         btnSearch.setOnClickListener {
             lifecycleScope.launch {
-                val characterRank = newsModelWebClient.getRank(world, category, vocation, page)
-                characterRank?.let {
-                    rankingAdapter.updateList(it.highscores.highscore_list)
-                }
+                viewModel.getRank(world, category, vocation, page)
             }
         }
     }
@@ -145,7 +151,6 @@ class HighscoreFragment : Fragment() {
     }
 
     private fun dropMenuVocationRank() {
-
         val vocationMap = mapOf(
             "Master Sorcerer" to "sorcerer",
             "Elder Druid" to "druid",
@@ -211,10 +216,7 @@ class HighscoreFragment : Fragment() {
 
     private fun updateRankingList() {
         lifecycleScope.launch {
-            val pageRank = newsModelWebClient.getRank(world, category, vocation, page)
-            pageRank?.let {
-                rankingAdapter.updateList(it.highscores.highscore_list)
-            }
+            viewModel.getRank(world, category, vocation, page)
         }
     }
 
@@ -224,8 +226,7 @@ class HighscoreFragment : Fragment() {
     }
 
     private fun dropdMenuWorldRank() {
-        lifecycleScope.launch {
-            val loadWorlds = newsModelWebClient.loadWorlds()
+        viewModel.worldsModelLiveData.observe(viewLifecycleOwner) { loadWorlds ->
             loadWorlds?.let { worldsStatusModel ->
                 val listWorldsRank = mutableListOf<String>()
                 listWorldsRank.add("All")

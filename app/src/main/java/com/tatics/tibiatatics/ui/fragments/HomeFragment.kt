@@ -36,7 +36,6 @@ class HomeFragment : Fragment() {
     private lateinit var btnToWorlds: ImageView
     private lateinit var btnToGuilds: ImageView
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -23,7 +23,6 @@ import kotlinx.coroutines.launch
 class GuildsFragments : Fragment() {
 
     private val viewModel by viewModels<GuildsViewModel>()
-    private var newsModelWebClient = WebClient()
     private lateinit var recyclerView: RecyclerView
     private lateinit var guildsAdapter: GuildsAdapter
     private var guildsWorlds = "Antica"
@@ -67,23 +66,25 @@ class GuildsFragments : Fragment() {
 
     private fun dropMenuGuildsWorld() {
         actGuildsWorlds.setText("Antica", false)
-        lifecycleScope.launch {
-            viewModel.worldsModelLiveData.observe(viewLifecycleOwner) { worldsModel ->
-                val listGuildsWorlds = mutableListOf<String>()
-                listGuildsWorlds.add("Antica")
-                worldsModel?.regular_worlds?.map { it.name }?.let { listGuildsWorlds.addAll(it) }
 
-                val worldsModelAdapter = ArrayAdapter(
+        viewModel.worldsModelLiveData.observe(viewLifecycleOwner) { worldsData ->
+            worldsData?.let {
+                val worldNames = mutableListOf<String>()
+                worldNames.add("Antica")
+                worldNames.addAll(worldsData.regular_worlds.map { it.name })
+
+                val worldAdapter = ArrayAdapter(
                     requireContext(),
                     android.R.layout.simple_spinner_dropdown_item,
-                    listGuildsWorlds
+                    worldNames
                 )
 
                 actGuildsWorlds.setOnItemClickListener { _, _, position, _ ->
-                    guildsWorlds = listGuildsWorlds[position].lowercase()
+                    guildsWorlds = worldNames[position].lowercase()
                 }
 
-                actGuildsWorlds.setAdapter(worldsModelAdapter)
+                actGuildsWorlds.setAdapter(worldAdapter)
+
                 actGuildsWorlds.setOnClickListener {
                     actGuildsWorlds.showDropDown()
                 }

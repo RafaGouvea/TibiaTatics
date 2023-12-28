@@ -1,7 +1,6 @@
 package com.tatics.tibiatatics.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,11 +19,12 @@ import com.bumptech.glide.request.RequestOptions
 import com.tatics.tibiatatics.R
 import com.tatics.tibiatatics.remote.WebClient
 import com.tatics.tibiatatics.ui.adapter.GuildsDetailAdapter
+import com.tatics.tibiatatics.ui.viewmodel.GuildsDetailViewModel
 import kotlinx.coroutines.launch
 
 class GuildsDetailFragment : Fragment() {
 
-    private var newsModelWebClient = WebClient()
+    private val viewModel by viewModels<GuildsDetailViewModel>()
     private lateinit var recyclerView: RecyclerView
     private lateinit var guildsDetailAdapter: GuildsDetailAdapter
     private lateinit var arrowImageView: ImageView
@@ -41,13 +42,23 @@ class GuildsDetailFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_guilds_detail, container, false)
 
+        val bundle = arguments
+        nameGuild = bundle?.getString("guilds").toString()
+
         viewById(view)
         initRecycleView(view)
         orderView(view)
         dropMenuFilters()
-        loadItems()
+        loadGuild()
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        lifecycleScope.launch {
+            viewModel.loadGuildsDetail(nameGuild)
+        }
     }
 
     private fun viewById(view: View) {
@@ -57,21 +68,14 @@ class GuildsDetailFragment : Fragment() {
         actFilters = view.findViewById(R.id.filters_detail_guild)
     }
 
-    private fun loadItems() {
+    private fun loadGuild() {
+        viewModel.guildsDetailLiveData.observe(viewLifecycleOwner) { guildDetailModel ->
 
-        val bundle = arguments
-        nameGuild = bundle?.getString("guilds").toString()
-        Log.i("###", "onCreateView: $bundle")
+            guildDetailModel?.guild?.members?.let { guildsDetailAdapter.updateList(it) }
 
-        lifecycleScope.launch {
-            newsModelWebClient.getGuildsDetail(nameGuild)?.guild?.members?.let {
-                guildsDetailAdapter.updateList(it)
-                Log.i("###", "onCreateView Lifecycle: $bundle")
-            }
-
-            newsModelWebClient.getGuildsDetail(nameGuild)?.guild?.let {
-                tvGuildName.text = it.name
-                tvGuildDescription.text = it.description
+            lifecycleScope.launch {
+                tvGuildName.text = guildDetailModel?.guild?.name
+                tvGuildDescription.text = guildDetailModel?.guild?.description
                 val requestOptions = RequestOptions()
                     .placeholder(R.drawable.ic_launcher_background)
                     .error(R.drawable.ic_launcher_background)
@@ -79,7 +83,7 @@ class GuildsDetailFragment : Fragment() {
                 view?.let { imgLoader ->
                     Glide.with(imgLoader.context)
                         .applyDefaultRequestOptions(requestOptions)
-                        .load(it.logo_url)
+                        .load(guildDetailModel?.guild?.logo_url)
                         .into(imgGif)
                 }
             }
@@ -88,7 +92,6 @@ class GuildsDetailFragment : Fragment() {
 
     private fun initRecycleView(view: View) {
         this.guildsDetailAdapter = GuildsDetailAdapter {
-
             val playerName = it.name
             if (playerName.isNotEmpty()) {
                 val bundle = Bundle()
@@ -106,7 +109,6 @@ class GuildsDetailFragment : Fragment() {
                     navController.navigate(R.id.guildsFragments)
                 }
             }
-
         }
         recyclerView = view.findViewById(R.id.activity_list_members_recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -151,17 +153,25 @@ class GuildsDetailFragment : Fragment() {
 
         actFilters.setOnItemClickListener { _, _, position, _ ->
             val selectedVocation = listFilters[position]
-            lifecycleScope.launch {
-                newsModelWebClient.getGuildsDetail(nameGuild)?.guild?.members?.let {
-                    when (selectedVocation) {
-                        "No Filters" -> {
-                            guildsDetailAdapter.updateList(it)
+            viewModel.guildsDetailLiveData.observe(viewLifecycleOwner) { guildDetailModel ->
+                when (selectedVocation) {
+                    "No Filters" -> {
+                        guildDetailModel?.guild?.members?.let { listMembersModel ->
+                            guildsDetailAdapter.updateList(listMembersModel)
                         }
-                        "Status" -> {
-                            guildsDetailAdapter.updateListStatus(it)
+                    }
+
+                    "Status" -> {
+                        guildDetailModel?.guild?.members?.let { listMembersModel ->
+                            guildsDetailAdapter.updateListStatus(listMembersModel)
                         }
-                        else -> {
-                            guildsDetailAdapter.filteredList(it, isAscendingOrder, selectedVocation)
+                    }
+
+                    else -> {
+                        guildDetailModel?.guild?.members?.let { listMembersModel ->
+                            guildsDetailAdapter.filteredList(
+                                listMembersModel, isAscendingOrder, selectedVocation
+                            )
                         }
                     }
                 }
