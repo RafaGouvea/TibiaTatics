@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tatics.tibiatatics.R
+import com.tatics.tibiatatics.databinding.FragmentCharacterDetailBinding
 import com.tatics.tibiatatics.remote.WebClient
 import com.tatics.tibiatatics.ui.adapter.CharacterAchievimentsAdapter
 import com.tatics.tibiatatics.ui.adapter.CharacterDeathsAdapter
@@ -31,50 +32,28 @@ class CharacterDetailFragment : Fragment() {
     private var newsModelWebClient = WebClient()
     private var guildName = ""
 
-    private lateinit var name: TextView
-    private lateinit var title: TextView
-    private lateinit var sex: TextView
-    private lateinit var vocation: TextView
-    private lateinit var achievementsPoins: TextView
-    private lateinit var world: TextView
-    private lateinit var residence: TextView
-    private lateinit var lastLogin: TextView
-    private lateinit var comment: TextView
-    private lateinit var guild: TextView
-    private lateinit var level: TextView
-    private lateinit var scrollView: ScrollView
+    // Declare o objeto de ligação
+    private lateinit var binding: FragmentCharacterDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_character_detail, container, false)
+    ): View {
+        // Use o objeto de ligação para inflar o layout
+        binding = FragmentCharacterDetailBinding.inflate(inflater, container, false)
 
-        name = view.findViewById(R.id.character_name)
-        title = view.findViewById(R.id.character_title)
-        sex = view.findViewById(R.id.character_sex)
-        vocation = view.findViewById(R.id.character_vocation)
-        achievementsPoins = view.findViewById(R.id.character_achievements_points)
-        world = view.findViewById(R.id.character_world)
-        residence = view.findViewById(R.id.character_residence)
-        lastLogin = view.findViewById(R.id.character_last_login)
-        comment = view.findViewById(R.id.character_comment)
-        guild = view.findViewById(R.id.character_guild_membership)
-        level = view.findViewById(R.id.character_level)
-        scrollView = view.findViewById(R.id.sv_detail_character)
+        deathRecycleView()
+        charactersRecycleView()
+        charactersAchievmentsRecycleView()
 
-        deathRecycleView(view)
-        charactersRecycleView(view)
-        charactersAchievmentsRecycleView(view)
-
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val nameCharacter = arguments?.getString("name").toString()
 
-        world.setTextColor(view.context.resources.getColor(R.color.blue))
+        binding.characterWorld.setTextColor(view.context.resources.getColor(R.color.blue))
 
         lifecycleScope.launch {
             val characterInfo = nameCharacter.let { newsModelWebClient.searchCharacter(it) }
@@ -86,17 +65,18 @@ class CharacterDetailFragment : Fragment() {
                 charactersAdapter.updateList(searchModel.other_characters)
                 characterAchievementsAdapter.updateList(searchModel.achievements)
 
-                name.text = searchModel.character.name
-                title.text = searchModel.character.title
-                sex.text = searchModel.character.sex
-                vocation.text = searchModel.character.vocation
-                achievementsPoins.text = searchModel.character.achievement_points.toString()
-                world.text = searchModel.character.world
-                residence.text = searchModel.character.residence
-                lastLogin.text = searchModel.character.last_login
-                comment.text = searchModel.character.comment
-                level.text = searchModel.character.level.toString()
-
+                with(binding) {
+                    characterName.text = searchModel.character.name
+                    characterTitle.text = searchModel.character.title
+                    characterSex.text = searchModel.character.sex
+                    characterVocation.text = searchModel.character.vocation
+                    characterAchievementsPoints.text = searchModel.character.achievement_points.toString()
+                    characterWorld.text = searchModel.character.world
+                    characterResidence.text = searchModel.character.residence
+                    characterLastLogin.text = searchModel.character.last_login
+                    characterComment.text = searchModel.character.comment
+                    characterLevel.text = searchModel.character.level.toString()
+                }
 
                 val completeGuild = if (searchModel.character.guild.rank != null) {
                     val fullText =
@@ -105,14 +85,12 @@ class CharacterDetailFragment : Fragment() {
                 } else {
                     ""
                 }
-                guild.text = completeGuild
+                binding.characterGuildMembership.text = completeGuild
 
-                deathVisibility(view)
-                achievementsVisibility(view)
-                charactersVisibility(view)
+                updateVisibility()
             }
 
-            guild.setOnClickListener {
+            binding.characterGuildMembership.setOnClickListener {
                 val guildNameClicked = guildName
                 if (guildNameClicked.isNotEmpty()) {
                     val bundle = Bundle()
@@ -133,8 +111,8 @@ class CharacterDetailFragment : Fragment() {
                 }
             }
 
-            world.setOnClickListener {
-                val worldNameClicked = world.text.toString()
+            binding.characterWorld.setOnClickListener {
+                val worldNameClicked = binding.characterWorld.text.toString()
                 val bundle = Bundle()
                 bundle.putString("world", worldNameClicked)
 
@@ -154,47 +132,42 @@ class CharacterDetailFragment : Fragment() {
         }
     }
 
-    private fun charactersVisibility(view: View) {
-        val emptyCharactersView = view.findViewById<CardView>(R.id.card_view_all_characters)
-        if (charactersAdapter.itemCount == 0) {
-            emptyCharactersView.visibility = View.GONE
-        } else {
-            emptyCharactersView.visibility = View.VISIBLE
-        }
+    private fun charactersVisibility() {
+        val emptyCharactersView = binding.root.findViewById<CardView>(R.id.card_view_all_characters)
+        emptyCharactersView.visibility =
+            if (charactersAdapter.itemCount == 0) View.GONE else View.VISIBLE
     }
 
-    private fun achievementsVisibility(view: View) {
+    private fun achievementsVisibility() {
         val emptyAchievementsView =
-            view.findViewById<CardView>(R.id.card_view_character_achievements)
-        Log.i("###", "achievementsVisibility: ${characterAchievementsAdapter.itemCount}")
-        if (characterAchievementsAdapter.itemCount == 0) {
-            emptyAchievementsView.visibility = View.GONE
-        } else {
-            emptyAchievementsView.visibility = View.VISIBLE
-        }
+            binding.root.findViewById<CardView>(R.id.card_view_character_achievements)
+        emptyAchievementsView.visibility =
+            if (charactersAdapter.itemCount == 0) View.GONE else View.VISIBLE
     }
 
-    private fun deathVisibility(view: View) {
-        val emptyDeathView = view.findViewById<CardView>(R.id.card_view_character_death)
-        if (deathsAdapter.itemCount == 0) {
-            emptyDeathView.visibility = View.GONE
-        } else {
-            emptyDeathView.visibility = View.VISIBLE
-        }
+    private fun deathVisibility() {
+        val emptyDeathView = binding.root.findViewById<CardView>(R.id.card_view_character_death)
+        emptyDeathView.visibility =
+            if (charactersAdapter.itemCount == 0) View.GONE else View.VISIBLE
     }
 
-    private fun deathRecycleView(view: View) {
+    private fun updateVisibility() {
+        achievementsVisibility()
+        charactersVisibility()
+        deathVisibility()
+    }
+
+    private fun deathRecycleView() {
         this.deathsAdapter = CharacterDeathsAdapter()
-        recyclerView = view.findViewById(R.id.death_list_recycleview)
+        recyclerView = binding.root.findViewById(R.id.death_list_recycleview)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = this.deathsAdapter
     }
 
-    private fun charactersRecycleView(view: View) {
+    private fun charactersRecycleView() {
         this.charactersAdapter = CharactersAdapter {
-
             lifecycleScope.launch {
-                scrollView.smoothScrollTo(0, 0)
+                binding.svDetailCharacter.smoothScrollTo(0, 0)
 
                 newsModelWebClient.searchCharacter(it.name.toString())?.let {
 
@@ -202,38 +175,38 @@ class CharacterDetailFragment : Fragment() {
                     charactersAdapter.updateList(it.other_characters)
                     characterAchievementsAdapter.updateList(it.achievements)
 
-                    name.text = it.character.name
-                    title.text = it.character.title
-                    sex.text = it.character.sex
-                    vocation.text = it.character.vocation
-                    achievementsPoins.text = it.character.achievement_points.toString()
-                    world.text = it.character.world
-                    residence.text = it.character.residence
-                    lastLogin.text = it.character.last_login
-                    comment.text = it.character.comment
-                    level.text = it.character.level.toString()
+                    with(binding) {
+                        characterName.text = it.character.name
+                        characterTitle.text = it.character.title
+                        characterSex.text = it.character.sex
+                        characterVocation.text = it.character.vocation
+                        characterAchievementsPoints.text =
+                            it.character.achievement_points.toString()
+                        characterWorld.text = it.character.world
+                        characterResidence.text = it.character.residence
+                        characterLastLogin.text = it.character.last_login
+                        characterComment.text = it.character.comment
+                        characterLevel.text = it.character.level.toString()
+                    }
 
-                    guild.text = (if (it.character.guild.rank != null) {
+                    binding.characterGuildMembership.text = (if (it.character.guild.rank != null) {
                         "${it.character.guild.rank} of the ${it.character.guild.name}"
                     } else {
                         ""
                     }).toString()
 
-                    deathVisibility(view)
-                    achievementsVisibility(view)
-                    charactersVisibility(view)
-
+                    updateVisibility()
                 }
             }
         }
-        recyclerView = view.findViewById(R.id.character_list_recycleview)
+        recyclerView = binding.root.findViewById(R.id.character_list_recycleview)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = this.charactersAdapter
     }
 
-    private fun charactersAchievmentsRecycleView(view: View) {
+    private fun charactersAchievmentsRecycleView() {
         this.characterAchievementsAdapter = CharacterAchievimentsAdapter()
-        recyclerView = view.findViewById(R.id.character_achievements_list_recycleview)
+        recyclerView = binding.root.findViewById(R.id.character_achievements_list_recycleview)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = this.characterAchievementsAdapter
     }
